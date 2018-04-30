@@ -1,0 +1,33 @@
+﻿ /*! \page settingBaseAlgorithm  Setting Base Algorithm
+  *   The base algorithm is the application algorithm that runs on the processes 
+  * ## The base algorithm generating mechanism
+  * - For each sending of a message a record that describe the sending is created
+  * - The sending description is devided to 2 parts
+  *		- The conditions for the message to be sent (The event)
+  *		- Message generating parameters
+  * - In order to add an event
+  *		- Look for the method InitBaseAlgorithmData()
+  *		- For each message you want to send call the method InsertBaseMessageData()
+  *       (See the comment of InitBaseAlgorithmData for the prototype of the method)
+  *
+  * ## Types of events
+  * ### Events that are generated berore or after sending or receiving messages
+  * These are events that theire send is handled automatically
+  * - For a send to occure there has to be conditions : 
+  *		- processingEvent : The event (before or after send or receive or user)
+  *		- eventMessageType : The type of the message that is sent or received 
+  *		- round : Event Round : The round in the message
+  *		- eventMessageOtherEnd : The other end of the message sending
+  *	- For the message that will be sent the following parameters has to be entered
+  *		- baseMessageType : The message type (from the algorithm's Message class MessageTypes enum)
+  *		- baseMessageName : The message name ( a string)
+  *		- targets : The message targets ( a list of attributes that are ints)
+  *     - baseMessageFields : The additional fields of the message
+  *
+  * ### Event that are sent when requested
+  * - Parameters
+  *		- The events has to be from type UserEvent
+  *     - The type of the messages sent or received can be ommitted
+  *     - The other end of event message can be ommitted
+  *     - When you want the message to be sent call BaseAlgorithmUserEvent()
+  */

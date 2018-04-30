@@ -34,8 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Word, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,20 +63,200 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Tests\Test.xaml.cs">
+      <DependentUpon>Test.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Element Window\AddAlgorithmWindow.cs" />
+    <Compile Include="UserInterface\Element Window\BaseAlgorithmAccess.cs" />
+    <Compile Include="UserInterface\Element Window\ConfigWindow.cs" />
+    <Compile Include="UserInterface\Element Window\CreateAttributeDialog.xaml.cs">
+      <DependentUpon>CreateAttributeDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Element Window\DocumentHandler.xaml.cs">
+      <DependentUpon>DocumentHandler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Element Window\ElementDebugWindow.cs" />
+    <Compile Include="UserInterface\Element Window\ElementInputWindow.cs" />
+    <Compile Include="UserInterface\Element Window\‏‏‏ElementWindow.xaml.cs" />
+    <Compile Include="UserInterface\Main Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Main Windows\MessageWindow.xaml.cs">
+      <DependentUpon>MessageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Main Windows\RunningHandeler.cs" />
+    <Compile Include="UserInterface\Select Dialogs\DocsSelect.xaml.cs">
+      <DependentUpon>DocsSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Select Dialogs\FileSelect.xaml.cs">
+      <DependentUpon>FileSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Select Dialogs\SelectControl.xaml.cs">
+      <DependentUpon>SelectControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Select Dialogs\SelectDialog.xaml.cs">
+      <DependentUpon>SelectDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Select Dialogs\SourceTargetAlgorithmsSelect.xaml.cs">
+      <DependentUpon>SourceTargetAlgorithmsSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Utilities\CustomizedMessageBox.cs" />
+    <Compile Include="UserInterface\Utilities\GridView.xaml.cs">
+      <DependentUpon>GridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Utilities\InputDialog.xaml.cs">
+      <DependentUpon>InputDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Utilities\ListInput.xaml.cs">
+      <DependentUpon>ListInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Utilities\ListMerge.xaml.cs">
+      <DependentUpon>ListMerge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Utilities\LogFiltersSetting.xaml.cs">
+      <DependentUpon>LogFiltersSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Utilities\SyntaxHighlight.xaml.cs">
+      <DependentUpon>SyntaxHighlight.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Infrastructure\Utilities\WordDocumentsPresenter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Algorithms\Base\Base\BaseChannel.cs" />
+    <Compile Include="Algorithms\Base\Base\BaseDefsAndInits.cs" />
+    <Compile Include="Algorithms\Base\Base\BaseMessage.cs" />
+    <Compile Include="Algorithms\Base\Base\BaseNetwork.cs" />
+    <Compile Include="Algorithms\Base\Base\BaseProcess.cs" />
+    <Compile Include="Algorithms\Snapshots\ChandyLamport_OneRound\ChandyLamport_OneRoundChannel.cs" />
+    <Compile Include="Algorithms\Snapshots\ChandyLamport_OneRound\ChandyLamport_OneRoundDefsAndInits.cs" />
+    <Compile Include="Algorithms\Snapshots\ChandyLamport_OneRound\ChandyLamport_OneRoundMessage.cs" />
+    <Compile Include="Algorithms\Snapshots\ChandyLamport_OneRound\ChandyLamport_OneRoundNetwork.cs" />
+    <Compile Include="Algorithms\Snapshots\ChandyLamport_OneRound\ChandyLamport_OneRoundProcess.cs" />
+    <Compile Include="Algorithms\Templates\Template\TemplateChannel.cs" />
+    <Compile Include="Algorithms\Templates\Template\TemplateDefsAndInits.cs" />
+    <Compile Include="Algorithms\Templates\Template\TemplateMessage.cs" />
+    <Compile Include="Algorithms\Templates\Template\TemplateNetwork.cs" />
+    <Compile Include="Algorithms\Templates\Template\TemplateProcess.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Algorithms On Network\NetworkUpdate.cs" />
+    <Compile Include="Infrastructure\Algorithms On Network\TerminationDetectionAlgorithm.cs" />
+    <Compile Include="Infrastructure\Basic Data Structures\Attribute.cs" />
+    <Compile Include="Infrastructure\Basic Data Structures\AttributeDictionary.cs" />
+    <Compile Include="Infrastructure\Basic Data Structures\AttributeList.cs" />
+    <Compile Include="Infrastructure\Basic Data Structures\NetworkElement.cs" />
+    <Compile Include="Infrastructure\Basic Data Structures\ValueHolder.cs" />
+    <Compile Include="Infrastructure\Comunication\AsynchronousListener.cs" />
+    <Compile Include="Infrastructure\Comunication\AsynchronousReader.cs" />
+    <Compile Include="Infrastructure\Comunication\AsynchronousSender.cs" />
+    <Compile Include="Infrastructure\Comunication\SocketStateObject.cs" />
+    <Compile Include="Infrastructure\Events\BaseAlgorithmHandler.cs" />
+    <Compile Include="Infrastructure\Events\BaseAlgorithmMessage.cs" />
+    <Compile Include="Infrastructure\Events\EventTrigger.cs" />
+    <Compile Include="Infrastructure\Events\InternalEvent.cs" />
+    <Compile Include="Infrastructure\Events\InternalEventsHandler.cs" />
+    <Compile Include="Infrastructure\Interfaces\IScanConsumer.cs" />
+    <Compile Include="Infrastructure\Interfaces\IValueHolder.cs" />
+    <Compile Include="Infrastructure\Logging and Message Routing\Logger.cs" />
+    <Compile Include="Infrastructure\Logging and Message Routing\MessageRouter.cs" />
+    <Compile Include="Infrastructure\Network Elements Components\Breakpoint.cs" />
+    <Compile Include="Infrastructure\Network Elements Components\MessageQueue.cs" />
+    <Compile Include="Infrastructure\Network Elements Components\Permissions.cs" />
+    <Compile Include="Infrastructure\Objects and Envs Creation\ClassFactory.cs" />
+    <Compile Include="Infrastructure\Objects and Envs Creation\Config.cs" />
+    <Compile Include="Infrastructure\Objects and Envs Creation\FileAndAlgorithmUtilities.cs" />
+    <Compile Include="Infrastructure\Utilities\TypesUtility.cs" />
+    <Compile Include="Infrastructure\Utilities\WordDocumentsPresenter.xaml.cs">
+      <DependentUpon>WordDocumentsPresenter.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Tests\Test.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Element Window\CreateAttributeDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Element Window\DocumentHandler.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Element Window\‏‏ElementWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Main Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Main Windows\MessageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Select Dialogs\DocsSelect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Select Dialogs\FileSelect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Select Dialogs\SelectControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Select Dialogs\SelectDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Select Dialogs\SourceTargetAlgorithmsSelect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Utilities\GridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Utilities\InputDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Utilities\ListInput.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Utilities\ListMerge.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Utilities\LogFiltersSetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\Utilities\SyntaxHighlight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presentation\ChannelPresentation.cs" />
+    <Compile Include="Presentation\Presentation.cs" />
+    <Compile Include="Presentation\ProcessPresentation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -85,6 +274,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Algorithms\Base\Base\BaseProcess.cs~RFd65831.TMP" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,6 +282,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\AddChannel_icon.png" />
+    <Resource Include="Icons\AddProcess_icon.png" />
+    <Resource Include="Icons\Breakpoints_icon.png" />
+    <Resource Include="Icons\Channel.png" />
+    <Resource Include="Icons\CheckNetwork_icon.png" />
+    <Resource Include="Icons\CreateNetwork_icon.png" />
+    <Resource Include="Icons\Debug_icon.png" />
+    <Resource Include="Icons\DecreaseCanvasHeight_icon.png" />
+    <Resource Include="Icons\DecreaseCanvasWidth_icon.png" />
+    <Resource Include="Icons\DeleteChannel_icon.png" />
+    <Resource Include="Icons\DeleteProcess_icon.png" />
+    <Resource Include="Icons\EditChannel_icon.png" />
+    <Resource Include="Icons\EditNetwork_icon.png" />
+    <Resource Include="Icons\EditProcess_icon.png" />
+    <Resource Include="Icons\Error.png" />
+    <Resource Include="Icons\Exit_icon.png" />
+    <Resource Include="Icons\IncreaseCanvasHeight_icon.png" />
+    <Resource Include="Icons\IncreaseCanvasWidth_icon.png" />
+    <Resource Include="Icons\Info.png" />
+    <Resource Include="Icons\InitializeRunning_icon.png" />
+    <Resource Include="Icons\LogFilters_icon.png" />
+    <Resource Include="Icons\New_icon.png" />
+    <Resource Include="Icons\Open_icon.png" />
+    <Resource Include="Icons\Question.png" />
+    <Resource Include="Icons\ReIndexChannels_icon.png" />
+    <Resource Include="Icons\ReIndexProcess_icon.png" />
+    <Resource Include="Icons\ReOpen_icon.png" />
+    <Resource Include="Icons\ResetNetwork_icon.png" />
+    <Resource Include="Icons\Run_icon.png" />
+    <Resource Include="Icons\SaveAs_icon.png" />
+    <Resource Include="Icons\SaveCurrentStatus_icon.png" />
+    <Resource Include="Icons\Save_icon.png" />
+    <Resource Include="Icons\SetFiles_icon.png" />
+    <Resource Include="Icons\SingleStepAll_icon.png" />
+    <Resource Include="Icons\Success.png" />
+    <Resource Include="Icons\Terminate_icon.png" />
+    <Resource Include="Icons\Warning.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
