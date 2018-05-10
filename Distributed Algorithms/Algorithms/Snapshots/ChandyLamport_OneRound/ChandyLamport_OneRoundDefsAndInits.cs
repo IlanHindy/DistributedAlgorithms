@@ -181,14 +181,14 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
 		protected override void CodeGenerationAdditionalInit()
 		{
 			ea[bn.eak.Centrilized] = true;
-			ea[bn.eak.DirectedNetwork] = true;
+			ea[bn.eak.DirectedNetwork] = false;
 		}
  
 		protected override void InitPrivateAttributes()
 		{
 			AttributeDictionary dictionary = pa;
 			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound.n+pak";
-			dictionary.Add(n.pak.Version, new Attribute { Value = 1 ,Editable = false ,Changed = false } );
+			dictionary.Add(n.pak.Version, new Attribute { Value = 2 ,Editable = false ,Changed = false } );
 			base.InitPrivateAttributes();
 		}
  

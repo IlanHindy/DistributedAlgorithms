@@ -83,7 +83,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
 			 set { op[bm.opk.Breakpoints] = value; }
 		}
  
-		public System.String MessageName
+		public System.String Name
 		{
 			 get { return or[bm.ork.Name]; }
 			 set { or[bm.ork.Name] = value; }

@@ -119,6 +119,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
 		const string algorithm = "Algorithm";
 		const string centrilized = "Centrilized";
 		const string directedNetwork = "DirectedNetwork";
+		const string version = "Version";
 		const string singleStepStatus = "SingleStepStatus";
 		const string name = "Name";
 		const string initiator = "Initiator";
@@ -180,14 +181,14 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
 		protected override void CodeGenerationAdditionalInit()
 		{
 			ea[bn.eak.Centrilized] = true;
-			ea[bn.eak.DirectedNetwork] = false;
+			ea[bn.eak.DirectedNetwork] = true;
 		}
  
 		protected override void InitPrivateAttributes()
 		{
 			AttributeDictionary dictionary = pa;
 			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound.n+pak";
-			dictionary.Add(n.pak.Version, new Attribute { Value = 0 ,Editable = false ,Changed = false } );
+			dictionary.Add(n.pak.Version, new Attribute { Value = 1 ,Editable = false ,Changed = false } );
 			base.InitPrivateAttributes();
 		}
  
@@ -227,6 +228,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
 		const string algorithm = "Algorithm";
 		const string centrilized = "Centrilized";
 		const string directedNetwork = "DirectedNetwork";
+		const string version = "Version";
 		const string singleStepStatus = "SingleStepStatus";
 		const string name = "Name";
 		const string initiator = "Initiator";
@@ -320,6 +322,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
 		const string algorithm = "Algorithm";
 		const string centrilized = "Centrilized";
 		const string directedNetwork = "DirectedNetwork";
+		const string version = "Version";
 		const string singleStepStatus = "SingleStepStatus";
 		const string name = "Name";
 		const string initiator = "Initiator";

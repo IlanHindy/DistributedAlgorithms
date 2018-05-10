@@ -345,7 +345,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
                 case m.MessageTypes.BaseMessage:
                     if (or[p.ork.Recordered] && !sourceChannel.or[c.ork.Marked])
                     {
-                        sourceChannel.or[c.ork.State].Add(message[bm.ork.MessageName]);                        
+                        sourceChannel.or[c.ork.State].Add(message[bm.ork.Name]);                        
                     }
                     break;
                 case m.MessageTypes.Marker:
@@ -412,7 +412,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
             return base.MessageProcessingCondition(message);
         }
 
-        public void StatusSetting(InternalEvent.DummyForInternalEvent dummy = null)
+        public void StatusSetting(InternalEvents.DummyForInternalEvent dummy = null)
         {
             or[p.ork.Status] = ea[ne.eak.Id];
             pp[bp.ppk.Background] = TypesUtility.GetKeyFromString(typeof(KnownColor), StatusColor[ea[ne.eak.Id] % StatusColor.Length]);
@@ -489,13 +489,13 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
         /// \param dummy (Optional)  (DummyForInternalEvent) - The dummy.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public void DefaultInternalEventHandler(InternalEvent.DummyForInternalEvent dummy = null)
+        public void DefaultInternalEventHandler(InternalEvents.DummyForInternalEvent dummy = null)
         { }
         #endregion
         #region /// \name Base Algorithm Events
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn protected override void InitBaseAlgorithmEvents()
+        /// \fn protected override void InitBaseAlgorithm()
         ///
         /// \brief Init base algorithm data.
         ///
@@ -532,7 +532,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
         ///         bm.MessageTypes.Forewared,              // The type of the message to send. Can also be any type that the algorithm declares
         ///         "Message Name",                         // The name of the message to send
         ///         new AttributeDictionary {               // An AttributeDictionary which contains all the fields in the message to be sent
-        ///             { bm.ork.MessageName, "somestring" } // Can also use keys that are declared by the algorithm
+        ///             { bm.ork.Name, "somestring" } // Can also use keys that are declared by the algorithm
         ///         },
         ///         new AttributeList { 1 });                   // List of the target processes of the base algorithm message
         ///}
@@ -542,7 +542,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
         /// \date 20/12/2017
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected override void InitBaseAlgorithmEvents()
+        protected override void InitBaseAlgorithm()
         {
         }
 

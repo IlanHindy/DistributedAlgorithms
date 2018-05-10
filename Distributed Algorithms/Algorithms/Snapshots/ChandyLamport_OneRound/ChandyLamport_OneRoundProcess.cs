@@ -428,17 +428,8 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
         /// \brief Init internal events.
         ///
         /// \par Description.
-        ///      -  InternalEvent are any events that change the data during the processing  
-        ///      -  The internalEvent has 2 parts:  
-        ///         -#  The Event which holds the condition for activating the InternalEvent
-        ///         -#  A method that is activated to implement the InternalEvent
-        ///      -  There are 2 ways to add internal events  
-        ///         -#  Programatically:
-        ///             -#  Create a method with signature like the DefaultInternalEventHandler
-        ///             -#  Add insert of the InternalEvent in this method (See the example followed)
-        ///         -#  Using the GUI
-        ///             -#  Create a method with signature like the DefaultInternalEventHandler
-        ///             -#  Add the InternalEvent in the GUI in the design phase
+        ///      -  if the programmer will want to add internal events programmatically he will do it in this method  
+        ///      -  This method is activated in the init phase
         ///    
         /// \par Algorithm.
         ///
@@ -446,15 +437,17 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
         ///      The construct of this method body is:
         ///      
         ///~~~{.cs}
-        /// protected override void InitInternalEvents()
+        /// //Example for adding internal events in this method
+        /// protected virtual void InitInternalEvents()
         /// {
         ///     // For each event create a call like :
         ///    InsertInternalEvent(
-        ///        Event.EventTrigger.AfterSendMessage,    // Trigger
-        ///        0,                                      // Round
-        ///        bm.MessageTypes.Forewared,              // Message type (can be any message type)
-        ///        1,                                      // The process which is the other end of the send/receive of the trigger
-        ///        new AttributeList { "SomeMethod" });    // The name of the method that processes the event
+        ///        0,                                    // The id of the process that will activate the event
+        ///        EventTriggerType.AfterSendMessage,    // Trigger (The action the process is doing)
+        ///        0,                                    // Round (the round of the message)
+        ///        bm.MessageTypes.Forewared,            // Message type (can be any message type)
+        ///        1,                                    // The process which is the other end of the send/receive of the trigger
+        ///        new List<InternalEvents.InternalEventDelegate> { SomeMethod });    // The name of the method that processes the event
         /// }
         ///~~~
         ///      
@@ -515,28 +508,34 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
         /// \par Usage Notes.
         ///      The implementation of this method is :
         ///      
-        ///~~~{.cs}
-        ///protected virtual void InitBaseAlgorithmData()
-        ///{
+        /// ~~~{.cs}
+        /// // Example for adding base algorithm message in this method
+        /// protected virtual void InitBaseAlgorithmData()
+        /// {
+        ///      // For each event you want to create do steps 1-3
+        ///      //1. Create BaseAlgorithmMessages object
+        ///      BaseAlgorithmMessages messages = new BaseAlgorithmMessages();
         ///      
-        ///      // For each Base Algorithm message to be send make the following call
+        ///      //2. Foreach message you want to be sent in the event call AddMessage of the object
+        ///      messages.AddMessage(bm.MessageTypes.NullMessageType,  // The type of the message to be sent
+        ///                "BaseMessages",                             // The name of the message to be sent
+        ///                new AttributeDictionary(),                  // The fields of the message to be sent
+        ///                new AttributeList { 1 });                   // The id of the target processor of the message
+        ///                
+        ///      //3.Call InsertBaseAlgorithmEvent 
         ///      InsertBaseAlgorithmEvent(
-        ///      
-        ///         // The trigger fields. (fields that are used to decide whether to send the Base Algorithm message
-        ///         Event.EventTrigger.AfterSendMessage,    // Trigger
-        ///         0,                                      // Round
-        ///         bm.MessageTypes.Forewared,              // Message type (can be any message type)
-        ///         1,                                      // The process which is the other end of the send/receive of the trigger
-        ///      
-        ///         // The base algorithm message (The message to be sent if the trigger is true
-        ///         bm.MessageTypes.Forewared,              // The type of the message to send. Can also be any type that the algorithm declares
-        ///         "Message Name",                         // The name of the message to send
-        ///         new AttributeDictionary {               // An AttributeDictionary which contains all the fields in the message to be sent
-        ///             { bm.ork.Name, "somestring" } // Can also use keys that are declared by the algorithm
-        ///         },
-        ///         new AttributeList { 1 });                   // List of the target processes of the base algorithm message
-        ///}
-        ///~~~.
+        ///             // The id of the process that will activate the event
+        ///             0,                                      
+        ///             
+        ///             // Define the trigger which describe condition for sending the messages
+        ///             EventTriggerType.AfterSendMessage,    // Trigger (The action the process is doing)
+        ///             0,                                    // Round (the round of the message)
+        ///             bm.MessageTypes.Forewared,            // Message type (can be any message type)
+        ///             1,                                    // The process which is the other end of the send/receive of the trigger
+        ///             
+        ///             // The messages that will be sent when the trigger hits
+        ///             messages)     
+        /// ~~~
         ///
         /// \author Ilanh
         /// \date 20/12/2017
