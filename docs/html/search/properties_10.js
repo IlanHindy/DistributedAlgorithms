@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['value',['Value',['../class_distributed_algorithms_1_1_attribute.html#a48c9dc2ae6b338ab50bfdde1382070cb',1,'DistributedAlgorithms.Attribute.Value()'],['../class_distributed_algorithms_1_1_new_value_control_prms.html#aaa02f35d8d4bd17e691b7ba620f8170a',1,'DistributedAlgorithms.NewValueControlPrms.Value()']]],
+  ['version',['Version',['../class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1_chandy_lamport___one_round_network.html#abc747818646e5840773f97f6712ea61a',1,'DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound.ChandyLamport_OneRoundNetwork.Version()'],['../class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lai_young___one_round_1_1_lai_young___one_round_network.html#a1e8f55287fe96f80983dd053bc8e8808',1,'DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound.LaiYoung_OneRoundNetwork.Version()'],['../class_distributed_algorithms_1_1_algorithms_1_1_tests_1_1_test_1_1_test_network.html#a9bc4389b4ff9b34349dbc69dd880fc16',1,'DistributedAlgorithms.Algorithms.Tests.Test.TestNetwork.Version()']]]
+];

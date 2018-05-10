@@ -1,0 +1,46 @@
+var class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel =
+[
+    [ "PrivateAttributeKeys", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a249813e2493bb24cab278877b099f28a", null ],
+    [ "OperationResultKeys", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#afca0698eac93d1fd14fecdefbf2b59d3", [
+      [ "Status", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#afca0698eac93d1fd14fecdefbf2b59d3aec53a8c4f07baed5d8825072c89799be", null ]
+    ] ],
+    [ "Status", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a598c2d6c065b1fc11c640cad439d550b", [
+      [ "Father", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a598c2d6c065b1fc11c640cad439d550baa30ca91be97a9cedc0d2426e54b0e782", null ],
+      [ "Null", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a598c2d6c065b1fc11c640cad439d550babbb93ef26e3c101ff11cdd21cab08a94", null ],
+      [ "SonSent", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a598c2d6c065b1fc11c640cad439d550ba236bca13939983e2b21a1c8c09bb7e63", null ]
+    ] ],
+    [ "EchoChannel", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#aeed184ef43630f55cfb6a1574137ade6", null ],
+    [ "EchoChannel", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a5d7bcdeeff4d65e1a792d60d68a0fac8", null ],
+    [ "EchoChannel", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#ac042ef718b61048d9119640e6f724211", null ],
+    [ "EchoChannel", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#af6b0011a2d5716b4fec85c886e8a89c1", null ],
+    [ "EchoChannel", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#aecc99eef1012c5e7c606b4712acdb22f", null ],
+    [ "EchoChannel", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#ac00ca2342cfaa1c54101fe53d0d4c2e3", null ],
+    [ "EchoChannel", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a03e15f325f97bd8398ad068d450fc7ab", null ],
+    [ "EchoChannel", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a3e3781defe44f64a7f3f34b91566e69d", null ],
+    [ "EchoChannel", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#aecc99eef1012c5e7c606b4712acdb22f", null ],
+    [ "EchoChannel", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#ac0a42b2f8849c355e60d1b0362be1c92", null ],
+    [ "AdditionalInitiations", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#ad1c90d0d880ecf87278306557022130c", null ],
+    [ "EchoChannelDefaultAttributeCheck", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#aa20e0dac34b264c9aaf065a09480337d", null ],
+    [ "CheckBuild", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#af8094b89ddf3964d102284b7d07a04fe", null ],
+    [ "CorrectionMethod", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#abe1253916495c98c9eaf55807066ac48", null ],
+    [ "ToString", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a55db085a487ee3e494aa10a585d861ec", null ],
+    [ "PresentationText", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a2a2e5be8330d6354550b510406cde14f", null ],
+    [ "InitPrivateAttributes", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#ab552309f4023deb3c625ccdb17bf1ccc", null ],
+    [ "InitOperationResults", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#aa2724668a1ae70a705b502d99457bbb7", null ],
+    [ "AdditionalInitiations", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a43e9da5b198fa9aa8e87e9879b13d48f", null ],
+    [ "EchoChannelDefaultAttributeCheck", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#aed6c350b1a7e6cdbfae15c96a4e952c5", null ],
+    [ "CheckBuild", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a2fd24f48996b03950ee298d3d29f1f05", null ],
+    [ "CorrectionMethod", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a9249958c4bcffd70dfacdb5858bbaf50", null ],
+    [ "ToString", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a18d3866fdefe6568c5d5377db17e0ff5", null ],
+    [ "PresentationText", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#afb71321bfeb42d4aee7dc2a6f416cb94", null ],
+    [ "InitPrivateAttributes", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#ab552309f4023deb3c625ccdb17bf1ccc", null ],
+    [ "InitOperationResults", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#aa2724668a1ae70a705b502d99457bbb7", null ],
+    [ "Init", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a22adffb2432588a36d25ff59201f0092", null ],
+    [ "Value", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a3c9c4d37be5a47c7bb45e4fbca4625c4", null ],
+    [ "Value", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#afab49716761162bb879972d2632d9561", null ],
+    [ "EchoChannelDefaultAttributeCheck", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a8c4d366049c7ff85ab3ff7e790c98452", null ],
+    [ "CheckBuild", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a2fd24f48996b03950ee298d3d29f1f05", null ],
+    [ "CorrectionMethod", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a9249958c4bcffd70dfacdb5858bbaf50", null ],
+    [ "ToString", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#a18d3866fdefe6568c5d5377db17e0ff5", null ],
+    [ "PresentationText", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1_echo_channel.html#afb71321bfeb42d4aee7dc2a6f416cb94", null ]
+];

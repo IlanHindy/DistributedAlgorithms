@@ -647,7 +647,6 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             {
                 messagesStrings.Add(message.Description());
             }
-            MessageRouter.ReportMessage("===== Channel ====", "", "Updating channel " + this.ToString() + " Count " + messagesStrings.Count);
             MessageRouter.ReportChangePresentationOfComponent(this, new object[] { messagesStrings });
         }
 

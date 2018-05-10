@@ -433,9 +433,9 @@ namespace DistributedAlgorithms
                 button.Click += new RoutedEventHandler(messageBox.Button_Click);
                 insertIdx++;
             }
-            MessageRouter.AddEditOperation(title, fullMessage, imageIcon, new Font("Calibbri", 12, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, null, null));
+            MessageRouter.AddEditOperation(title, fullMessage, imageIcon, new Font("Calibbri", 12, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, Brushes.Black, null));
             messageBox.ShowDialog();
-            MessageRouter.AddEditOperationResult(messageBox.Result, new Font("Calibbri", 12, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, null, null));
+            MessageRouter.AddEditOperationResult(messageBox.Result, new Font("Calibbri", 12, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, Brushes.Black, null));
             return messageBox.Result;
         }
 

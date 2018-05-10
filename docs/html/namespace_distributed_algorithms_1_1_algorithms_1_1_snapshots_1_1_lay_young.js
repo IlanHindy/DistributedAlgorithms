@@ -1,0 +1,7 @@
+var namespace_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lay_young =
+[
+    [ "LayYoungChannel", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lay_young_1_1_lay_young_channel.html", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lay_young_1_1_lay_young_channel" ],
+    [ "LayYoungMessage", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lay_young_1_1_lay_young_message.html", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lay_young_1_1_lay_young_message" ],
+    [ "LayYoungNetwork", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lay_young_1_1_lay_young_network.html", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lay_young_1_1_lay_young_network" ],
+    [ "LayYoungProcess", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lay_young_1_1_lay_young_process.html", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lay_young_1_1_lay_young_process" ]
+];

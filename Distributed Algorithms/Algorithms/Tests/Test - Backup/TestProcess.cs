@@ -330,11 +330,35 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
         /// \author Ilan Hindy
         /// \date 26/01/2017
         ////////////////////////////////////////////////////////////////////////////////////////////////////
+        delegate dynamic GetMethod();
+        delegate void SetMethod();
+        void Check(string checkName, GetMethod getMethod, SetMethod setMethod)
+        {
+            string s = checkName + "\n";
+            try
+            {
+                setMethod();
+                s += "Set succeeded\n";
+            }
+            catch (Exception e)
+            {
+                s += "Set through exception :\n\t" + e.Message + "\n";
+            }
+
+            try
+            {
+                s += getMethod().ToString() +"\n";
+                s += "Get succeeded\n";
+            }
+            catch (Exception e)
+            {
+                s += "Get through exception : \n\t" + e.Message;
+            }
+            MessageRouter.MessageBox(new List<string> { s });
+        }
 
         protected override void RunAlgorithm()
         {
-            /*
-            
             // For this test fully functioning
             // 1. Declare S1 in the process (Operating results)
             // 2. Declare Type in the channel (Operating results) (must be inserted manually  to the defs because 
@@ -342,146 +366,186 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
             // 3. Declare Cs1 in the channel (Private Attributes)
             // 4. Declare Cs2 in the channel (Private Attributes)
             // 5. Declare Cs3 in the channel (Operation results) 
-
             TestChannel channel = (TestChannel)InChannels[0];
-
-            // No string key exist
-            try
-            {
-                MessageRouter.MessageBox(new List<string> { "No string key exist" });
-                MessageRouter.MessageBox(new List<string> { channel[s1].ToString() }, "No string key exist");
-
-            }
-            catch
-            {
-                MessageRouter.MessageBox(new List<string> { "No string key exist - generated exception" });
-            }
-
-            // Duplicate string key exist
-            try
-            {
-                channel.or.Add(c.ork.Type, "Read from Operation results");
-            }
-            catch
-            { }
-            try
-            {
-                MessageRouter.MessageBox(new List<string> { "Duplicate string key exist" });
-                MessageRouter.MessageBox(new List<string> { channel[type].ToString() }, "Duplicate string key exist");
-
-            }
-            catch
-            {
-                MessageRouter.MessageBox(new List<string> { "Duplicate string key exist - generated exception" });
-            }
-
-            // Single string key exist
-            try
-            {
-                MessageRouter.MessageBox(new List<string> { "Single string key exist" });
-                channel[cs3] = "String taken from channel[cs3]";
-                MessageRouter.MessageBox(new List<string> { channel[cs3].ToString() }, "Single string key exist");
-
-            }
-            catch
-            {
-                MessageRouter.MessageBox(new List<string> { "Single string key exist - generated exception" });
-            }
-
-            // No key exist
-            try
-            {
-                MessageRouter.MessageBox(new List<string> { "No key exist" });
-                MessageRouter.MessageBox(new List<string> { channel[p.ork.S1].ToString() }, "No key exist");
-            }
-            catch
-            {
-                MessageRouter.MessageBox(new List<string> { "No key exist - generated exception" });
-            }
-
-            // Duplicate key exist
-            try
-            {
-                channel.or.Add(c.pak.Cs2, "Value taken from or");
-            }
-            catch { }
-            try
-            {
-                MessageRouter.MessageBox(new List<string> { "Duplicate key exist" });
-                MessageRouter.MessageBox(new List<string> { channel[c.pak.Cs2].ToString() }, "Duplicate string key exist");
-
-            }
-            catch
-            {
-                MessageRouter.MessageBox(new List<string> { "Duplicate key exist - generated exception" });
-            }
-
-            // Single key exist
-            try
-            {
-                MessageRouter.MessageBox(new List<string> { "Single key exist" });
-                channel[c.ork.Cs3] = "Value taken from channel[c.pak.Cs3]";
-                MessageRouter.MessageBox(new List<string> { channel[c.ork.Cs3].ToString() }, "Single string key exist");
-
-            }
-            catch
-            {
-                MessageRouter.MessageBox(new List<string> { "Single key exist - generated exception" });
-            }
-
-            // Acess by index
-            try
-            {
-                channel.Cs3 = "Access to channel.Cs3 by index ok";
-                MessageRouter.MessageBox(new List<string> { channel.Cs3 });
-            }
-            catch
-            {
-                MessageRouter.MessageBox(new List<string> { "Access to channel.Cs3 by index - generated exception" });
-            }
-
-            // BaseMessageKey
             TestMessage message = new TestMessage(network, m.MessageTypes.Message1, MessageDataFor_Message1(bm.PrmSource.Prms, null, false), channel, "MessageName");
-            try
-            {
-                MessageRouter.MessageBox(new List<string> { "Base message attribute access message.SourcePort" });
-                message.SourcePort = 123;
-                MessageRouter.MessageBox(new List<string> { message.SourcePort.ToString() }, "Base message attribute access");
-
-            }
-            catch
-            {
-                MessageRouter.MessageBox(new List<string> { "Base message attribute access message.SourcePort - generated exception" });
-            }
-
-            //BaseMessage index access
-            try
-            {
-                MessageRouter.MessageBox(new List<string> { "Base message index access message[_SourcePort ]" });
-                message[sourcePort] = 456;
-                MessageRouter.MessageBox(new List<string> { message[sourcePort].ToString() }, "Base message index access");
-
-            }
-            catch
-            {
-                MessageRouter.MessageBox(new List<string> { "Base message index access message[_SourcePort ] - generated exception" });
-            }
-
-            //Message index access
-            try
-            {
-                MessageRouter.MessageBox(new List<string> { "Base message index access message[_PrevAttr ]" });
-                message[prevAttr ] = true;
-                MessageRouter.MessageBox(new List<string> { message[prevAttr].ToString() }, "Base message index access");
-
-            }
-            catch
-            {
-                MessageRouter.MessageBox(new List<string> { "Base message index access message[_PrevAttr ] - generated exception" });
-            }
-            */
-            
+            Check("No string key exist", () => { return channel[s1]; }, () => { channel[s1] = "Test"; });
+            Check("Duplicate string key exist", () => { return channel[type]; }, () => { channel[type] = "Test"; });
+            Check("Single string key exist", () => { return channel[cs3]; }, () => { channel[cs3] = "Test"; });
+            Check("No key exist", () => { return channel[p.ork.S1]; }, () => { channel[p.ork.S1] = "Test"; });
+            Check("Duplicate key exist", () => { return channel[c.pak.Cs2]; }, () => { channel[c.pak.Cs2] = "Test"; });
+            Check("Single key exist", () => { return channel[c.ork.Cs3]; }, () => { channel[c.ork.Cs3] = "Test"; });
+            Check("Access to by index", () => { return channel.Cs3; }, () => { channel.Cs3 = "Test"; });
+            Check("Base message attribute access", () => { return message.SourcePort; }, () => { message.SourcePort = 123; });
+            Check("Base message index access", () => { return message[sourcePort]; }, () => { message[sourcePort] = 456; });
+            Check("Base message index access", () => { return message[prevAttr]; }, () => { message[prevAttr] = true; });
         }
+
+
+        //protected override void RunAlgorithm()
+        //{
+
+        //    // For this test fully functioning
+        //    // 1. Declare S1 in the process (Operating results)
+        //    // 2. Declare Type in the channel (Operating results) (must be inserted manually  to the defs because 
+        //    //      The program does not allow duplications
+        //    // 3. Declare Cs1 in the channel (Private Attributes)
+        //    // 4. Declare Cs2 in the channel (Private Attributes)
+        //    // 5. Declare Cs3 in the channel (Operation results) 
+
+        //    TestChannel channel = (TestChannel)InChannels[0];
+
+        //    // No string key exist
+        //    try
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "No string key exist" });
+        //        MessageRouter.MessageBox(new List<string> { channel[s1].ToString() }, "No string key exist");
+
+        //    }
+        //    catch
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "No string key exist - generated exception" });
+        //    }
+
+        //    // Duplicate string key exist
+        //    try
+        //    {
+        //        channel.or.Add(c.ork.Type, "Read from Operation results");
+        //    }
+        //    catch
+        //    { }
+        //    try
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Duplicate string key exist" });
+        //        MessageRouter.MessageBox(new List<string> { channel[type].ToString() }, "Duplicate string key exist");
+
+        //    }
+        //    catch
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Duplicate string key exist - generated exception" });
+        //    }
+
+        //    // Single string key exist
+        //    try
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Single string key exist" });
+        //        channel[cs3] = "String taken from channel[cs3]";
+        //        MessageRouter.MessageBox(new List<string> { channel[cs3].ToString() }, "Single string key exist");
+
+        //    }
+        //    catch
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Single string key exist - generated exception" });
+        //    }
+
+        //    // No key exist
+        //    try
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "No key exist" });
+        //        MessageRouter.MessageBox(new List<string> { channel[p.ork.S1].ToString() }, "No key exist");
+        //    }
+        //    catch
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "No key exist - generated exception" });
+        //    }
+
+        //    // Duplicate key exist
+        //    try
+        //    {
+        //        channel.or.Add(c.pak.Cs2, "Value taken from or");
+        //    }
+        //    catch { }
+        //    try
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Duplicate key exist" });
+        //        MessageRouter.MessageBox(new List<string> { channel[c.pak.Cs2].ToString() }, "Duplicate string key exist");
+
+        //    }
+        //    catch
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Duplicate key exist - generated exception" });
+        //    }
+
+        //    // Single key exist
+        //    try
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Single key exist" });
+        //        channel[c.ork.Cs3] = "Value taken from channel[c.pak.Cs3]";
+        //        MessageRouter.MessageBox(new List<string> { channel[c.ork.Cs3].ToString() }, "Single string key exist");
+
+        //    }
+        //    catch
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Single key exist - generated exception" });
+        //    }
+
+        //    // Acess by index
+        //    try
+        //    {
+        //        channel.Cs3 = "Access to channel.Cs3 by index ok";
+        //        MessageRouter.MessageBox(new List<string> { channel.Cs3 });
+        //    }
+        //    catch
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Access to channel.Cs3 by index - generated exception" });
+        //    }
+
+        //    // BaseMessageKey
+        //    TestMessage message = new TestMessage(network, m.MessageTypes.Message1, MessageDataFor_Message1(bm.PrmSource.Prms, null, false), channel, "MessageName");
+        //    try
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Base message attribute access message.SourcePort" });
+        //        message.SourcePort = 123;
+        //        MessageRouter.MessageBox(new List<string> { message.SourcePort.ToString() }, "Base message attribute access");
+
+        //    }
+        //    catch
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Base message attribute access message.SourcePort - generated exception" });
+        //    }
+
+        //    //BaseMessage index access
+        //    try
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Base message index access message[_SourcePort ]" });
+        //        message[sourcePort] = 456;
+        //        MessageRouter.MessageBox(new List<string> { message[sourcePort].ToString() }, "Base message index access");
+
+        //    }
+        //    catch
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Base message index access message[_SourcePort ] - generated exception" });
+        //    }
+
+        //    //Message index access
+        //    try
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Base message index access message[_PrevAttr ]" });
+        //        message[prevAttr ] = true;
+        //        MessageRouter.MessageBox(new List<string> { message[prevAttr].ToString() }, "Base message index access");
+
+        //    }
+        //    catch
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "Base message index access message[_PrevAttr ] - generated exception" });
+        //    }
+
+        //    //Check MessageType
+        //    try
+        //    {
+        //        if (TypesUtility.CompareDynamics(message.MessageType, Message1))
+        //        {
+        //            MessageRouter.MessageBox(new List<string> { "TypesUtility.CompareDynamics(message.MessageType, Message1) returned True" });
+        //        }
+        //        else
+        //        {
+        //            MessageRouter.MessageBox(new List<string> { "TypesUtility.CompareDynamics(message.MessageType, Message1) returned False" });
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        MessageRouter.MessageBox(new List<string> { "TypesUtility.CompareDynamics(message.MessageType, Message1) - generated exception" });
+        //    }           
+        //}
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \fn public override void ReceiveHandling(BaseMessage message)
@@ -491,7 +555,7 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
         /// \par Description.
         /// -#  This method is activated when a new message arrived to the process
         /// -#  The method processing is done according to their arrival order
-        /// -#  If you want to change the order of processing use the ArrangeMessageQueue
+        /// -#  If you want to change the order of processing use the ArrangeMessageQ
         ///
         /// \par Algorithm.
         ///
@@ -515,7 +579,7 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn protected override void ArrangeMessageQueue(ref AttributeList messageQueue)
+        /// \fn public override void ArrangeMessageQ(MessageQ messageQueue)
         ///
         /// \brief Arrange the order of processing of the messages
         ///
@@ -535,13 +599,13 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
         /// \param messageQueue       The message queue.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected override void ArrangeMessageQueue(ref AttributeList messageQueue)
+        public override void ArrangeMessageQ(MessageQ messageQueue)
         {
-            base.ArrangeMessageQueue(ref messageQueue);
+            base.ArrangeMessageQ(messageQueue);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn protected override bool MessageProcessingCondition(BaseMessage message)
+        /// \fn public override bool MessageProcessingCondition(BaseMessage message)
         ///
         /// \brief Decide whether to process the first message in the message queue
         ///
@@ -560,7 +624,7 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
         /// \param message       The message.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected override bool MessageProcessingCondition(BaseMessage message)
+        public override bool MessageProcessingCondition(BaseMessage message)
         {
             return base.MessageProcessingCondition(message);
         }

@@ -85,8 +85,8 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
  
 		public System.String MessageName
 		{
-			 get { return or[bm.ork.MessageName]; }
-			 set { or[bm.ork.MessageName] = value; }
+			 get { return or[bm.ork.Name]; }
+			 set { or[bm.ork.Name] = value; }
 		}
  
 		public System.Int32 PositionInProcessQ
@@ -153,13 +153,13 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
 			 set { op[bp.opk.Breakpoints] = value; }
 		}
  
-		public DistributedAlgorithms.AttributeList BaseAlgorithmData
+		public DistributedAlgorithms.BaseAlgorithmHandler BaseAlgorithm
 		{
 			 get { return op[bp.opk.BaseAlgorithm]; }
 			 set { op[bp.opk.BaseAlgorithm] = value; }
 		}
  
-		public DistributedAlgorithms.AttributeList InternalEvents
+		public DistributedAlgorithms.InternalEventsHandler InternalEvents
 		{
 			 get { return op[bp.opk.InternalEvents]; }
 			 set { op[bp.opk.InternalEvents] = value; }

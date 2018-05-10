@@ -1213,6 +1213,7 @@ namespace DistributedAlgorithms
         public void DeepCopy(IValueHolder source, bool isInitiator = true)
         {
             Type sourceValueType = ((Attribute)source).Value.GetType();
+            CopyPublicMembers((Attribute)source);
             if (typeof(IValueHolder).IsAssignableFrom(sourceValueType))
             {
                 value = TypesUtility.CreateObjectFromTypeString(sourceValueType.ToString());
@@ -1227,6 +1228,33 @@ namespace DistributedAlgorithms
             {
                 SetMembers(network, element, permissions, parent);
             }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public void CopyPublicMembers(Attribute source)
+        ///
+        /// \brief Copies the public members described by source.
+        ///
+        /// \par Description.
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 02/05/2018
+        ///
+        /// \param source Another instance to copy.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public void CopyPublicMembers(Attribute source)
+        {
+            Editable = source.Editable;
+            Changed = source.Changed;
+            IdInList = source.IdInList;
+            IncludedInShortDescription = source.IncludedInShortDescription;
+            EndInputOperation = source.EndInputOperation;
+            ElementWindowPrmsMethod = source.ElementWindowPrmsMethod;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

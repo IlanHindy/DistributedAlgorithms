@@ -67,7 +67,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         ///        algorithms
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public enum ork { MessageName, PositionInProcessQ }
+        public enum ork { Name, PositionInProcessQ }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \enum PrmSource
@@ -201,6 +201,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             pa.Add(bm.pak.SourcePort, new Attribute { Value = sendingChannel.or[bc.ork.SourcePort] });
             pa.Add(bm.pak.DestProcess, new Attribute { Value = sendingChannel.ea[bc.eak.DestProcess] });
             pa.Add(bm.pak.DestPort, new Attribute { Value = sendingChannel.or[bc.ork.DestPort] });
+            op.DeepCopy(sourceMessage.op);
             or.DeepCopy(sourceMessage.or);
         }
 
@@ -263,7 +264,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             {
                 messageName = TypesUtility.GetKeyToString(messageType);
             }
-            or.Add(bm.ork.MessageName, new Attribute { Value = messageName });
+            or.Add(bm.ork.Name, new Attribute { Value = messageName });
             op.Add(bm.opk.Breakpoints, new Attribute { Value = new Breakpoint(Breakpoint.HostingElementTypes.Message), Editable = false, IncludedInShortDescription = false });
             or.Add(bm.ork.PositionInProcessQ, new Attribute { Value = 0, IncludedInShortDescription = false });
 
@@ -350,7 +351,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             pa.Add(bm.pak.Round, new Attribute { Value = round });
             pa.Add(bm.pak.LogicalClock, new Attribute { Value = logicalClock });
             op.Add(bm.opk.Breakpoints, new Attribute { Value = new Breakpoint(Breakpoint.HostingElementTypes.Message), Editable = false, IncludedInShortDescription = false });
-            or.Add(bm.ork.MessageName, new Attribute { Value = messageName});
+            or.Add(bm.ork.Name, new Attribute { Value = messageName});
             or.Add(bm.ork.PositionInProcessQ, new Attribute { Value = 0, IncludedInShortDescription = false });
         }
 
@@ -395,7 +396,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             {
                 messageName = TypesUtility.GetKeyToString(messageType);
             }
-            or.Add(bm.ork.MessageName, new Attribute { Value = messageName });
+            or.Add(bm.ork.Name, new Attribute { Value = messageName });
             op.Add(bm.opk.Breakpoints, new Attribute { Value = new Breakpoint(Breakpoint.HostingElementTypes.Message), Editable = false, IncludedInShortDescription = false });
             or.Add(bm.ork.PositionInProcessQ, new Attribute { Value = 0, IncludedInShortDescription = false });
         }
@@ -447,9 +448,9 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
 
         protected sealed override void InitOperationResults()
         {
-            or.Add(bm.ork.MessageName, new Attribute { Value = "" });
+            or.Add(bm.ork.Name, new Attribute { Value = "" });
             op.Add(bm.opk.Breakpoints, new Attribute { Value = new Breakpoint()});
-            or.Add(bm.ork.PositionInProcessQ, new Attribute { Value = 0});
+            or.Add(bm.ork.PositionInProcessQ, new Attribute { Value = 0, IncludedInShortDescription=false});
         }
 
         #endregion
@@ -803,8 +804,9 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             if (!IsEmpty())
             {
                 result += "[" + GetField(bm.ork.PositionInProcessQ).ToString() + "]";
-                result += TypesUtility.GetKeyToString(GetHeaderField(bm.pak.MessageType));
-                result += ";" + GetHeaderField(bm.pak.Round).ToString();
+                result += ";Round=" + GetHeaderField(bm.pak.Round).ToString();
+                result += ";" + pa[bm.pak.SourceProcess].ToString() + "->" + pa[bm.pak.DestProcess].ToString();
+                result += ";" + TypesUtility.GetKeyToString(GetHeaderField(bm.pak.MessageType));
                 result += " : " + or.ShortDescription();
             }
             return result;

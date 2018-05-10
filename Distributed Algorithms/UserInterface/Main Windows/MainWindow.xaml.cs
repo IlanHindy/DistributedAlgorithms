@@ -2871,13 +2871,11 @@ namespace DistributedAlgorithms
             //The rest of the parameters are parameters to the presentation
             if (typeof(BaseChannel).IsAssignableFrom(networkElement.GetType()))
             {
-                MessageRouter.ReportMessage("$$$", "", "Sending update to channel " + networkElement.ToString());
                 ((BaseChannel)networkElement).Presentation.UpdateRunningStatus(networkElement, parameters);
                 return;
             }
             if (typeof(BaseProcess).IsAssignableFrom(networkElement.GetType()))
             {
-                MessageRouter.ReportMessage("$$$", "", "Sending update to process " + networkElement.ToString());
                 ((BaseProcess)networkElement).Presentation.UpdateRunningStatus(networkElement, parameters);
                 return;
             }
@@ -3352,14 +3350,13 @@ namespace DistributedAlgorithms
             Logger.WriteOperationResultToEditLogFile(editOperationLogEmptySpaces, result);
         }
         #endregion
-
         private void Command_CheckDataGrid(object sender, ExecutedRoutedEventArgs e)
         {
             List<List<string>> data = new List<List<string>>();
-            for (int rowIdx = 0; rowIdx < 10; rowIdx ++)
+            for (int rowIdx = 0; rowIdx < 10; rowIdx++)
             {
                 List<string> row = new List<string>();
-                for (int colIdx = 0; colIdx < 5; colIdx ++)
+                for (int colIdx = 0; colIdx < 5; colIdx++)
                 {
                     row.Add(rowIdx.ToString() + "_" + colIdx.ToString());
                 }
@@ -3369,10 +3366,10 @@ namespace DistributedAlgorithms
             CustomizedMessageBox.Show(dataGrid);
         }
 
-        private void Command_CheckListMerge(object sender, ExecutedRoutedEventArgs e)
-        {
-            ListMerge listMerge = new ListMerge(net.Processes[0].or[bp.tst.TestList], net.Processes[0].or[bp.tst.TestList]);
-            listMerge.ShowDialog();
-        }
+        //private void Command_CheckListMerge(object sender, ExecutedRoutedEventArgs e)
+        //{
+        //    ListMerge listMerge = new ListMerge(net.Processes[0].or[bp.tst.TestList], net.Processes[0].or[bp.tst.TestList]);
+        //    listMerge.ShowDialog();
+        //}
     }
 }

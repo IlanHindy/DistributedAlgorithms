@@ -63,6 +63,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Algorithms\Tests\Test\TestChannel.cs" />
+    <Compile Include="Algorithms\Tests\Test\TestDefsAndInits.cs" />
+    <Compile Include="Algorithms\Tests\Test\TestMessage.cs" />
+    <Compile Include="Algorithms\Tests\Test\TestNetwork.cs" />
+    <Compile Include="Algorithms\Tests\Test\TestProcess.cs" />
     <Compile Include="Tests\Test.xaml.cs">
       <DependentUpon>Test.xaml</DependentUpon>
     </Compile>
@@ -158,9 +163,9 @@
     <Compile Include="Infrastructure\Comunication\AsynchronousSender.cs" />
     <Compile Include="Infrastructure\Comunication\SocketStateObject.cs" />
     <Compile Include="Infrastructure\Events\BaseAlgorithmHandler.cs" />
-    <Compile Include="Infrastructure\Events\BaseAlgorithmMessage.cs" />
+    <Compile Include="Infrastructure\Events\BaseAlgorithmMessages.cs" />
     <Compile Include="Infrastructure\Events\EventTrigger.cs" />
-    <Compile Include="Infrastructure\Events\InternalEvent.cs" />
+    <Compile Include="Infrastructure\Events\InternalEvents.cs" />
     <Compile Include="Infrastructure\Events\InternalEventsHandler.cs" />
     <Compile Include="Infrastructure\Interfaces\IScanConsumer.cs" />
     <Compile Include="Infrastructure\Interfaces\IValueHolder.cs" />

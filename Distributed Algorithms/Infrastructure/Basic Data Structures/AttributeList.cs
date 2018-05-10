@@ -1156,6 +1156,52 @@ namespace DistributedAlgorithms
             return IndexOf((Attribute)child);
         }
         #endregion
+        #region \name Conversions
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public IList AsList()
+        ///
+        /// \brief Converts this object to a list.
+        ///
+        /// \par Description.
+        ///      The conversion will succeed if the AttributeList is not empty and
+        ///      the types of all the values is the same
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 02/05/2018
+        ///
+        /// \return An IList.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public IList AsList()
+        {
+            if (Count == 0)
+            {
+                MessageRouter.MessageBox(new List<string> { "There is no way to convert empty AttributeList to List when the AttributeList is empty" }, "AttributeList", null, Icons.Error);
+                return null;
+            }
+            Type genericType = this[0].GetType();
+            foreach (Attribute attribute in this)
+            {
+                if (!attribute.Value.GetType().Equals(genericType))
+                {
+                    MessageRouter.MessageBox(new List<string> { "In Order to convert from AttributeList to List att the attribute value types has to be the same" }, "AttributeList", null, Icons.Error);
+                    return null;
+                }
+            }
+            IList list = (IList)TypesUtility.CreateListFromArgumentTypeString(genericType.ToString());
+            foreach (Attribute attribute in this)
+            {
+                list.Add(attribute.Value);
+            }
+            return list;
+        }
+            
+        #endregion
         #region /// \name Add algorithm window support (creating c# code)
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -85,11 +85,6 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             ///< An enum constant representing the breakpoints frame color option
             BreakpointsFrameColor, BreakpointsFrameWidth, BreakpointsBackground, BreakpointsForeground
         }
-
-        public enum tst
-        {
-            TestList, TestDictionary, TestNetworkElement, TestListNotEdittable, TestDictionaryNotEdittable, TestNetworkElementNotEdittable
-        }
     }
     #endregion
 
@@ -457,17 +452,6 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             or.Add(bp.ork.TerminationStatus, new Attribute { Value = TerminationStatuses.NotTerminated, Editable = false, Changed = false, IncludedInShortDescription = false });
             or.Add(bp.ork.MessageQ, new Attribute { Value = new MessageQ(), Editable = false, Changed = false, IncludedInShortDescription = false });
             or.Add(bp.ork.ReceivePort, new Attribute { Value = 0, Editable = false, Changed = false, IncludedInShortDescription = false });
-            
-            // For debug
-            if (Config.Instance[Config.Keys.SelectedAlgorithm] == "Base")
-            {
-                or.Add(bp.tst.TestList, new Attribute { Value = new AttributeList(), Changed = false });
-                or.Add(bp.tst.TestDictionary, new Attribute { Value = new AttributeDictionary(), Changed = false });
-                or.Add(bp.tst.TestNetworkElement, new Attribute { Value = new NetworkElement(network), Changed = false });
-                or.Add(bp.tst.TestListNotEdittable, new Attribute { Value = new AttributeList(), Editable = false, Changed = false });
-                or.Add(bp.tst.TestDictionaryNotEdittable, new Attribute { Value = new AttributeDictionary(), Editable = false, Changed = false });
-                or.Add(bp.tst.TestNetworkElementNotEdittable, new Attribute { Value = new NetworkElement(network), Editable = false, Changed = false });
-            }
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \fn protected override void AdditionalInitiations()
@@ -488,7 +472,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         protected override void AdditionalInitiations()
         {
             base.AdditionalInitiations();
-            InitBaseAlgorithmEvents();
+            InitBaseAlgorithm();
             InitInternalEvents();
         }
         #endregion
@@ -1001,6 +985,14 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             int minProcessId = network.Processes.Min(process => process.ea[ne.eak.Id]);
             int maxProcessId = network.Processes.Max(process => process.ea[ne.eak.Id]);
 
+            // If the message is not Base message throw it
+            dynamic messageType = message.GetHeaderField(bm.pak.MessageType);
+            if (!(TypesUtility.CompareDynamics(messageType, bm.MessageTypes.Forewared) ||
+                TypesUtility.CompareDynamics(messageType, bm.MessageTypes.LastMessage)))
+            {
+                return;
+            }
+
             // If the process is the process with the maxProcessId (used to indicate the non-initiator)
             if (ea[ne.eak.Id] == maxProcessId)
             {
@@ -1011,7 +1003,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
                 BaseChannel channel = OutGoingChannels.First(c => c.ea[bc.eak.DestProcess] == minProcessId);
 
                 // If this is round 2 - Terminate
-                if (messageCounter == 2)
+                if (messageCounter == 5)
                 {
                     BaseMessage newMessage = new BaseMessage(network,
                         bm.MessageTypes.LastMessage,
@@ -1036,7 +1028,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             {
 
                 // If a Terminate message arrived - Terminate()
-                if (message.GetHeaderField(bm.pak.MessageType) == bm.MessageTypes.LastMessage)
+                if (TypesUtility.CompareDynamics(message.GetHeaderField(bm.pak.MessageType),bm.MessageTypes.LastMessage))
                 {
                     // The termination will be recieved by all the processes in the network
                     Terminate();
@@ -1049,7 +1041,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
                     BaseMessage newMessage = new BaseMessage(network,
                         bm.MessageTypes.Forewared,
                         channel,
-                        message.GetField(bm.ork.MessageName),
+                        message.GetField(bm.ork.Name),
                         message.GetHeaderField(bm.pak.Round), maxProcessId);
                     Send(maxProcessId, newMessage);
                 }
@@ -1174,7 +1166,8 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         /// \brief Init internal events.
         ///
         /// \par Description.
-        ///      -  if the programmer will want to add internal events programmaticaly he will do it in this method
+        ///      -  if the programmer will want to add internal events programmatically he will do it in this method  
+        ///      -  This method is activated in the init phase
         ///    
         /// \par Algorithm.
         ///
@@ -1182,15 +1175,17 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         ///      The construct of this method body is:
         ///      
         ///~~~{.cs}
+        /// //Example for adding internal events in this method
         /// protected virtual void InitInternalEvents()
         /// {
         ///     // For each event create a call like :
         ///    InsertInternalEvent(
-        ///        EventTriggerType.AfterSendMessage,    // Trigger
-        ///        0,                                      // Round
-        ///        bm.MessageTypes.Forewared,              // Message type (can be any message type)
-        ///        1,                                      // The process which is the other end of the send/receive of the trigger
-        ///        new AttributeList { "SomeMethod" });    // The name of the method that processes the event
+        ///        0,                                    // The id of the process that will activate the event
+        ///        EventTriggerType.AfterSendMessage,    // Trigger (The action the process is doing)
+        ///        0,                                    // Round (the round of the message)
+        ///        bm.MessageTypes.Forewared,            // Message type (can be any message type)
+        ///        1,                                    // The process which is the other end of the send/receive of the trigger
+        ///        new List<InternalEvents.InternalEventDelegate> { SomeMethod });    // The name of the method that processes the event
         /// }
         ///~~~
         ///      
@@ -1205,12 +1200,12 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn protected void InsertInternalEvent(EventTriggerType eventTrigger, int eventRound, dynamic eventMessageType, int eventMessageOtherEnd, AttributeList methods)
+        /// \fn protected void InsertInternalEvent( int ActivatorProcessId, EventTriggerType eventTrigger, int eventRound, dynamic eventMessageType, int eventMessageOtherEnd, List<InternalEvents.InternalEventDelegate> methods)
         ///
         /// \brief Inserts an internal event.
         ///
         /// \par Description.
-        ///      This method is used by the InitInternalEvents to insert events
+        ///      This method is used by the InitInternalEvents to insert events.
         ///
         /// \par Algorithm.
         ///
@@ -1219,30 +1214,36 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         /// \author Ilanh
         /// \date 14/01/2018
         ///
-        /// \param eventTrigger          (EventTrigger) - The event trigger.
+        /// \param ActivatorProcessId    (int) - Identifier for the activator process.
+        /// \param eventTrigger          (EventTriggerType) - The event trigger.
         /// \param eventRound            (int) - The event round.
         /// \param eventMessageType      (dynamic) - Type of the event message.
         /// \param eventMessageOtherEnd  (int) - The event message other end.
-        /// \param methods               (AttributeList) - The methods.
+        /// \param methods               (InternalEventDelegate>) - The methods.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected void InsertInternalEvent(EventTriggerType eventTrigger,
+        protected void InsertInternalEvent(
+            int ActivatorProcessId,
+            EventTriggerType eventTrigger,
             int eventRound,
             dynamic eventMessageType,
             int eventMessageOtherEnd,
-            AttributeList methods)
+            List<InternalEvents.InternalEventDelegate> methods)
         {
-            ((InternalEventsHandler)op[bp.opk.InternalEvents]).CreateEvent(eventTrigger,
-                eventRound,
-                eventMessageType,
-                eventMessageOtherEnd,
-                methods);
+            if (ActivatorProcessId == ea[ne.eak.Id])
+            {
+                ((InternalEventsHandler)op[bp.opk.InternalEvents]).CreateEvent(eventTrigger,
+                    eventRound,
+                    eventMessageType,
+                    eventMessageOtherEnd,
+                    methods);
+            }
         }
         #endregion
         #region /// \name Base Algorithm Events
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn protected virtual void InitBaseAlgorithmEvents()
+        /// \fn protected virtual void InitBaseAlgorithm()
         ///
         /// \brief Init base algorithm data.
         ///
@@ -1254,40 +1255,45 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         ///      The implementation of this method is :
         ///      
         /// ~~~{.cs}
+        /// // Example for adding base algorithm message in this method
         /// protected virtual void InitBaseAlgorithmData()
         /// {
+        ///      // For each event you want to create do steps 1-3
+        ///      //1. Create BaseAlgorithmMessages object
+        ///      BaseAlgorithmMessages messages = new BaseAlgorithmMessages();
         ///      
-        ///      // For each Base Algorithm message to be send make the following call
+        ///      //2. Foreach message you want to be sent in the event call AddMessage of the object
+        ///      messages.AddMessage(bm.MessageTypes.NullMessageType,  // The type of the message to be sent
+        ///                "BaseMessages",                             // The name of the message to be sent
+        ///                new AttributeDictionary(),                  // The fields of the message to be sent
+        ///                new AttributeList { 1 });                   // The id of the target processor of the message
+        ///                
+        ///      //3.Call InsertBaseAlgorithmEvent 
         ///      InsertBaseAlgorithmEvent(
-        ///      
-        ///      // The trigger fields. (fields that are used to decide whether to send the Base Algorithm message
-        ///      EventTriggerType.AfterSendMessage,    // Trigger
-        ///      0,                                      // Round
-        ///      bm.MessageTypes.Forewared,              // Message type (can be any message type)
-        ///      1,                                      // The process which is the other end of the send/receive of the trigger
-        ///      
-        ///      // The base algorithm message (The message to be sent if the trigger is true
-        ///      bm.MessageTypes.Forewared,              // The type of the message to send. Can also be any type that the algorithm declares
-        ///      "Message Name",                         // The name of the message to send
-        ///      new AttributeDictionary {               // An AttributeDictionary which contains all the fields in the message to be sent
-        ///         { bm.ork.MessageName, "somestring" } // Can also use keys that are declared by the algorithm
-        ///      },
-        ///      new AttributeList { 1 });                   // List of the target processes of the base algorithm message
-        /// }
-        /// ~~~.
+        ///             // The id of the process that will activate the event
+        ///             0,                                      
+        ///             
+        ///             // Define the trigger which describe condition for sending the messages
+        ///             EventTriggerType.AfterSendMessage,    // Trigger (The action the process is doing)
+        ///             0,                                    // Round (the round of the message)
+        ///             bm.MessageTypes.Forewared,            // Message type (can be any message type)
+        ///             1,                                    // The process which is the other end of the send/receive of the trigger
+        ///             
+        ///             // The messages that will be sent when the trigger hits
+        ///             messages)     
+        /// ~~~
         ///
         /// \author Ilanh
         /// \date 20/12/2017
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected virtual void InitBaseAlgorithmEvents()
+        protected virtual void InitBaseAlgorithm()
         {
+            
         }
 
-        
-
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn protected void InsertBaseMessageEvent(EventTriggerType eventTrigger, int eventRound, dynamic eventMessageType, int eventMessageOtherEnd, dynamic baseMessageType, string baseMessageName, AttributeDictionary baseMessageFields, AttributeList targets)
+        /// \fn protected void InsertBaseAlgorithmEvent(int ActivatorProcessId, EventTriggerType eventTrigger, int eventRound, dynamic eventMessageType, int eventMessageOtherEnd, BaseAlgorithmMessages baseAlgorithmMessages)
         ///
         /// \brief Inserts a base message data.
         ///
@@ -1297,11 +1303,12 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         ///      -  The implementation of the base algorithm is composed on events that happen in the
         ///         process
         ///      -  The data of the events and the message that they send is found in :
-        ///      ~~~{.cs}
-        ///      or[bp.ork.BaseAlgorithmMessageData]
-        ///      ~~~.
+        ///~~~{.cs}
+        ///op[bp.opk.BaseAlgorithm]
+        ///~~~
         ///
-        /// \par Each time there is a send or receive event in the processor the list is checked and if the
+        /// \par 
+        ///      Each time there is a send or receive event in the processor the list is checked and if the
         ///      event conditions are fulfilled the message in the data is sent.
         ///
         /// \par Algorithm.
@@ -1312,33 +1319,30 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         /// \par Usage Notes.
         ///      This method is for use from the Process or it's inherited classes.
         ///
-        /// \param eventTrigger         (EventTrigger) - The event trigger.
-        /// \param eventRound           (int) - The event round.
-        /// \param eventMessageType     (dynamic) - Type of the event message.
-        /// \param eventMessageOtherEnd (int) - The event message other end.
-        /// \param baseMessageType      (dynamic) - Type of the base message.
-        /// \param baseMessageName      (string) - Name of the base message.
-        /// \param baseMessageFields    (AttributeDictionary) - The base message fields.
-        /// \param targets              (AttributeList) - The targets.
+        /// \param ActivatorProcessId     (int) - Identifier for the activator process.
+        /// \param eventTrigger           (EventTriggerType) - The event trigger.
+        /// \param eventRound             (int) - The event round.
+        /// \param eventMessageType       (dynamic) - Type of the event message.
+        /// \param eventMessageOtherEnd   (int) - The event message other end.
+        /// \param baseAlgorithmMessages  (BaseAlgorithmMessages) - The base algorithm messages.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected void InsertBaseAlgorithmEvent(EventTriggerType eventTrigger,
+        protected void InsertBaseAlgorithmEvent(int ActivatorProcessId,
+            EventTriggerType eventTrigger,
             int eventRound,
             dynamic eventMessageType,
             int eventMessageOtherEnd,
-            dynamic baseMessageType,
-            string baseMessageName,
-            AttributeDictionary baseMessageFields,
-            AttributeList targets)
+            BaseAlgorithmMessages baseAlgorithmMessages)
+            
         {
-            ((BaseAlgorithmHandler)op[bp.opk.BaseAlgorithm]).CreateEvent(eventTrigger,
-                eventRound,
-                eventMessageType,
-                eventMessageOtherEnd,
-                baseMessageType,
-                baseMessageName,
-                baseMessageFields,
-                targets);
+            if (ActivatorProcessId == ea[ne.eak.Id])
+            {
+                ((BaseAlgorithmHandler)op[bp.opk.BaseAlgorithm]).CreateEvent(eventTrigger,
+                    eventRound,
+                    eventMessageType,
+                    eventMessageOtherEnd,
+                   baseAlgorithmMessages);
+            }
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \fn protected virtual BaseMessage BuildBaseAlgorithmMessage(dynamic messageType, string messageName, AttributeDictionary messageFields, int round, AttributeList targets)
@@ -1351,8 +1355,8 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         ///      -  The following is the process of sending a base algorithm message  
         ///         -#  During running time before/after a send/receive message the event is checked
         ///         -#  If the conditions are filled up this method is called with the base message data
-        ///         -#  This message can add fields to the Base Message according to the status of the algorithm
-        ///         -#  The base message is sent  
+        ///         -#  This method can add fields to the Base Message according to the status of the algorithm
+        ///         -#  The base algorithm message is sent  
         ///
         /// \par Algorithm.
         ///
@@ -2105,12 +2109,10 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
                 int channelSourceProcess = channel.ea[bc.eak.SourceProcess];
                 if (messagesSortedByIncommingChannels.ContainsKey(channelSourceProcess))
                 {
-                    MessageRouter.ReportMessage("**** Process ****","","Processor " + this.ToString() + " Calling channel " + channel.ToString() + " Count" + messagesSortedByIncommingChannels[channelSourceProcess].Count);
                     channel.UpdateRunningStatus(new object[] { messagesSortedByIncommingChannels[channelSourceProcess] });
                 }
                 else
                 {
-                    MessageRouter.ReportMessage("**** Process ****", "", "Processor " + this.ToString() + " Calling channel " + channel.ToString() + " Count 0");
                     channel.UpdateRunningStatus(new object[] { new List<BaseMessage>() });
                 }
             }

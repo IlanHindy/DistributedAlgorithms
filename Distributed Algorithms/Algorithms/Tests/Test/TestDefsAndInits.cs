@@ -92,16 +92,19 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		const string centrilized = "Centrilized";
 		const string directedNetwork = "DirectedNetwork";
 		const string version = "Version";
-		const string breakpoints = "Breakpoints";
 		const string singleStepStatus = "SingleStepStatus";
 		const string name = "Name";
 		const string initiator = "Initiator";
+		const string testList = "TestList";
+		const string testDictionary = "TestDictionary";
+		const string testNetworkElement = "TestNetworkElement";
+		const string testListNotEdittable = "TestListNotEdittable";
+		const string testDictionaryNotEdittable = "TestDictionaryNotEdittable";
+		const string testNetworkElementNotEdittable = "TestNetworkElementNotEdittable";
 		const string round = "Round";
 		const string terminationStatus = "TerminationStatus";
-		const string messageQueue = "MessageQ";
+		const string messageQ = "MessageQ";
 		const string receivePort = "ReceivePort";
-		const string baseAlgorithmData = "BaseAlgorithmData";
-		const string internalEvents = "InternalEvents";
 		const string frameColor = "FrameColor";
 		const string frameWidth = "FrameWidth";
 		const string frameHeight = "FrameHeight";
@@ -149,12 +152,20 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 				return 0;
 			}
 		}
+
+
+
+		protected override void CodeGenerationAdditionalInit()
+		{
+			ea[bn.eak.Centrilized] = true;
+			ea[bn.eak.DirectedNetwork] = false;
+		}
  
 		protected override void InitPrivateAttributes()
 		{
 			AttributeDictionary dictionary = pa;
 			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Tests.Test.n+pak";
-			dictionary.Add(n.pak.Version, new Attribute { Value = 5 ,Editable = false ,Changed = false } );
+			dictionary.Add(n.pak.Version, new Attribute { Value = 6 ,Editable = false ,Changed = false } );
 			base.InitPrivateAttributes();
 		}
  
@@ -176,9 +187,19 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 	
 		}
  
+		public enum ork_testDictionary
+		{
+	
+		}
+ 
+		public enum ork_testDictionaryNotEdittable
+		{
+	
+		}
+ 
 		public enum ork
 		{
-			S1
+			S1, TestList, TestDictionary, TestNetworkElement, TestListNotEdittable, TestDictionaryNotEdittable, TestNetworkElementNotEdittable
 		}
 	}
 	#endregion
@@ -196,16 +217,19 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		const string centrilized = "Centrilized";
 		const string directedNetwork = "DirectedNetwork";
 		const string version = "Version";
-		const string breakpoints = "Breakpoints";
 		const string singleStepStatus = "SingleStepStatus";
 		const string name = "Name";
 		const string initiator = "Initiator";
+		const string testList = "TestList";
+		const string testDictionary = "TestDictionary";
+		const string testNetworkElement = "TestNetworkElement";
+		const string testListNotEdittable = "TestListNotEdittable";
+		const string testDictionaryNotEdittable = "TestDictionaryNotEdittable";
+		const string testNetworkElementNotEdittable = "TestNetworkElementNotEdittable";
 		const string round = "Round";
 		const string terminationStatus = "TerminationStatus";
-		const string messageQueue = "MessageQ";
+		const string messageQ = "MessageQ";
 		const string receivePort = "ReceivePort";
-		const string baseAlgorithmData = "BaseAlgorithmData";
-		const string internalEvents = "InternalEvents";
 		const string frameColor = "FrameColor";
 		const string frameWidth = "FrameWidth";
 		const string frameHeight = "FrameHeight";
@@ -240,11 +264,75 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 			 set { or[p.ork.S1] = value; }
 		}
  
+		public DistributedAlgorithms.AttributeList TestList
+		{
+			 get { return or[p.ork.TestList]; }
+			 set { or[p.ork.TestList] = value; }
+		}
+ 
+		public DistributedAlgorithms.AttributeDictionary TestDictionary
+		{
+			 get { return or[p.ork.TestDictionary]; }
+			 set { or[p.ork.TestDictionary] = value; }
+		}
+ 
+		public DistributedAlgorithms.NetworkElement TestNetworkElement
+		{
+			 get { return or[p.ork.TestNetworkElement]; }
+			 set { or[p.ork.TestNetworkElement] = value; }
+		}
+ 
+		public DistributedAlgorithms.AttributeList TestListNotEdittable
+		{
+			 get { return or[p.ork.TestListNotEdittable]; }
+			 set { or[p.ork.TestListNotEdittable] = value; }
+		}
+ 
+		public DistributedAlgorithms.AttributeDictionary TestDictionaryNotEdittable
+		{
+			 get { return or[p.ork.TestDictionaryNotEdittable]; }
+			 set { or[p.ork.TestDictionaryNotEdittable] = value; }
+		}
+ 
+		public DistributedAlgorithms.NetworkElement TestNetworkElementNotEdittable
+		{
+			 get { return or[p.ork.TestNetworkElementNotEdittable]; }
+			 set { or[p.ork.TestNetworkElementNotEdittable] = value; }
+		}
+ 
 		protected override void InitPrivateAttributes()
 		{
 			AttributeDictionary dictionary = pa;
 			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Tests.Test.p+pak";
 			base.InitPrivateAttributes();
+		}
+		protected AttributeList Init_ork_TestList()
+		{
+			AttributeList list = new AttributeList();
+			list.codeAttributeCounter = 0;
+			list.designAttributeCounter = 0;
+			return list;
+		}
+ 
+		protected AttributeDictionary Init_ork_TestDictionary()
+		{
+			AttributeDictionary dictionary = new AttributeDictionary();
+			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Tests.Test.p+ork_testDictionary";
+			return dictionary;
+		}
+		protected AttributeList Init_ork_TestListNotEdittable()
+		{
+			AttributeList list = new AttributeList();
+			list.codeAttributeCounter = 0;
+			list.designAttributeCounter = 0;
+			return list;
+		}
+ 
+		protected AttributeDictionary Init_ork_TestDictionaryNotEdittable()
+		{
+			AttributeDictionary dictionary = new AttributeDictionary();
+			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Tests.Test.p+ork_testDictionaryNotEdittable";
+			return dictionary;
 		}
  
 		protected override void InitOperationResults()
@@ -252,6 +340,12 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 			AttributeDictionary dictionary = or;
 			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Tests.Test.p+ork";
 			dictionary.Add(p.ork.S1, new Attribute { Value = "" ,Changed = false } );
+			dictionary.Add(p.ork.TestList, new Attribute { Value = Init_ork_TestList() ,Changed = false } );
+			dictionary.Add(p.ork.TestDictionary, new Attribute { Value = Init_ork_TestDictionary() ,Changed = false } );
+			dictionary.Add(p.ork.TestNetworkElement, new Attribute { Value = new DistributedAlgorithms.NetworkElement() ,Changed = false } );
+			dictionary.Add(p.ork.TestListNotEdittable, new Attribute { Value = Init_ork_TestListNotEdittable() ,Editable = false ,Changed = false } );
+			dictionary.Add(p.ork.TestDictionaryNotEdittable, new Attribute { Value = Init_ork_TestDictionaryNotEdittable() ,Editable = false ,Changed = false } );
+			dictionary.Add(p.ork.TestNetworkElementNotEdittable, new Attribute { Value = new DistributedAlgorithms.NetworkElement() ,Editable = false ,Changed = false } );
 			base.InitOperationResults();
 		}
 	}
@@ -268,7 +362,7 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
  
 		public enum ork
 		{
-			Cs3, Type 
+			Cs3
 		}
 	}
 	#endregion
@@ -286,16 +380,19 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		const string centrilized = "Centrilized";
 		const string directedNetwork = "DirectedNetwork";
 		const string version = "Version";
-		const string breakpoints = "Breakpoints";
 		const string singleStepStatus = "SingleStepStatus";
 		const string name = "Name";
 		const string initiator = "Initiator";
+		const string testList = "TestList";
+		const string testDictionary = "TestDictionary";
+		const string testNetworkElement = "TestNetworkElement";
+		const string testListNotEdittable = "TestListNotEdittable";
+		const string testDictionaryNotEdittable = "TestDictionaryNotEdittable";
+		const string testNetworkElementNotEdittable = "TestNetworkElementNotEdittable";
 		const string round = "Round";
 		const string terminationStatus = "TerminationStatus";
-		const string messageQueue = "MessageQ";
+		const string messageQ = "MessageQ";
 		const string receivePort = "ReceivePort";
-		const string baseAlgorithmData = "BaseAlgorithmData";
-		const string internalEvents = "InternalEvents";
 		const string frameColor = "FrameColor";
 		const string frameWidth = "FrameWidth";
 		const string frameHeight = "FrameHeight";

@@ -929,10 +929,10 @@ namespace DistributedAlgorithms
                     result += keyString;
                     result += separator;
                     result += valueString;
-                    result += ";";
+                    result += ",";
                 }
             }
-            return result;
+            return result.Remove(result.Length - 1);
         }
         #endregion
         #region /// \name IValueHolder ElementWindow support

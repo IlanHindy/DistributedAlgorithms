@@ -8,6 +8,7 @@
  * - \subpage checkInDesignPhase "Checks activated while in design phase"
  * - \subpage checkBeforeRunning "Checks activated before running"
  * - \subpage settingBaseAlgorithm "Setting Base Algorithm"
+ * - \subpage settingInternalEvents "Setting Internal Events"
  * ## Program Algorithms
  * - \subpage InputWindows "Methods for handling InputWindows"
  * ### IValueHolder Algorithms

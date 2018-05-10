@@ -92,6 +92,16 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		const string centrilized = "Centrilized";
 		const string directedNetwork = "DirectedNetwork";
 		const string version = "Version";
+		const string breakpoints = "Breakpoints";
+		const string singleStepStatus = "SingleStepStatus";
+		const string name = "Name";
+		const string initiator = "Initiator";
+		const string round = "Round";
+		const string terminationStatus = "TerminationStatus";
+		const string messageQueue = "MessageQ";
+		const string receivePort = "ReceivePort";
+		const string baseAlgorithmData = "BaseAlgorithmData";
+		const string internalEvents = "InternalEvents";
 		const string frameColor = "FrameColor";
 		const string frameWidth = "FrameWidth";
 		const string frameHeight = "FrameHeight";
@@ -109,6 +119,9 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		const string destProcess = "DestProcess";
 		const string cs2 = "Cs2";
 		const string cs1 = "Cs1";
+		const string cs3 = "Cs3";
+		const string sourcePort = "SourcePort";
+		const string destPort = "DestPort";
 		const string lineColor = "LineColor";
 		const string headColor = "HeadColor";
 		const string presentationTxt = "PresentationTxt";
@@ -141,7 +154,7 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		{
 			AttributeDictionary dictionary = pa;
 			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Tests.Test.n+pak";
-			dictionary.Add(n.pak.Version, new Attribute { Value = 4 ,Editable = false ,Changed = false } );
+			dictionary.Add(n.pak.Version, new Attribute { Value = 5 ,Editable = false ,Changed = false } );
 			base.InitPrivateAttributes();
 		}
  
@@ -165,7 +178,9 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
  
 		public enum ork
 		{
-			S1
+        
+            TestList, TestDictionary, TestNetworkElement, TestListNotEdittable, TestDictionaryNotEdittable, TestNetworkElementNotEdittable,
+            S1
 		}
 	}
 	#endregion
@@ -183,6 +198,16 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		const string centrilized = "Centrilized";
 		const string directedNetwork = "DirectedNetwork";
 		const string version = "Version";
+		const string breakpoints = "Breakpoints";
+		const string singleStepStatus = "SingleStepStatus";
+		const string name = "Name";
+		const string initiator = "Initiator";
+		const string round = "Round";
+		const string terminationStatus = "TerminationStatus";
+		const string messageQueue = "MessageQ";
+		const string receivePort = "ReceivePort";
+		const string baseAlgorithmData = "BaseAlgorithmData";
+		const string internalEvents = "InternalEvents";
 		const string frameColor = "FrameColor";
 		const string frameWidth = "FrameWidth";
 		const string frameHeight = "FrameHeight";
@@ -200,6 +225,9 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		const string destProcess = "DestProcess";
 		const string cs2 = "Cs2";
 		const string cs1 = "Cs1";
+		const string cs3 = "Cs3";
+		const string sourcePort = "SourcePort";
+		const string destPort = "DestPort";
 		const string lineColor = "LineColor";
 		const string headColor = "HeadColor";
 		const string presentationTxt = "PresentationTxt";
@@ -220,14 +248,20 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Tests.Test.p+pak";
 			base.InitPrivateAttributes();
 		}
- 
-		protected override void InitOperationResults()
-		{
-			AttributeDictionary dictionary = or;
-			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Tests.Test.p+ork";
-			dictionary.Add(p.ork.S1, new Attribute { Value = "" ,Changed = false } );
-			base.InitOperationResults();
-		}
+
+        protected override void InitOperationResults()
+        {
+            AttributeDictionary dictionary = or;
+            dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Tests.Test.p+ork";
+            dictionary.Add(p.ork.S1, new Attribute { Value = "", Changed = false });
+            dictionary.Add(p.ork.TestList, new Attribute { Value = new AttributeList(), Changed = false });
+            dictionary.Add(p.ork.TestDictionary, new Attribute { Value = new AttributeDictionary(), Changed = false });
+            dictionary.Add(p.ork.TestNetworkElement, new Attribute { Value = new NetworkElement(), Changed = false });
+            dictionary.Add(p.ork.TestListNotEdittable, new Attribute { Value = new AttributeList(), Editable = false, Changed = false });
+            dictionary.Add(p.ork.TestDictionaryNotEdittable, new Attribute { Value = new AttributeDictionary(), Editable = false, Changed = false });
+            dictionary.Add(p.ork.TestNetworkElementNotEdittable, new Attribute { Value = new NetworkElement(), Editable = false, Changed = false });
+            base.InitOperationResults();
+        }
 	}
 	#endregion
 
@@ -242,7 +276,7 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
  
 		public enum ork
 		{
-			Cs3, Type
+			Cs3, Type 
 		}
 	}
 	#endregion
@@ -260,6 +294,16 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		const string centrilized = "Centrilized";
 		const string directedNetwork = "DirectedNetwork";
 		const string version = "Version";
+		const string breakpoints = "Breakpoints";
+		const string singleStepStatus = "SingleStepStatus";
+		const string name = "Name";
+		const string initiator = "Initiator";
+		const string round = "Round";
+		const string terminationStatus = "TerminationStatus";
+		const string messageQueue = "MessageQ";
+		const string receivePort = "ReceivePort";
+		const string baseAlgorithmData = "BaseAlgorithmData";
+		const string internalEvents = "InternalEvents";
 		const string frameColor = "FrameColor";
 		const string frameWidth = "FrameWidth";
 		const string frameHeight = "FrameHeight";
@@ -277,6 +321,9 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		const string destProcess = "DestProcess";
 		const string cs2 = "Cs2";
 		const string cs1 = "Cs1";
+		const string cs3 = "Cs3";
+		const string sourcePort = "SourcePort";
+		const string destPort = "DestPort";
 		const string lineColor = "LineColor";
 		const string headColor = "HeadColor";
 		const string presentationTxt = "PresentationTxt";

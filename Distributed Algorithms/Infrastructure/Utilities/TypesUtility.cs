@@ -23,7 +23,7 @@ namespace DistributedAlgorithms
     
      **************************************************************************************************/
 
-    public enum TypeCategories { Primitive, String, Enum, NetworkElement, AttributeList, AttributeDictionary, Attribute, BaseEnumClasses}
+    public enum TypeCategories { Primitive, String, Enum, NetworkElement, AttributeList, AttributeDictionary, Attribute, BaseEnumClasses }
 
     /**********************************************************************************************//**
      * The types utility.
@@ -719,7 +719,7 @@ namespace DistributedAlgorithms
         public static List<string> GetAllInternalEventMethods()
         {
             Type type = ClassFactory.GenerateProcess().GetType();
-            InternalEvent.InternalEventDelegate internalEventDelegate;
+            InternalEvents.InternalEventDelegate internalEventDelegate;
             List<string> result = new List<string>();
 
             MethodInfo[] arrayMethodInfo = type.GetMethods(BindingFlags.Public | BindingFlags.Instance);
@@ -727,10 +727,29 @@ namespace DistributedAlgorithms
             {
                 try
                 {
-                    internalEventDelegate = (InternalEvent.InternalEventDelegate)Delegate.CreateDelegate(typeof(InternalEvent.InternalEventDelegate), null, methodInfo, true);
+                    internalEventDelegate = (InternalEvents.InternalEventDelegate)Delegate.CreateDelegate(typeof(InternalEvents.InternalEventDelegate), null, methodInfo, true);
                     result.Add(methodInfo.Name);
                 }
                 catch { }
+            }
+            return result;
+        }
+        public static List<string> GetInternalEventMethods()
+        {
+            Type type = ClassFactory.GenerateProcess().GetType();
+            Type delegateType = typeof(InternalEvents.InternalEventDelegate);
+            MethodInfo delegateSignature = delegateType.GetMethod("Invoke");
+            MethodInfo[] arrayMethodInfo = type.GetMethods(BindingFlags.Public | BindingFlags.Instance);
+            List<string> result = new List<string>();
+            foreach (MethodInfo methodInfo in arrayMethodInfo)
+            {
+                bool parametersEqual = delegateSignature.GetParameters()
+                    .Select(x => x.ParameterType)
+                    .SequenceEqual(methodInfo.GetParameters().Select(x => x.ParameterType));
+                if (delegateSignature.ReturnType == methodInfo.ReturnType && parametersEqual)
+                {
+                    result.Add(methodInfo.Name);
+                }
             }
             return result;
         }
@@ -791,9 +810,9 @@ namespace DistributedAlgorithms
 
         public static List<Type> GetAllTypes()
         {
-            return  Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsClass &&
-                            t.Namespace != null && 
-                            t.Namespace.IndexOf("DistributedAlgorithms") == 0).ToList();
+            return Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsClass &&
+                           t.Namespace != null &&
+                           t.Namespace.IndexOf("DistributedAlgorithms") == 0).ToList();
         }
 
         /**********************************************************************************************//**
@@ -811,7 +830,7 @@ namespace DistributedAlgorithms
         public static string GetEndInputOperationName(Attribute attribute)
         {
             var methodInfo = attribute.EndInputOperation.Method;
-            return  methodInfo.DeclaringType.FullName + "." + methodInfo.Name;
+            return methodInfo.DeclaringType.FullName + "." + methodInfo.Name;
         }
 
         public static string GetElementWindowPrmsMethodName(Attribute attribute)
@@ -929,7 +948,7 @@ namespace DistributedAlgorithms
                 case TypeCategories.Enum: types = GetEnums(ClassFactory.GenerateNamespace()); break;
                 case TypeCategories.NetworkElement: types = GetNetworkElementInherittedTypes(ClassFactory.GenerateNamespace()); break;
                 case TypeCategories.AttributeDictionary: types.Add(typeof(AttributeDictionary)); break;
-                case TypeCategories.AttributeList:types.Add(typeof(AttributeList)); break;
+                case TypeCategories.AttributeList: types.Add(typeof(AttributeList)); break;
                 case TypeCategories.Attribute: types.Add(typeof(Attribute)); break;
                 case TypeCategories.BaseEnumClasses: types = GetBaseEnumClasses(ClassFactory.GenerateNamespace()); break;
             }
@@ -963,9 +982,9 @@ namespace DistributedAlgorithms
 
         public static HashSet<string> GetClassesForSyntaxHighlight()
         {
-            string currSubject = Config.Instance[Config.Keys.SelectedSubject];            
+            string currSubject = Config.Instance[Config.Keys.SelectedSubject];
             string currAlgorithm = Config.Instance[Config.Keys.SelectedAlgorithm];
-            Config.Instance[Config.Keys.SelectedSubject]= "Base";
+            Config.Instance[Config.Keys.SelectedSubject] = "Base";
             Config.Instance[Config.Keys.SelectedAlgorithm] = "Base";
             List<string> classNames = new List<string>();
             List<string> enumFullNames = classNames.Concat(GetTypesOfCategory("Enum")).ToList();
@@ -1075,11 +1094,11 @@ namespace DistributedAlgorithms
         {
             List<dynamic> list = collection.Cast<dynamic>().ToList();
             int result = -1;
-            for(int idx = 0; idx < list.Count; idx ++)
+            for (int idx = 0; idx < list.Count; idx++)
             {
-                if (CompareDynamics(list[idx],value))
+                if (CompareDynamics(list[idx], value))
                 {
-                    return idx; 
+                    return idx;
                 }
             }
             return result;
@@ -1216,7 +1235,7 @@ namespace DistributedAlgorithms
                 t => t.IsEnum).Select(t => t.FullName).ToList();
             List<Type> listEnums = Assembly.GetExecutingAssembly().GetTypes().Where(
                 t => t.IsEnum && t.FullName == enumName).ToList();
-            return listEnums[0];                
+            return listEnums[0];
         }
 
         /**********************************************************************************************//**
@@ -1290,14 +1309,13 @@ namespace DistributedAlgorithms
 
         public static List<string> GetAlgorithmsSubjects()
         {
-            return Assembly.GetExecutingAssembly().GetTypes()
-                        .Where(t => t.Namespace != null)
-                        .Where(t => t.Namespace.ToString().Contains("Algorithms"))
-                         .Select(t => t.Namespace.ToString().Replace("DistributedAlgorithms.Algorithms.", ""))
-                         .Where(s => !s.Contains("DistributedAlgorithms"))
-                         .Select(s => s.Substring(0, s.IndexOf(".")))
-                         .Distinct()
-                         .ToList();
+            List<Type> types = Assembly.GetExecutingAssembly().GetTypes().ToList();
+            types = types.Where(t => t.Namespace != null).ToList();
+            types = types.Where(t => t.Namespace.ToString().Contains("DistributedAlgorithms.Algorithms.")).ToList();
+            List<string> subjects = types.Select(t => t.Namespace.ToString().Replace("DistributedAlgorithms.Algorithms.", "")).ToList();
+            subjects = subjects.Select(s => s.Substring(0, s.IndexOf("."))).ToList();
+            subjects = subjects.Distinct().ToList();
+            return subjects;
         }
 
         /**********************************************************************************************//**

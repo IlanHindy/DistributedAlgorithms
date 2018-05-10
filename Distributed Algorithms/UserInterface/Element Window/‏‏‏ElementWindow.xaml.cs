@@ -109,7 +109,7 @@ namespace DistributedAlgorithms
         public RoutedEventHandler button_click = null;
 
         /// \brief  (RoutedEventHandler) - The grid add button click.
-        public GridAddDelegate add_button_click = null;
+        public GridAddDelegate addAttributeMethod = null;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \property public string Value
@@ -1344,7 +1344,7 @@ namespace DistributedAlgorithms
                 typeTextBox,
                 existingTextBox,
                 newValueControl,
-                 controlsPrms.newValueControlPrms.add_button_click);
+                 controlsPrms.newValueControlPrms.addAttributeMethod);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

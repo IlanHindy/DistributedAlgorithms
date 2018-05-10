@@ -29,7 +29,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
     /// \brief A button.
     ///
     /// \par Description.
-    ///      This class holds the enums declerations of BaseNetwork
+    ///      This class holds the enums decelerations of BaseNetwork
     ///
     /// \par Usage Notes.
     ///

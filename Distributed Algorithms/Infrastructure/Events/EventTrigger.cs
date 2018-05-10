@@ -1,7 +1,7 @@
 ﻿////////////////////////////////////////////////////////////////////////////////////////////////////
-/// \file infrastructure\event.cs
+/// \file Infrastructure\Events\EventTrigger.cs
 ///
-/// \brief Implements the Event class.
+/// \brief Implements the event trigger class.
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System;
@@ -15,82 +15,83 @@ using DistributedAlgorithms.Algorithms.Base.Base;
 
 namespace DistributedAlgorithms
 {
+    #region \name Global Enums
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \enum EventTriggerType
+    ///
+    /// \brief Values that represent event trigger types.
+    ///        The trigger types represent the status of the process when the event trigger is checked
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public enum EventTriggerType
     {
         Initialize, BeforeSendMessage, AfterSendMessage, BeforeReceiveMessage, AfterReceiveMessage, UserEvent
     }
+    #endregion
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// \class Event
+    /// \class EventTrigger
     ///
-    /// \brief An event.
+    /// \brief An event trigger.
+    ///        -    The EventTrigger is used by to the BaseAlgorithmHandler and InternalEventsHandler  
+    ///        -    The EventTrigger is an AttributeDictionary that holds data for deciding if an event occurs  
+    ///        -    Each time the process is about to perform init/send/receive action a call is made  
+    ///             to the PerformEvents of the containers and they call the True method of all
+    ///             their EventTrigger to see if the trigger hits. If it does they perform their operation
     ///
     /// \par Description.
-    ///      -  Events are actions to perform when conditions are satisfied.  
-    ///      -  There are 2 kinds of events  
-    ///         -#  An internalEvent which is implemented by method
-    ///         -#  A BaseAlgorithmEvent which is implementing a send of message of the base algorithm
-    ///      -  The events has 2 parts  
-    ///         -#  The condition which is held in this class. The role of the condition is to decide
-    ///             whether to perform the event
-    ///         -#  The action which is implemented by the inherited classes that specify the action to perform
-    ///      -  This class has 2 roles:  
-    ///         -#  Implement the condition
-    ///         -#  Hold a virtual methods for implementation the actions   
     ///
     /// \par Usage Notes.
     ///
     /// \author Ilanh
-    /// \date 16/01/2018
+    /// \date 09/05/2018
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public class EventTrigger : AttributeDictionary
     {
         #region /// \name Enums
-
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \enum EventTrigger
+        /// \enum Comps
         ///
-        /// \brief Values that represent event triggers.
-        ///        These keys are used to pass the status of the program for the check of the conditions
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \enum EventTriggerData
-        ///
-        /// \brief Values that represent event trigger data
-        ///        The conditions for activating the action are set in a dictionary that has the following keys.
+        /// \brief Keys that represent the components of the trigger
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public enum Comps
         {
-            Trigger, Round, MessageType, OtherEnd
-        }
-        #endregion
-        #region /// \name Members
+            /// A key from EventTypes which indicates the status of the processor 
+            Trigger,
 
-        /// \brief  (BaseProcess) - The process.
-        protected BaseProcess process;
-        #endregion
-        #region /// \name Constructor
+            /// The round field in the message
+            Round,
+
+            /// The type of the message that is sent/received when this trigger is checked
+            MessageType,
+
+            /// The source/destination processor in the message that caused the event
+            OtherEnd
+        }
+        #endregion       
+        #region /// \name Constructors
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public Event(BaseProcess process)
+        /// \fn public EventTrigger(EventTriggerType triggerType, int round, dynamic messageType, int messageOtherEnd) : base()
         ///
         /// \brief Constructor.
         ///
         /// \par Description.
+        ///      Constructor with values to be used by the code
         ///
         /// \par Algorithm.
         ///
         /// \par Usage Notes.
         ///
         /// \author Ilanh
-        /// \date 16/01/2018
+        /// \date 09/05/2018
         ///
-        /// \param process  (BaseProcess) - The process.
+        /// \param triggerType      (EventTriggerType) - Type of the trigger.
+        /// \param round            (int) - The round.
+        /// \param messageType      (dynamic) - Type of the message.
+        /// \param messageOtherEnd  (int) - The message other end.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public EventTrigger(EventTriggerType triggerType,
@@ -100,36 +101,120 @@ namespace DistributedAlgorithms
         {
             Add(Comps.Trigger, new Attribute { Value = triggerType, EndInputOperation = EventTriggerChanged });
             Add(Comps.Round, new Attribute { Value = round, ElementWindowPrmsMethod = DisableIfTriggerInitialize });
-            Add(Comps.MessageType, new Attribute { Value = messageType, ElementWindowPrmsMethod = DisableIfTriggerInitialize });
+            Add(Comps.MessageType, new Attribute { Value = messageType, ElementWindowPrmsMethod = MessageTypePrms });
             Add(Comps.OtherEnd, new Attribute { Value = messageOtherEnd, ElementWindowPrmsMethod = DisableIfTriggerInitialize });
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public EventTrigger() : base()
+        ///
+        /// \brief Default constructor.
+        ///        Constructor with default values which is used by the GUI
+        ///
+        /// \par Description.
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 09/05/2018
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public EventTrigger() : base()
         {
             Type messageTypeEnum = ClassFactory.GenerateMessageTypeEnum();
             dynamic messageType = Enum.ToObject(messageTypeEnum, 0);
             Add(Comps.Trigger, new Attribute { Value = EventTriggerType.AfterSendMessage, EndInputOperation = EventTriggerChanged });
             Add(Comps.Round, new Attribute { Value = 0, ElementWindowPrmsMethod = DisableIfTriggerInitialize });
-            Add(Comps.MessageType, new Attribute { Value = messageType, ElementWindowPrmsMethod = DisableIfTriggerInitialize });
+            Add(Comps.MessageType, new Attribute { Value = messageType, ElementWindowPrmsMethod = MessageTypePrms });
             Add(Comps.OtherEnd, new Attribute { Value = 0, ElementWindowPrmsMethod = DisableIfTriggerInitialize });
         }
         #endregion
+        #region /// \name Event hit checks
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public bool True(EventTriggerType trigger, BaseMessage message)
+        ///
+        /// \brief Trues.
+        ///
+        /// \par Description.
+        ///      This method is used by the BaseAlgorithmHandler and the InternalEventsHandler to
+        ///      see if the EventTrigger hits
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 09/05/2018
+        ///
+        /// \param trigger  (EventTriggerType) - The trigger.
+        /// \param message  (BaseMessage) - The message.
+        ///
+        /// \return True if it succeeds, false if it fails.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public bool True(EventTriggerType trigger, BaseMessage message)
         {
             switch (trigger)
             {
                 case EventTriggerType.Initialize:
                     return IsInit();
-                    break;
                 default:
                     return IsTrue(trigger, message);
-                    break;
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn private bool IsInit()
+        ///
+        /// \brief Query if this object is init.
+        ///
+        /// \par Description.
+        ///      Checks if the trigger of the EventTrigger is Initialize
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 09/05/2018
+        ///
+        /// \return True if init, false if not.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private bool IsInit()
         {
             return this[Comps.Trigger] == EventTriggerType.Initialize;
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn private bool IsTrue(EventTriggerType trigger, BaseMessage message)
+        ///
+        /// \brief Query if 'trigger' is true.
+        ///
+        /// \par Description.
+        ///      -  Check other triggers type (not the Initialize trigger)
+        ///
+        /// \par Algorithm.
+        ///      -  Get the MessageType of the message and the round of the message  
+        ///      -  Calculate the other end of the message according to the trigger  
+        ///         -   For Send events the other end is the target of the message  
+        ///         -   For Receive events the other end is the source of the message  
+        ///      -  Check if all the parameters retrieved from the message are equal to the   
+        ///         EventTrigger members
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 09/05/2018
+        ///
+        /// \param trigger  (EventTriggerType) - The trigger.
+        /// \param message  (BaseMessage) - The message.
+        ///
+        /// \return True if true, false if not.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private bool IsTrue(EventTriggerType trigger, BaseMessage message)
         {
@@ -159,33 +244,36 @@ namespace DistributedAlgorithms
             }
             return false;
         }
+        #endregion
+        #region /// \name ElementWindow (GUI) support
 
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-        ///// \fn public static bool EventTriggerChanged(BaseNetwork network, NetworkElement networkElement, Attribute parentAttribute, Attribute attribute, string newValue, out string errorMessage, ElementWindow inputWindow = null)
-        /////
-        ///// \brief Event trigger changed.
-        /////
-        ///// \par Description.
-        /////      Handle change of an event trigger - if the trigger is Initialize all the rest of
-        /////      the parameters for the event get default value because they are not relevant
-        /////
-        ///// \par Algorithm.
-        /////
-        ///// \par Usage Notes.
-        /////
-        ///// \author Ilanh
-        ///// \date 16/04/2018
-        /////
-        ///// \param       network          (BaseNetwork) - The network.
-        ///// \param       networkElement   (NetworkElement) - The network element.
-        ///// \param       parentAttribute  (Attribute) - The parent attribute.
-        ///// \param       attribute        (Attribute) - The attribute.
-        ///// \param       newValue         (string) - The new value.
-        ///// \param [out] errorMessage    (out string) - Message describing the error.
-        ///// \param       inputWindow     (Optional)  (ElementWindow) - The input window.
-        /////
-        ///// \return True if it succeeds, false if it fails.
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public static bool EventTriggerChanged(BaseNetwork network, NetworkElement networkElement, Attribute parentAttribute, Attribute attribute, string newValue, out string errorMessage, ElementWindow inputWindow = null)
+        ///
+        /// \brief Event trigger changed.
+        ///
+        /// \par Description.
+        ///      -  This method is activated by the GUI when the Trigger was changed  
+        ///      -  The purpose of this method is to disable all the other fields if the   
+        ///         Event is initialize and enable all the fields otherwise 
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 09/05/2018
+        ///
+        /// \param       network          (BaseNetwork) - The network.
+        /// \param       networkElement   (NetworkElement) - The network element.
+        /// \param       parentAttribute  (Attribute) - The parent attribute.
+        /// \param       attribute        (Attribute) - The attribute.
+        /// \param       newValue         (string) - The new value.
+        /// \param [out] errorMessage    (out string) - Message describing the error.
+        /// \param       inputWindow     (Optional)  (ElementWindow) - The input window.
+        ///
+        /// \return True if it succeeds, false if it fails.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public static bool EventTriggerChanged(BaseNetwork network, NetworkElement networkElement, Attribute parentAttribute, Attribute attribute, string newValue, out string errorMessage, ElementWindow inputWindow = null)
         {
@@ -219,6 +307,34 @@ namespace DistributedAlgorithms
             return true;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public static ElementWindowPrms DisableIfTriggerInitialize(Attribute attribute, dynamic key, NetworkElement mainNetworkElement, NetworkElement.ElementDictionaries mainDictionary, NetworkElement.ElementDictionaries dictionary, InputWindows inputWindow, bool windowEdittable)
+        ///
+        /// \brief Disables if trigger initialize.
+        ///
+        /// \par Description.
+        ///      -  This method is activated to set for the GUI the display parameters:  
+        ///         -   If the trigger is Initialize - disable the field  
+        ///         -   Else enable the fields
+        ///          
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 09/05/2018
+        ///
+        /// \param attribute           (Attribute) - The attribute.
+        /// \param key                 (dynamic) - The key.
+        /// \param mainNetworkElement  (NetworkElement) - The main network element.
+        /// \param mainDictionary      (ElementDictionaries) - Dictionary of mains.
+        /// \param dictionary          (ElementDictionaries) - The dictionary.
+        /// \param inputWindow         (InputWindows) - The input window.
+        /// \param windowEdittable     (bool) - true if window edittable.
+        ///
+        /// \return The ElementWindowPrms.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public static ElementWindowPrms DisableIfTriggerInitialize(Attribute attribute, dynamic key,
             NetworkElement mainNetworkElement,
             NetworkElement.ElementDictionaries mainDictionary,
@@ -244,399 +360,50 @@ namespace DistributedAlgorithms
             }
             return prms;
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public static ElementWindowPrms MessageTypePrms(Attribute attribute, dynamic key, NetworkElement mainNetworkElement, NetworkElement.ElementDictionaries mainDictionary, NetworkElement.ElementDictionaries dictionary, InputWindows inputWindow, bool windowEdittable)
+        ///
+        /// \brief Message type prms.
+        ///
+        /// \par Description.
+        ///      -  This method is activated to set for the GUI the display parameters for the MessageType field  
+        ///      -  The purpose of the message is to set the values for the ComboBox  
+        ///         All the message type of the algorithm + all the message types of the Base Algorithm
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 09/05/2018
+        ///
+        /// \param attribute           (Attribute) - The attribute.
+        /// \param key                 (dynamic) - The key.
+        /// \param mainNetworkElement  (NetworkElement) - The main network element.
+        /// \param mainDictionary      (ElementDictionaries) - Dictionary of mains.
+        /// \param dictionary          (ElementDictionaries) - The dictionary.
+        /// \param inputWindow         (InputWindows) - The input window.
+        /// \param windowEdittable     (bool) - true if window edittable.
+        ///
+        /// \return The ElementWindowPrms.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public static ElementWindowPrms MessageTypePrms(Attribute attribute, dynamic key,
+            NetworkElement mainNetworkElement,
+            NetworkElement.ElementDictionaries mainDictionary,
+            NetworkElement.ElementDictionaries dictionary,
+            InputWindows inputWindow,
+            bool windowEdittable)
+        {
+            ElementWindowPrms prms = new ElementWindowPrms();
+            prms.newValueControlPrms.inputFieldType = InputFieldsType.ComboBox;
+            List<string> messagesTypes = TypesUtility.GetEnumKeysToStrings(attribute.Value.GetType().ToString());
+            List<string> baseMessagesTypes = TypesUtility.GetEnumKeysToStrings(typeof(bm.MessageTypes).ToString());
+            prms.newValueControlPrms.options = messagesTypes.Concat(baseMessagesTypes).ToArray();
+            prms.newValueControlPrms.Value = TypesUtility.GetKeyToString(attribute.Value);
+            return prms;
+        }
+        #endregion
     }
 }
-//#region /// \name Creating a new event (Init or Design phase)
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-///// \fn public static Attribute CreateEvent(EventTrigger eventTrigger, int eventRound, dynamic eventMessageType, int eventMessageOtherEnd)
-/////
-///// \brief Creates an event.
-/////
-///// \par Description.
-/////      Create an event
-/////      -  When creating an event the 2 parts of the event has to be filled  
-/////      -  The following is the process of creating a new event  
-/////         -#  The inherited class's CreateEvent method is called
-/////         -#  The method calls this method
-/////         -#  This method creates the following:
-/////             -#  AttributeDictionary for the event
-/////                 -#  Inside it AttributeDictionary for the conditions
-/////                 -#  Fill the last AttributeDictionary
-/////             -#  Return the first AttributeDictionary
-/////         -#  The Create method of the inherited class creates and fills AttributeDictionary for the action
-/////
-///// \par Algorithm.
-/////
-///// \par Usage Notes.
-/////
-///// \author Ilanh
-///// \date 16/01/2018
-/////
-///// \param eventTrigger          (EventTrigger) - The event trigger.
-///// \param eventRound            (int) - The event round.
-///// \param eventMessageType      (dynamic) - Type of the event message.
-///// \param eventMessageOtherEnd  (int) - The event message other end.
-/////
-///// \return The new event.
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//public static Attribute CreateEvent(EventTrigger eventTrigger,
-//    int eventRound,
-//    dynamic eventMessageType,
-//    int eventMessageOtherEnd)
-//{
-//    AttributeDictionary eventDictionary = new AttributeDictionary();
-//    AttributeDictionary triggerDictionary = new AttributeDictionary();
-//    Attribute attribute = new Attribute { Value = eventDictionary, ElementWindowPrmsMethod = MainDictionaryPrms};
-//    eventDictionary.Add(EventParts.EventTrigger, new Attribute { Value = triggerDictionary, Editable=false, ElementWindowPrmsMethod = SubDictionaryPrms });
-
-//    return attribute;
-
-//}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-///// \fn public static bool EventTriggerChanged(BaseNetwork network, NetworkElement networkElement, Attribute parentAttribute, Attribute attribute, string newValue, out string errorMessage, ElementWindow inputWindow = null)
-/////
-///// \brief Event trigger changed.
-/////
-///// \par Description.
-/////      Handle change of an event trigger - if the trigger is Initialize all the rest of
-/////      the parameters for the event get default value because they are not relevant
-/////
-///// \par Algorithm.
-/////
-///// \par Usage Notes.
-/////
-///// \author Ilanh
-///// \date 16/04/2018
-/////
-///// \param       network          (BaseNetwork) - The network.
-///// \param       networkElement   (NetworkElement) - The network element.
-///// \param       parentAttribute  (Attribute) - The parent attribute.
-///// \param       attribute        (Attribute) - The attribute.
-///// \param       newValue         (string) - The new value.
-///// \param [out] errorMessage    (out string) - Message describing the error.
-///// \param       inputWindow     (Optional)  (ElementWindow) - The input window.
-/////
-///// \return True if it succeeds, false if it fails.
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//public static bool EventTriggerChanged(BaseNetwork network, NetworkElement networkElement, Attribute parentAttribute, Attribute attribute, string newValue, out string errorMessage, ElementWindow inputWindow = null)
-//{
-//    // Get All the childes of the parent attribute
-//    List<ElementWindow.ControlsAttributeLink> links = inputWindow.controlsAttributeLinks.Values.Where(l => l.parentAttribute == parentAttribute
-//        && l.attribute != attribute).ToList();
-//    if (newValue == "Initialize")
-//    {
-//        foreach (ElementWindow.ControlsAttributeLink link in links)
-//        {
-//            link.newValueControl.IsEnabled = false;
-//            ((Control)link.newValueControl).Background = Brushes.LightGray;
-//            string defaultValue = "";
-//            inputWindow.ChangeValue(defaultValue, link.attribute);
-//        }
-//    }
-//    else
-//    {
-//        string prevValue = inputWindow.controlsAttributeLinks.Values.First(l => l.attribute == attribute).existingNewValue;
-//        if (prevValue == "Initialize")
-//        {
-//            foreach (ElementWindow.ControlsAttributeLink link in links)
-//            {
-//                link.newValueControl.IsEnabled = true;
-//                ((Control)link.newValueControl).Background = Brushes.White;
-//                inputWindow.ChangeValue(link.existingValueTextBox.Text, link.attribute);
-//            }
-//        }
-//    }
-//    errorMessage = "";
-//    return true;
-//}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-///// \fn public static void DisableIfTriggerInitialize(Attribute attribute, dynamic key, NetworkElement mainNetworkElement, NetworkElement.ElementDictionaries mainDictionary, NetworkElement.ElementDictionaries dictionary, InputWindows inputWindow, bool windowEdittable)
-/////
-///// \brief Disables if trigger initialize.
-/////
-///// \par Description.
-/////      This method is used in order to disable all the fields of the event in case
-/////      that the EventType is Initialize
-/////
-///// \par Algorithm.
-/////
-///// \par Usage Notes.
-/////
-///// \author Ilanh
-///// \date 29/04/2018
-/////
-///// \param attribute           (Attribute) - The attribute.
-///// \param key                 (dynamic) - The key.
-///// \param mainNetworkElement  (NetworkElement) - The main network element.
-///// \param mainDictionary      (ElementDictionaries) - Dictionary of mains.
-///// \param dictionary          (ElementDictionaries) - The dictionary.
-///// \param inputWindow         (InputWindows) - The input window.
-///// \param windowEdittable     (bool) - true if window edittable.
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//public static ElementWindowPrms DisableIfTriggerInitialize(Attribute attribute, dynamic key,
-//    NetworkElement mainNetworkElement,
-//    NetworkElement.ElementDictionaries mainDictionary,
-//    NetworkElement.ElementDictionaries dictionary,
-//    InputWindows inputWindow,
-//    bool windowEdittable)
-//{
-//    ElementWindowPrms prms = new ElementWindowPrms();
-//    attribute.DefaultNewValueFieldData(ref prms,
-//        mainNetworkElement,
-//        mainDictionary,
-//        dictionary,
-//        inputWindow,
-//        windowEdittable,
-//        attribute.Editable);
-//    if (((AttributeDictionary)attribute.Parent)[EventTriggerData.EventTrigger] == EventTrigger.Initialize)
-//    {
-//        prms.newValueControlPrms.enable = false;
-//    }
-//    else
-//    {
-//        prms.newValueControlPrms.enable = true;
-//    }
-//    return prms;
-//}
-//#endregion
-//        #region /// \name Processing the events (Running phase)
-
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////
-//        /// \fn public virtual void ProcessEvents(EventTrigger trigger, BaseMessage message, AttributeList eventsList)
-//        ///
-//        /// \brief Process the events.
-//        ///
-//        /// \par Description.
-//        ///
-//        /// \par Algorithm.
-//        ///
-//        /// \par Usage Notes.
-//        ///
-//        /// \author Ilanh
-//        /// \date 16/04/2018
-//        ///
-//        /// \param trigger     (EventTrigger) - The trigger.
-//        /// \param message     (BaseMessage) - The message.
-//        /// \param eventsList  (AttributeList) - List of events.
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//        public virtual void ProcessEvents(EventTrigger trigger, BaseMessage message, AttributeList eventsList)
-//        {
-//            switch (trigger)
-//            {
-//                case EventTrigger.Initialize:
-//                    ProcessInitEvents(trigger, eventsList);
-//                    break;
-//                default:
-//                    ProcessMessageEvents(trigger, message, eventsList);
-//                    break;
-//            }
-//        }
-
-
-
-
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////
-//        /// \fn public virtual void ProcessEvents(EventTrigger trigger, BaseMessage message, AttributeList eventsList)
-//        ///
-//        /// \brief Process the events.
-//        ///
-//        /// \par Description.
-//        ///      -  This method is used during running to process the events  
-//        ///      -  It checks if the conditions a satisfied and if so it calls the PerformAction of the inherited
-//        ///
-//        /// \par Algorithm.
-//        ///
-//        /// \par Usage Notes.
-//        ///
-//        /// \author Ilanh
-//        /// \date 16/01/2018
-//        ///
-//        /// \param trigger     (EventTrigger) - The trigger.
-//        /// \param message     (BaseMessage) - The message.
-//        /// \param eventsList  (AttributeList) - List of events.
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//        public virtual void ProcessMessageEvents(EventTrigger trigger, BaseMessage message, AttributeList eventsList)
-//        {
-//            // Get the data of the message that caused the event
-//            int messageRound = message.GetHeaderField(bm.pak.Round);
-//            dynamic messageType = message.GetHeaderField(bm.pak.MessageType);
-
-//            // Get the other end of the message that caused the event:
-//            // For a sending event this is the destination of the message
-//            // For a receive event this is the source of the message
-//            int messageOtherEnd;
-//            if (trigger == EventTrigger.AfterSendMessage || trigger == EventTrigger.BeforeSendMessage)
-//            {
-//                messageOtherEnd = message.GetHeaderField(bm.pak.DestProcess);
-//            }
-//            else
-//            {
-//                messageOtherEnd = message.GetHeaderField(bm.pak.SourceProcess);
-//            }
-
-
-//            // If exists a record that fulfill the event conditions - send a base message 
-//            for (int idx = 0; idx < eventsList.Count; idx++)
-//            {
-//                AttributeDictionary eventTriger = eventsList[idx][EventParts.EventTrigger];
-//                if (eventTriger[EventTriggerData.EventTrigger] == trigger &&
-//                    eventTriger[EventTriggerData.EventRound] == messageRound &&
-//                    TypesUtility.CompareDynamics(eventTriger[EventTriggerData.EventMessageType], messageType) &&
-//                    eventTriger[EventTriggerData.EventOtherEnd] == messageOtherEnd)
-//                {
-//                    IValueHolder eventAction = eventsList[idx][EventParts.EventAction];
-//                    PerformAction(eventAction, messageRound);
-//                }
-//            }
-//        }
-
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////
-//        /// \fn public virtual void ProcessInitEvents(EventTrigger trigger, AttributeList eventsList)
-//        ///
-//        /// \brief Process the init events.
-//        ///
-//        /// \par Description.
-//        ///      Process events before the start of the algorithm
-//        ///
-//        /// \par Algorithm.
-//        ///
-//        /// \par Usage Notes.
-//        ///
-//        /// \author Ilanh
-//        /// \date 16/04/2018
-//        ///
-//        /// \param trigger     (EventTrigger) - The trigger.
-//        /// \param eventsList  (AttributeList) - List of events.
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//        public virtual void ProcessInitEvents(EventTrigger trigger, AttributeList eventsList)
-//        {
-//            for (int idx = 0; idx < eventsList.Count; idx++)
-//            {
-//                AttributeDictionary eventTriger = eventsList[idx][EventParts.EventTrigger];
-//                if (eventTriger[EventTriggerData.EventTrigger] == trigger)
-//                {
-//                    IValueHolder eventAction = eventsList[idx][EventParts.EventAction];
-//                    PerformAction(eventAction, 0);
-//                }
-//            }
-//        }
-
-
-
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////
-//        /// \fn protected virtual void PerformAction(IValueHolder eventAction, int round)
-//        ///
-//        /// \brief Performs the action.
-//        ///
-//        /// \par Description.
-//        ///      Virtual method for performing the action - does nothing
-//        ///
-//        /// \par Algorithm.
-//        ///
-//        /// \par Usage Notes.
-//        ///
-//        /// \author Ilanh
-//        /// \date 16/01/2018
-//        ///
-//        /// \param eventAction  (IValueHolder) - The event action.
-//        /// \param round        (int) - The round.
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//        protected virtual void PerformAction(IValueHolder eventAction, int round)
-//        { }
-//        #endregion
-//        #region /// \name ElementWindow support
-
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////
-//        /// \fn public static ElementWindowPrms MainDictionaryPrms(Attribute attribute, dynamic key, NetworkElement mainNetworkElement, NetworkElement.ElementDictionaries mainDictionary, NetworkElement.ElementDictionaries dictionary, InputWindows inputWindow, bool windowEditable)
-//        ///
-//        /// \brief Main dictionary prms.
-//        ///
-//        /// \par Description.
-//        ///      The ElementWindowPrms for the event main AttributeDictionary (A TextBox)
-//        ///
-//        /// \par Algorithm.
-//        ///
-//        /// \par Usage Notes.
-//        ///
-//        /// \author Ilanh
-//        /// \date 16/01/2018
-//        ///
-//        /// \param attribute           (Attribute) - The attribute.
-//        /// \param key                 (dynamic) - The key.
-//        /// \param mainNetworkElement  (NetworkElement) - The main network element.
-//        /// \param mainDictionary      (ElementDictionaries) - Dictionary of mains.
-//        /// \param dictionary          (ElementDictionaries) - The dictionary.
-//        /// \param inputWindow         (InputWindows) - The input window.
-//        /// \param windowEditable      (bool) - true if window editable.
-//        ///
-//        /// \return The ElementWindowPrms.
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//        public static ElementWindowPrms MainDictionaryPrms(Attribute attribute,
-//            dynamic key,
-//            NetworkElement mainNetworkElement,
-//            NetworkElement.ElementDictionaries mainDictionary,
-//            NetworkElement.ElementDictionaries dictionary,
-//            InputWindows inputWindow,
-//            bool windowEditable)
-//        {
-//            ElementWindowPrms elementWindowPrms = new ElementWindowPrms();
-//            elementWindowPrms.newValueControlPrms.inputFieldType = InputFieldsType.TextBox;
-//            elementWindowPrms.newValueControlPrms.Value = "Event No." + key;
-//            elementWindowPrms.newValueControlPrms.enable = false;
-//            return elementWindowPrms;
-//        }
-
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////
-//        /// \fn public static ElementWindowPrms SubDictionaryPrms(Attribute attribute, dynamic key, NetworkElement mainNetworkElement, NetworkElement.ElementDictionaries mainDictionary, NetworkElement.ElementDictionaries dictionary, InputWindows inputWindow, bool windowEditable)
-//        ///
-//        /// \brief Sub dictionary prms.
-//        ///
-//        /// \par Description.
-//        ///      The ElementWindowPrms foe each one of the 2 sub AttributeDictionary
-//        ///
-//        /// \par Algorithm.
-//        ///
-//        /// \par Usage Notes.
-//        ///
-//        /// \author Ilanh
-//        /// \date 16/01/2018
-//        ///
-//        /// \param attribute           (Attribute) - The attribute.
-//        /// \param key                 (dynamic) - The key.
-//        /// \param mainNetworkElement  (NetworkElement) - The main network element.
-//        /// \param mainDictionary      (ElementDictionaries) - Dictionary of mains.
-//        /// \param dictionary          (ElementDictionaries) - The dictionary.
-//        /// \param inputWindow         (InputWindows) - The input window.
-//        /// \param windowEditable      (bool) - true if window editable.
-//        ///
-//        /// \return The ElementWindowPrms.
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//        public static ElementWindowPrms SubDictionaryPrms(Attribute attribute,
-//            dynamic key,
-//            NetworkElement mainNetworkElement,
-//            NetworkElement.ElementDictionaries mainDictionary,
-//            NetworkElement.ElementDictionaries dictionary,
-//            InputWindows inputWindow,
-//            bool windowEditable)
-//        {
-//            ElementWindowPrms elementWindowPrms = new ElementWindowPrms();
-//            elementWindowPrms.newValueControlPrms.inputFieldType = InputFieldsType.TextBox;
-//            elementWindowPrms.newValueControlPrms.Value = TypesUtility.GetKeyToString(key);
-//            elementWindowPrms.newValueControlPrms.enable = false;
-//            return elementWindowPrms;
-//        }
-//        #endregion
-//    }
-//}

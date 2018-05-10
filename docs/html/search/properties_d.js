@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['receiveport',['ReceivePort',['../class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_process.html#a6c835f9e1877a68c62bc759d54a64c60',1,'DistributedAlgorithms::Algorithms::Base::Base::BaseProcess']]],
+  ['recordered',['Recordered',['../class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1_chandy_lamport___one_round_process.html#aef72e176dda69d9265c11f2508a64858',1,'DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound.ChandyLamport_OneRoundProcess.Recordered()'],['../class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lai_young___one_round_1_1_lai_young___one_round_process.html#af484bfc1d63eb251f20f0e4fa36de5db',1,'DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound.LaiYoung_OneRoundProcess.Recordered()']]],
+  ['resourcemanager',['ResourceManager',['../class_distributed___algorithms_1_1_properties_1_1_resources.html#a50b3a968864399bf0ecb54891b06da91',1,'Distributed_Algorithms::Properties::Resources']]],
+  ['round',['Round',['../class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#a5bcc0c431555c704079d2c467050b652',1,'DistributedAlgorithms.Algorithms.Base.Base.BaseMessage.Round()'],['../class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_process.html#a2a4c8d6e3bdc11f0ce6b76ec59987dbe',1,'DistributedAlgorithms.Algorithms.Base.Base.BaseProcess.Round()']]]
+];

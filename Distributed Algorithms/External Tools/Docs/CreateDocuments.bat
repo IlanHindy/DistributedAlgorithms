@@ -1,12 +1,12 @@
 
 cd %1%
-cd "..\docs\html"
+REM cd "..\docs\html"
 REM "************************************************************************"
 echo %CD%
 REM "************************************************************************"
 REM del /q /s *.*
 REM for /d %%x in ("%CD%\*") do rmdir /s /q "%%x"
-cd "..\..\DistributedAlgorithms\External Tools\Docs"
+cd "External Tools\Docs"
 doxygen Doxyfile
 echo finished
 cd "..\..\..\docs\html"

@@ -66,7 +66,7 @@
         <RoutedUICommand x:Key="CheckDictionaryDeepCopy" Text="CheckDictionaryDeepCopy" />
         <RoutedUICommand x:Key="CheckFileSelect" Text="CheckFileSelect" />
         <RoutedUICommand x:Key="CheckDataGrid" Text="CheckDataGrid" />
-        <RoutedUICommand x:Key="CheckListMerge" Text="CheckListMerge" />
+        <!-- <RoutedUICommand x:Key="CheckListMerge" Text="CheckListMerge" /> -->
         <RoutedUICommand x:Key="CheckMembers" Text="CheckMembers" />
         
         <!-- Other buttons -->
@@ -168,7 +168,7 @@
         <CommandBinding Command="{StaticResource CheckDictionaryDeepCopy}" Executed="Command_CheckDictionaryDeepCopy" />
         <CommandBinding Command="{StaticResource CheckFileSelect}" Executed="Command_CheckFileSelect" />
         <CommandBinding Command="{StaticResource CheckDataGrid}" Executed="Command_CheckDataGrid" />
-        <CommandBinding Command="{StaticResource CheckListMerge}" Executed="Command_CheckListMerge" />
+        <!--<CommandBinding Command="{StaticResource CheckListMerge}" Executed="Command_CheckListMerge" /> -->
         <CommandBinding Command="{StaticResource CheckMembers}" Executed="Command_CheckMembers" />
 
         <!-- Other buttons-->
@@ -379,7 +379,7 @@
                     <MenuItem Header="Dictionary DeepCopy" Command="{StaticResource CheckDictionaryDeepCopy}"/>
                     <MenuItem Header="Check FileSelect" Command="{StaticResource CheckFileSelect}"/>
                     <MenuItem Header="Check DataGrid" Command="{StaticResource CheckDataGrid}"/>
-                    <MenuItem Header="Check ListMerge" Command="{StaticResource CheckListMerge}"/>
+                    <!--<MenuItem Header="Check ListMerge" Command="{StaticResource CheckListMerge}"/> -->
                     <MenuItem Header="Check Members" Command="{StaticResource CheckMembers}"/>
                 </MenuItem>
             </Menu>
