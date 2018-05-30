@@ -91,6 +91,9 @@ namespace DistributedAlgorithms.Algorithms.Templates.Template
     ///
     ///     // The outgoing channel connected this process to process id
     ///     public BaseChannel ChannelTo(int id)
+    ///     
+    ///     // Report Text to Message Window
+    ///     public ReportText(string text)
     ///          
     /// ~~~
     ///

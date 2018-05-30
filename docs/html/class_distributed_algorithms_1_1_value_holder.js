@@ -1,7 +1,7 @@
 var class_distributed_algorithms_1_1_value_holder =
 [
     [ "CheckMembers", "class_distributed_algorithms_1_1_value_holder.html#a100b84ec440f07539ed1bfb8ecb9be38", null ],
-    [ "EqualsTo", "class_distributed_algorithms_1_1_value_holder.html#af1b9abe8fc1c7d47551c1d5150717fef", null ],
+    [ "CheckEqual", "class_distributed_algorithms_1_1_value_holder.html#a9c45d848e255aec49ca9d69cc36ed26a", null ],
     [ "GenerateCheckMessage", "class_distributed_algorithms_1_1_value_holder.html#aac05776f16f17b541dd1cfd89d92de1e", null ],
     [ "GetKeyString", "class_distributed_algorithms_1_1_value_holder.html#a5cc6cdd88db2277814ceaff50f629fa9", null ],
     [ "MainDictionaryInitMethodName", "class_distributed_algorithms_1_1_value_holder.html#a547d689b3325c5c974d6f8220c0afae5", null ],

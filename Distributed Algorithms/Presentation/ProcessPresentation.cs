@@ -797,7 +797,7 @@ namespace DistributedAlgorithms
 
         public void UpdateBreakpointLabel(BaseProcess process, List<Breakpoint> breakpoints)
         {
-            if (!presentationElements[process].breakpointsVisibility) return;
+            if (!mainWindow.showBreakpoints) return;
 
             breakpointLabelString = "";            
             foreach (Breakpoint breakpoint in breakpoints)
@@ -825,6 +825,12 @@ namespace DistributedAlgorithms
             label.Foreground = new SolidColorBrush(CreateColorFromEnum(process.pp[bp.ppk.BreakpointsForeground]));
             label.BorderThickness = new Thickness(process.pp[bp.ppk.BreakpointsFrameWidth]);
             label.BorderBrush = new SolidColorBrush(CreateColorFromEnum(process.pp[bp.ppk.BreakpointsFrameColor]));
+        }
+
+        public void SetBreakpoinsVisibility(BaseProcess process, Visibility visibility)
+        {
+            Label label = (Label)presentationElements[process].controls[PresentationElement.ControlKeys.BreakpointLabel];
+            label.Visibility = visibility;
         }
 
         /**********************************************************************************************//**

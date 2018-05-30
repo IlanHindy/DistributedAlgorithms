@@ -1587,7 +1587,7 @@ namespace DistributedAlgorithms
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool checkNotSameObject = false)
+        /// \fn public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool print = false, bool checkNotSameObject = false)
         ///
         /// \brief Equals to.
         ///
@@ -1607,18 +1607,20 @@ namespace DistributedAlgorithms
         /// \param          nestingLevel       (int) - The nesting level.
         /// \param [in,out] error              (ref string) - The error.
         /// \param          other              (IValueHolder) - The attribute.
+        /// \param          print              (Optional)  (bool) - true to print.
         /// \param          checkNotSameObject (Optional)  (bool) - true to check not same object.
         ///
         /// \return True if equals to, false if not.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool checkNotSameObject = false)
+
+        public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool print = false, bool checkNotSameObject = false)
         {
 
             NetworkElement otherElement = (NetworkElement)other;
             List<AttributeDictionary> otherDictionaries = ((NetworkElement)other).Dictionaries();
             for (int idx = 0; idx < attributes.Count; idx++)
             {
-                if (!attributes[idx].EqualsTo(nestingLevel + 1, (ElementDictionaries)idx, otherDictionaries[idx].Parent, checkNotSameObject))
+                if (!attributes[idx].CheckEqual(nestingLevel + 1, (ElementDictionaries)idx, otherDictionaries[idx].Parent, print, checkNotSameObject))
                 {
                     return false;
                 }
@@ -2400,6 +2402,32 @@ namespace DistributedAlgorithms
                 }
             }
             return result;
+        }
+        #endregion
+
+        #region /// \name Presentation
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public void ReportText(string text)
+        ///
+        /// \brief
+        ///
+        /// \par Description.
+        ///      Report Text to the message window.
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 27/05/2018
+        ///
+        /// \param text (string) - The text.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public void ReportText(string text)
+        {
+            MessageRouter.ReportMessage(ToString(), "", text);
         }
         #endregion
     }

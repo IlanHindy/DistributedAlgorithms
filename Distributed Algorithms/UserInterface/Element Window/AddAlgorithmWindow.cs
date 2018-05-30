@@ -681,15 +681,35 @@ namespace DistributedAlgorithms
         {
             if (controlsAttributeLinks[item].updateStatus != UpdateStatuses.Removed)
             {
-                if (ItemDisabled((TreeViewItem)item))
+                if (controlsAttributeLinks[item].parentAttribute.Value is AttributeDictionary)
                 {
-                    CustomizedMessageBox.Show("The entry belongs to the Base Class and cannot be removed",
-                        "Add Algorithm Message", null, Icons.Error);
-                    return;
+                    if (AttributeDictionary.KeyOfThisClass(controlsAttributeLinks[item].key, targetSubject, targetAlgorithm))
+                    {
+                        if (ItemDisabled((TreeViewItem)item))
+                        {
+                            CustomizedMessageBox.Show("The entry belongs to the Base Class and cannot be removed",
+                                "Add Algorithm Message", null, Icons.Error);
+                            return;
+                        }
+                    }
                 }
             }
             base.HandleRemove(item);
         }
+
+        //protected override void HandleRemove(ItemsControl item)
+        //{
+        //    if (controlsAttributeLinks[item].updateStatus != UpdateStatuses.Removed)
+        //    {
+        //        if (ItemDisabled((TreeViewItem)item))
+        //        {
+        //            CustomizedMessageBox.Show("The entry belongs to the Base Class and cannot be removed",
+        //                "Add Algorithm Message", null, Icons.Error);
+        //            return;
+        //        }
+        //    }
+        //    base.HandleRemove(item);
+        //}
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \fn protected bool ItemDisabled(TreeViewItem item)
@@ -1649,7 +1669,7 @@ namespace DistributedAlgorithms
                 Button CancelButton = CustomizedMessageBox.SetButton("Cancel");
                 string showResult = CustomizedMessageBox.Show(new List<Control> { headerLabel, syntaxHighlightControl },
                     "Add Algorithm Dialog",
-                    new List<Button> { OKButton, ConfirmAllButton, CancelButton }, Icons.Info);
+                    new List<Button> { OKButton, ConfirmAllButton, CancelButton }, Icons.Info, false);
                 switch (showResult)
                 {
                     case "OK":

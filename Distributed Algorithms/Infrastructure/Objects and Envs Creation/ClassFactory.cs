@@ -357,6 +357,30 @@ namespace DistributedAlgorithms
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public static Type GenerateMessageType()
+        ///
+        /// \brief Generates a message type.
+        ///
+        /// \par Description.
+        ///      Generate the type of the message of the current parameter
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 14/05/2018
+        ///
+        /// \return The message type.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public static Type GenerateMessageType()
+        {
+            string algorithm = Config.Instance[Config.Keys.SelectedAlgorithm];
+            return Type.GetType(GenerateNamespace() + "." + algorithm + "Message");
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \fn public static BaseMessage GenerateMessage(BaseNetwork network, dynamic messageType, AttributeDictionary fields, BaseChannel channel, string messageName = "", string subject = null, string algorithm = null, int round = 0, int logicalClock = 0)
         ///
         /// \brief Generates a message.

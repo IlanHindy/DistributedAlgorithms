@@ -63,7 +63,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         /// \brief Keys to be used in the Operation Parameters .
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public enum opk { Breakpoints, InternalEvents, BaseAlgorithm }
+        public enum opk { Breakpoints, InternalEvents, BaseAlgorithm, ChangeOrderEvents }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \enum ork
@@ -395,6 +395,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             op.Add(bp.opk.Breakpoints, new Attribute { Value = new Breakpoint(Breakpoint.HostingElementTypes.Process), Editable = false, Changed = false, IncludedInShortDescription = false });
             op.Add(bp.opk.BaseAlgorithm, new Attribute { Value = new BaseAlgorithmHandler(), Changed = false, ElementWindowPrmsMethod = BaseAlgorithmHandler.BaseAlgorithmPrms });
             op.Add(bp.opk.InternalEvents, new Attribute { Value = new InternalEventsHandler(), Changed = false, ElementWindowPrmsMethod = InternalEventsHandler.InternalEventPrms });
+            op.Add(bp.opk.ChangeOrderEvents, new Attribute { Value = new ChangeMessageOrder(), Editable = false, Changed = false});
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -807,7 +808,8 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
                     // See if there is a need to send Base algorithm message 
                     ProcessEvents(EventTriggerType.BeforeReceiveMessage, MessageInProcess);
 
-                    // This is the method that the user's algorithm implement 
+                    // This is the method that the user's algorithm implement
+                    ReportText("Processing : " + MessageInProcess.ShortDescription());
                     ReceiveHandling(MessageInProcess);
 
                     // See if there is a need to send Base Algorithm message
@@ -1790,13 +1792,17 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             int round,
             int logicalClock)
         {
+            if (round == -1)
+            {
+                round = or[bp.ork.Round];
+            }
             List<int> messageTargets = MessageTargets(selectingMethod, ids);
             // Send the messages
             foreach (BaseChannel channel in OutGoingChannels)
             {
                 if (messageTargets.Any(id => channel.ea[bc.eak.DestProcess] == id))
                 {
-                    BaseMessage newMessage = ClassFactory.GenerateMessage(network, messageType, fields, channel, "", null, null, or[bp.ork.Round], logicalClock);
+                    BaseMessage newMessage = ClassFactory.GenerateMessage(network, messageType, fields, channel, "", null, null, round, logicalClock);
                     ProcessEvents(EventTriggerType.BeforeSendMessage, newMessage);
                     BeforeSend(newMessage);
                     AsynchronousSender.StartSending(newMessage, this, channel);
@@ -2196,7 +2202,6 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         {
             return "Processor No." + ea[ne.eak.Id].ToString();
         }
-
         #endregion
         
     }

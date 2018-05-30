@@ -1,5 +1,6 @@
 var class_distributed_algorithms_1_1_message_router =
 [
+    [ "MessageBoxDelegate", "class_distributed_algorithms_1_1_message_router.html#a81db487057d7cd5c5148d02a4a659248", null ],
     [ "ReportFinishRunning", "class_distributed_algorithms_1_1_message_router.html#ac2a8c1f4f21dead3aa4ce5477f8d4996", null ],
     [ "ReportStartRunning", "class_distributed_algorithms_1_1_message_router.html#a96f813881f066db5a27a92b2a0a8c512", null ],
     [ "ReportChangePresentationOfComponent", "class_distributed_algorithms_1_1_message_router.html#a83057b0ece10842f1fc49d1578bbf06d", null ],
@@ -11,8 +12,8 @@ var class_distributed_algorithms_1_1_message_router =
     [ "ReportMessage", "class_distributed_algorithms_1_1_message_router.html#afd5b35e7ae765991599eaee53f597be9", null ],
     [ "AddEditOperation", "class_distributed_algorithms_1_1_message_router.html#a9c87619b7ca113ed8d352a724ecf7ef6", null ],
     [ "AddEditOperationResult", "class_distributed_algorithms_1_1_message_router.html#a6c6a5f3e077701f67d93a765e2abf7ce", null ],
-    [ "MessageBox", "class_distributed_algorithms_1_1_message_router.html#a0864cd3cdd3e78a14bded2681cfe6ef3", null ],
-    [ "CustomizedMessageBox", "class_distributed_algorithms_1_1_message_router.html#a5d55f4bd7701769230d7e486ddd6af1d", null ],
+    [ "MessageBox", "class_distributed_algorithms_1_1_message_router.html#aed3cd5417a9294194574976433e6d50e", null ],
+    [ "CustomizedMessageBox", "class_distributed_algorithms_1_1_message_router.html#acc572e541e5f1df0394eef0c3f3877e7", null ],
     [ "ReportMessageEvent", "class_distributed_algorithms_1_1_message_router.html#a26b5b2d9553f3bf0ffeaa902346c23d5", null ],
     [ "ReportFinishEvent", "class_distributed_algorithms_1_1_message_router.html#aad862f8e47ebf155e1abf628d2bfaa76", null ],
     [ "ReportStartEvent", "class_distributed_algorithms_1_1_message_router.html#a593dee66023cf715329d9bb93fd9d3f3", null ],
@@ -24,6 +25,6 @@ var class_distributed_algorithms_1_1_message_router =
     [ "UpdateRunningPresentationEvent", "class_distributed_algorithms_1_1_message_router.html#acb33e2ca1c040cfcc41d0378d5c5bf67", null ],
     [ "AddEditOperationEvent", "class_distributed_algorithms_1_1_message_router.html#acb383eedbfd9bb75f16b97b684e68cec", null ],
     [ "AddEditOperationResultEvent", "class_distributed_algorithms_1_1_message_router.html#aec75d319597757115f10a360b321a827", null ],
-    [ "MessageBoxEvent", "class_distributed_algorithms_1_1_message_router.html#ac28b1ae5796eabd063a9ecc984a82351", null ],
-    [ "CustomizedMessageBoxEvent", "class_distributed_algorithms_1_1_message_router.html#a56ecc4a9c224f95f0bc3040b62d087a7", null ]
+    [ "MessageBoxEvent", "class_distributed_algorithms_1_1_message_router.html#ab4c9b040d58490977bdae24b81399cdb", null ],
+    [ "CustomizedMessageBoxEvent", "class_distributed_algorithms_1_1_message_router.html#ae34f308dbbd35a0ee138e26e60da7c0e", null ]
 ];

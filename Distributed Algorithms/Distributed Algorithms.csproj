@@ -63,11 +63,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Algorithms\Snapshots\LaiYoung_OneRound\LaiYoung_OneRoundChannel.cs" />
+    <Compile Include="Algorithms\Snapshots\LaiYoung_OneRound\LaiYoung_OneRoundDefsAndInits.cs" />
+    <Compile Include="Algorithms\Snapshots\LaiYoung_OneRound\LaiYoung_OneRoundMessage.cs" />
+    <Compile Include="Algorithms\Snapshots\LaiYoung_OneRound\LaiYoung_OneRoundNetwork.cs" />
+    <Compile Include="Algorithms\Snapshots\LaiYoung_OneRound\LaiYoung_OneRoundProcess.cs" />
     <Compile Include="Algorithms\Tests\Test\TestChannel.cs" />
     <Compile Include="Algorithms\Tests\Test\TestDefsAndInits.cs" />
     <Compile Include="Algorithms\Tests\Test\TestMessage.cs" />
     <Compile Include="Algorithms\Tests\Test\TestNetwork.cs" />
     <Compile Include="Algorithms\Tests\Test\TestProcess.cs" />
+    <Compile Include="Infrastructure\Network Elements Components\ChangeMessageOrder.cs" />
     <Compile Include="Tests\Test.xaml.cs">
       <DependentUpon>Test.xaml</DependentUpon>
     </Compile>
@@ -172,7 +178,7 @@
     <Compile Include="Infrastructure\Logging and Message Routing\Logger.cs" />
     <Compile Include="Infrastructure\Logging and Message Routing\MessageRouter.cs" />
     <Compile Include="Infrastructure\Network Elements Components\Breakpoint.cs" />
-    <Compile Include="Infrastructure\Network Elements Components\MessageQueue.cs" />
+    <Compile Include="Infrastructure\Network Elements Components\MessageQ.cs" />
     <Compile Include="Infrastructure\Network Elements Components\Permissions.cs" />
     <Compile Include="Infrastructure\Objects and Envs Creation\ClassFactory.cs" />
     <Compile Include="Infrastructure\Objects and Envs Creation\Config.cs" />

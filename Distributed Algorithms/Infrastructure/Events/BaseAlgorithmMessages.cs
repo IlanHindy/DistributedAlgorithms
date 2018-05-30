@@ -150,8 +150,15 @@ namespace DistributedAlgorithms
         public void Send(int round)
         {
             BaseProcess process = (BaseProcess)Element;
-            foreach (AttributeDictionary messageData in AsList())
+            foreach (AttributeDictionary data in AsList())
             {
+                // Duplicate the messageData
+                // This is done in order to avoid the change to the messageData in
+                // the method BuildBaseAlgorithmMessage
+                // (The data in this object is not recovered after running so we have
+                // to prevent changes to it while running)
+                AttributeDictionary messageData = new AttributeDictionary();
+                messageData.DeepCopy(data);
                 BaseMessage message = process.BuildBaseAlgorithmMessage(
                     messageData[Comps.Type],
                     messageData[Comps.Name],
@@ -159,8 +166,6 @@ namespace DistributedAlgorithms
                     round,
                     messageData[Comps.Targets]);
                 process.SendToNeighbours(message, BaseProcess.SelectingMethod.Include, messageData[Comps.Targets].AsList());
-
-
             }
         }
         #endregion

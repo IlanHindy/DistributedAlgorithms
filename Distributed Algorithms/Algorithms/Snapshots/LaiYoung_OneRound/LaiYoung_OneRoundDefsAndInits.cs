@@ -132,7 +132,6 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 		const string centrilized = "Centrilized";
 		const string directedNetwork = "DirectedNetwork";
 		const string version = "Version";
-		const string breakpoints = "Breakpoints";
 		const string singleStepStatus = "SingleStepStatus";
 		const string name = "Name";
 		const string initiator = "Initiator";
@@ -140,10 +139,8 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 		const string recordered = "Recordered";
 		const string round = "Round";
 		const string terminationStatus = "TerminationStatus";
-		const string messageQueue = "MessageQ";
+		const string messageQ = "MessageQ";
 		const string receivePort = "ReceivePort";
-		const string baseAlgorithmData = "BaseAlgorithmData";
-		const string internalEvents = "InternalEvents";
 		const string frameColor = "FrameColor";
 		const string frameWidth = "FrameWidth";
 		const string frameHeight = "FrameHeight";
@@ -205,7 +202,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 		{
 			AttributeDictionary dictionary = pa;
 			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound.n+pak";
-			dictionary.Add(n.pak.Version, new Attribute { Value = 7 ,Editable = false ,Changed = false } );
+			dictionary.Add(n.pak.Version, new Attribute { Value = 8 ,Editable = false ,Changed = false } );
 			base.InitPrivateAttributes();
 		}
  
@@ -249,7 +246,6 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 		const string centrilized = "Centrilized";
 		const string directedNetwork = "DirectedNetwork";
 		const string version = "Version";
-		const string breakpoints = "Breakpoints";
 		const string singleStepStatus = "SingleStepStatus";
 		const string name = "Name";
 		const string initiator = "Initiator";
@@ -257,10 +253,8 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 		const string recordered = "Recordered";
 		const string round = "Round";
 		const string terminationStatus = "TerminationStatus";
-		const string messageQueue = "MessageQ";
+		const string messageQ = "MessageQ";
 		const string receivePort = "ReceivePort";
-		const string baseAlgorithmData = "BaseAlgorithmData";
-		const string internalEvents = "InternalEvents";
 		const string frameColor = "FrameColor";
 		const string frameWidth = "FrameWidth";
 		const string frameHeight = "FrameHeight";
@@ -351,7 +345,6 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 		const string centrilized = "Centrilized";
 		const string directedNetwork = "DirectedNetwork";
 		const string version = "Version";
-		const string breakpoints = "Breakpoints";
 		const string singleStepStatus = "SingleStepStatus";
 		const string name = "Name";
 		const string initiator = "Initiator";
@@ -359,10 +352,8 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 		const string recordered = "Recordered";
 		const string round = "Round";
 		const string terminationStatus = "TerminationStatus";
-		const string messageQueue = "MessageQ";
+		const string messageQ = "MessageQ";
 		const string receivePort = "ReceivePort";
-		const string baseAlgorithmData = "BaseAlgorithmData";
-		const string internalEvents = "InternalEvents";
 		const string frameColor = "FrameColor";
 		const string frameWidth = "FrameWidth";
 		const string frameHeight = "FrameHeight";

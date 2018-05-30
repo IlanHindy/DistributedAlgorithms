@@ -64,6 +64,8 @@ namespace DistributedAlgorithms
         public Brush forColor = Brushes.Black;
         /// \brief  (Brush) - The back color.
         public Brush backColor = Brushes.White;
+        /// \brief  (TextWrapping) - The wrap.
+        public TextWrapping wrap = TextWrapping.Wrap;
         #endregion
         #region /// \name Font Constructor
 
@@ -86,7 +88,7 @@ namespace DistributedAlgorithms
         { }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public Font(string fontFamily, double fontSize, FontStyle fontStyle, FontWeight fontWeight, Thickness margin, HorizontalAlignment alignment)
+        /// \fn public Font(string fontFamily, double fontSize, FontStyle fontStyle, FontWeight fontWeight, Thickness margin, HorizontalAlignment alignment, Brush forColor, Brush backColor, TextWrapping wrap)
         ///
         /// \brief Constructor.
         ///
@@ -99,12 +101,15 @@ namespace DistributedAlgorithms
         /// \author Ilanh
         /// \date 10/12/2017
         ///
-        /// \param fontFamily  (string) - The font family.
-        /// \param fontSize    (double) - Size of the font.
-        /// \param fontStyle   (FontStyle) - The font style.
-        /// \param fontWeight  (FontWeight) - The font weight.
-        /// \param margin      (Thickness) - The margin.
-        /// \param alignment   (HorizontalAlignment) - The alignment.
+        /// \param fontFamily (string) - The font family.
+        /// \param fontSize   (double) - Size of the font.
+        /// \param fontStyle  (FontStyle) - The font style.
+        /// \param fontWeight (FontWeight) - The font weight.
+        /// \param margin     (Thickness) - The margin.
+        /// \param alignment  (HorizontalAlignment) - The alignment.
+        /// \param forColor    (Brush) - for color.
+        /// \param backColor   (Brush) - The back color.
+        /// \param wrap        (TextWrapping) - The wrap.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public Font(string fontFamily, 
@@ -114,7 +119,8 @@ namespace DistributedAlgorithms
             Thickness margin, 
             HorizontalAlignment alignment,
             Brush forColor,
-            Brush backColor)
+            Brush backColor,
+            TextWrapping wrap)
         {
             this.fontFamily = new FontFamily(fontFamily);
             this.fontSize = fontSize;
@@ -124,6 +130,7 @@ namespace DistributedAlgorithms
             this.alignment = alignment;
             this.forColor = forColor;
             this.backColor = backColor;
+            this.wrap = wrap;
         }
         #endregion
         #region /// \name Font Methods
@@ -155,6 +162,10 @@ namespace DistributedAlgorithms
             control.HorizontalAlignment = alignment;
             control.Foreground = forColor;
             control.Background = backColor;
+            if (control is TextBox)
+            {
+                ((TextBox)control).TextWrapping = wrap;
+            }
         }
 
         
@@ -188,6 +199,10 @@ namespace DistributedAlgorithms
                         Brushes.Black);
             control.Width = formattedText.Width + 12;
             control.Height = formattedText.Height + 10;
+            if (control is TextBox)
+            {
+                ((TextBox)control).TextWrapping = wrap;
+            }
         }
     }
     #endregion
@@ -358,7 +373,6 @@ namespace DistributedAlgorithms
             panMain.Children.Add(panButtons);
 
             //Window
-            MaxWidth = 500;
             SizeToContent = System.Windows.SizeToContent.WidthAndHeight;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Loaded += DisableTitleButtons;
@@ -367,7 +381,7 @@ namespace DistributedAlgorithms
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public static string Show(List<Control> controls = null, string title = "", List<Button> buttonsList = null, Icons imageIcon = Icons.Info)
+        /// \fn public static string Show(List<Control> controls = null, string title = "", List<Button> buttonsList = null, Icons imageIcon = Icons.Info, bool sizeToContent)
         ///
         /// \brief Shows.
         ///
@@ -380,15 +394,16 @@ namespace DistributedAlgorithms
         /// \author Ilanh
         /// \date 10/12/2017
         ///
-        /// \param controls    (Optional)  (List&lt;Control&gt;) - The controls.
-        /// \param title       (Optional)  (string) - The title.
-        /// \param buttonsList (Optional)  (List&lt;Button&gt;) - List of buttons.
-        /// \param imageIcon   (Optional)  (Icons) - The image icon.
+        /// \param controls      (Optional)  (List&lt;Control&gt;) - The controls.
+        /// \param title         (Optional)  (string) - The title.
+        /// \param buttonsList   (Optional)  (List&lt;Button&gt;) - List of buttons.
+        /// \param imageIcon     (Optional)  (Icons) - The image icon.
+        /// \param sizeToContent  (bool) - true to size to content.
         ///
         /// \return A string.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static string Show(List<Control> controls = null, string title = "", List<Button> buttonsList = null, Icons imageIcon = Icons.Info)
+        public static string Show(List<Control> controls, string title, List<Button> buttonsList, Icons imageIcon, bool sizeToContent)
         {
             if (controls == null) controls = new List<Control>();
             if (controls.Count == 0) controls.Add(SetLabel(""));
@@ -433,9 +448,13 @@ namespace DistributedAlgorithms
                 button.Click += new RoutedEventHandler(messageBox.Button_Click);
                 insertIdx++;
             }
-            MessageRouter.AddEditOperation(title, fullMessage, imageIcon, new Font("Calibbri", 12, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, Brushes.Black, null));
+            if (!sizeToContent)
+            {
+                messageBox.MaxWidth = 500;
+            }
+            MessageRouter.AddEditOperation(title, fullMessage, imageIcon, new Font("Calibbri", 12, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, Brushes.Black, null, TextWrapping.NoWrap));
             messageBox.ShowDialog();
-            MessageRouter.AddEditOperationResult(messageBox.Result, new Font("Calibbri", 12, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, Brushes.Black, null));
+            MessageRouter.AddEditOperationResult(messageBox.Result, new Font("Calibbri", 12, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, Brushes.Black, null, TextWrapping.NoWrap));
             return messageBox.Result;
         }
 
@@ -467,7 +486,7 @@ namespace DistributedAlgorithms
         #region /// \name Show interfaces
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public static string Show(Control control, string title = "", List<Button> buttons = null, Icons imageIcon = Icons.Info)
+        /// \fn public static string Show(Control control, string title = "", List<Button> buttons = null, Icons imageIcon = Icons.Info, bool sizeToContent = false)
         ///
         /// \brief Shows.
         ///
@@ -480,24 +499,24 @@ namespace DistributedAlgorithms
         /// \author Ilanh
         /// \date 10/12/2017
         ///
-        /// \param control    (Control) - The control.
-        /// \param title     (Optional)  (string) - The title.
-        /// \param buttons   (Optional)  (List&lt;Button&gt;) - The buttons.
-        /// \param imageIcon (Optional)  (Icons) - The image icon.
+        /// \param control       (Control) - The control.
+        /// \param title         (Optional)  (string) - The title.
+        /// \param buttons       (Optional)  (List&lt;Button&gt;) - The buttons.
+        /// \param imageIcon     (Optional)  (Icons) - The image icon.
+        /// \param sizeToContent (Optional)  (bool) - true to size to content.
         ///
         /// \return A string.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static string Show(Control control, string title = "", List<Button> buttons = null, Icons imageIcon = Icons.Info)
+        public static string Show(Control control, string title = "", List<Button> buttons = null, Icons imageIcon = Icons.Info, bool sizeToContent = false)
         {
             List<Control> controls = new List<Control>();
             controls.Add(control);
-            return Show(controls, title, buttons, imageIcon);
+            return Show(controls, title, buttons, imageIcon, sizeToContent);
         }
 
-        
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public static string Show(string labelString, string title = "", List<Button> buttons = null, Icons imageIcon = Icons.Info)
+        /// \fn public static string Show(string labelString, string title = "", List<Button> buttons = null, Icons imageIcon = Icons.Info, bool sizeToContent = false)
         ///
         /// \brief Shows.
         ///
@@ -510,24 +529,24 @@ namespace DistributedAlgorithms
         /// \author Ilanh
         /// \date 10/12/2017
         ///
-        /// \param labelString  (string) - The label string.
-        /// \param title       (Optional)  (string) - The title.
-        /// \param buttons     (Optional)  (List&lt;Button&gt;) - The buttons.
-        /// \param imageIcon   (Optional)  (Icons) - The image icon.
+        /// \param labelString   (string) - The label string.
+        /// \param title         (Optional)  (string) - The title.
+        /// \param buttons       (Optional)  (List&lt;Button&gt;) - The buttons.
+        /// \param imageIcon     (Optional)  (Icons) - The image icon.
+        /// \param sizeToContent (Optional)  (bool) - true to size to content.
         ///
         /// \return A string.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static string Show(string labelString, string title = "", List<Button> buttons = null, Icons imageIcon = Icons.Info)
+        public static string Show(string labelString, string title = "", List<Button> buttons = null, Icons imageIcon = Icons.Info, bool sizeToContent = false)
         {
             List<Control> controls = new List<Control>();
             controls.Add(SetLabel(labelString));
-            return Show(controls, title, buttons, imageIcon);
+            return Show(controls, title, buttons, imageIcon, sizeToContent);
         }
 
-        
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public static string Show(List<string> labelsStrings, string title = "", List<string> buttonsStrings = null, Icons imageIcon = Icons.Info)
+        /// \fn public static string Show(List<string> labelsStrings, string title = "", List<string> buttonsStrings = null, Icons imageIcon = Icons.Info, bool sizeToContent = false)
         ///
         /// \brief Shows.
         ///
@@ -540,15 +559,16 @@ namespace DistributedAlgorithms
         /// \author Ilanh
         /// \date 10/12/2017
         ///
-        /// \param labelsStrings   (List&lt;string&gt;) - The labels strings.
+        /// \param labelsStrings  (List&lt;string&gt;) - The labels strings.
         /// \param title          (Optional)  (string) - The title.
         /// \param buttonsStrings (Optional)  (List&lt;string&gt;) - The buttons strings.
         /// \param imageIcon      (Optional)  (Icons) - The image icon.
+        /// \param sizeToContent  (Optional)  (bool) - true to size to content.
         ///
         /// \return A string.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static string Show(List<string> labelsStrings, string title = "", List<string> buttonsStrings = null, Icons imageIcon = Icons.Info)
+        public static string Show(List<string> labelsStrings, string title = "", List<string> buttonsStrings = null, Icons imageIcon = Icons.Info, bool sizeToContent = false)
         {
             List<Control> controls = new List<Control>();
             foreach (string labelString in labelsStrings)
@@ -564,11 +584,11 @@ namespace DistributedAlgorithms
             {
                 buttons.Add(SetButton(buttonString));
             }
-            return Show(controls, title, buttons, imageIcon);
+            return Show(controls, title, buttons, imageIcon, sizeToContent);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public static MessageBoxResult Show(string labelString, string title, MessageBoxButton messageBoxButtons, Icons imageIcon = Icons.Question)
+        /// \fn public static MessageBoxResult Show(string labelString, string title, MessageBoxButton messageBoxButtons, Icons imageIcon = Icons.Question, bool sizeToContent = false)
         ///
         /// \brief Shows.
         ///
@@ -581,24 +601,25 @@ namespace DistributedAlgorithms
         /// \author Ilanh
         /// \date 10/12/2017
         ///
-        /// \param labelString        (string) - The label string.
-        /// \param title              (string) - The title.
-        /// \param messageBoxButtons  (MessageBoxButton) - The message box buttons.
+        /// \param labelString       (string) - The label string.
+        /// \param title             (string) - The title.
+        /// \param messageBoxButtons (MessageBoxButton) - The message box buttons.
         /// \param imageIcon         (Optional)  (Icons) - The image icon.
+        /// \param sizeToContent     (Optional)  (bool) - true to size to content.
         ///
         /// \return A MessageBoxResult.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static MessageBoxResult Show(string labelString, string title, MessageBoxButton messageBoxButtons, Icons imageIcon = Icons.Question)
+        public static MessageBoxResult Show(string labelString, string title, MessageBoxButton messageBoxButtons, Icons imageIcon = Icons.Question, bool sizeToContent = false)
         {
             List<Control> controls = new List<Control>();
             controls.Add(SetLabel(labelString));
             List<Button> buttons = GenerateButtonsAccordingToEnum(messageBoxButtons);
-            return TranslateResultToEnum(Show(controls, title, buttons, imageIcon));
+            return TranslateResultToEnum(Show(controls, title, buttons, imageIcon, sizeToContent));
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public static MessageBoxResult Show(List<string> labelsStrings, string title, MessageBoxButton messageBoxButtons, Icons imageIcon = Icons.Question)
+        /// \fn public static MessageBoxResult Show(List<string> labelsStrings, string title, MessageBoxButton messageBoxButtons, Icons imageIcon = Icons.Question, bool sizeToContent = false)
         ///
         /// \brief Shows.
         ///
@@ -611,15 +632,16 @@ namespace DistributedAlgorithms
         /// \author Ilanh
         /// \date 10/12/2017
         ///
-        /// \param labelsStrings      (List&lt;string&gt;) - The labels strings.
-        /// \param title              (string) - The title.
-        /// \param messageBoxButtons  (MessageBoxButton) - The message box buttons.
+        /// \param labelsStrings     (List&lt;string&gt;) - The labels strings.
+        /// \param title             (string) - The title.
+        /// \param messageBoxButtons (MessageBoxButton) - The message box buttons.
         /// \param imageIcon         (Optional)  (Icons) - The image icon.
+        /// \param sizeToContent     (Optional)  (bool) - true to size to content.
         ///
         /// \return A MessageBoxResult.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static MessageBoxResult Show(List<string> labelsStrings, string title, MessageBoxButton messageBoxButtons, Icons imageIcon = Icons.Question)
+        public static MessageBoxResult Show(List<string> labelsStrings, string title, MessageBoxButton messageBoxButtons, Icons imageIcon = Icons.Question, bool sizeToContent = false)
         {
             List<Control> controls = new List<Control>();
             foreach (string labelString in labelsStrings)
@@ -627,11 +649,11 @@ namespace DistributedAlgorithms
                 controls.Add(SetLabel(labelString));
             }
             List<Button> buttons = GenerateButtonsAccordingToEnum(messageBoxButtons);
-            return TranslateResultToEnum(Show(controls, title, buttons, imageIcon));
+            return TranslateResultToEnum(Show(controls, title, buttons, imageIcon, sizeToContent));
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public static string Show(string labelString, string title = "", Icons imageIcon = Icons.Info, List<Button> buttons = null)
+        /// \fn public static string Show(string labelString, string title = "", Icons imageIcon = Icons.Info, List<Button> buttons = null, bool sizeToContent = false)
         ///
         /// \brief Shows.
         ///
@@ -644,19 +666,20 @@ namespace DistributedAlgorithms
         /// \author Ilanh
         /// \date 10/12/2017
         ///
-        /// \param labelString  (string) - The label string.
-        /// \param title       (Optional)  (string) - The title.
-        /// \param imageIcon   (Optional)  (Icons) - The image icon.
-        /// \param buttons     (Optional)  (List&lt;Button&gt;) - The buttons.
+        /// \param labelString   (string) - The label string.
+        /// \param title         (Optional)  (string) - The title.
+        /// \param imageIcon     (Optional)  (Icons) - The image icon.
+        /// \param buttons       (Optional)  (List&lt;Button&gt;) - The buttons.
+        /// \param sizeToContent (Optional)  (bool) - true to size to content.
         ///
         /// \return A string.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static string Show(string labelString, string title = "", Icons imageIcon = Icons.Info, List<Button> buttons = null)
+        public static string Show(string labelString, string title = "", Icons imageIcon = Icons.Info, List<Button> buttons = null, bool sizeToContent = false)
         {
             List<Control> controls = new List<Control>();
             controls.Add(SetLabel(labelString));
-            return Show(controls, title, buttons, imageIcon);
+            return Show(controls, title, buttons, imageIcon, sizeToContent);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -681,14 +704,14 @@ namespace DistributedAlgorithms
         /// \return A string.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static string Show (List<Control> controls, string title, List<string> buttonsStrs, Icons imageIcon)
+        public static string Show (List<Control> controls, string title, List<string> buttonsStrs, Icons imageIcon, bool sizeToContent = false)
         {
             List<Button> buttons = new List<Button>();
             foreach (string buttonStr in buttonsStrs)
             {
                 buttons.Add(SetButton(buttonStr));
             }
-            return Show(controls, title, buttons, imageIcon);
+            return Show(controls, title, buttons, imageIcon, sizeToContent);
         }
         #endregion
         #region /// \name FileMsg interfaces
@@ -780,7 +803,8 @@ namespace DistributedAlgorithms
             string path,
             string error,
             string title,
-            List<string> buttonsStrings = null)
+            List<string> buttonsStrings = null,
+            bool sizeToContent = false)
         {
             List<Control> controls = new List<Control>();
             controls.Add(SetLabel(beforeString));
@@ -802,7 +826,7 @@ namespace DistributedAlgorithms
                     buttons.Add(SetButton(buttonString));
                 }
             }
-            return Show(controls, title, buttons, Icons.Error);
+            return Show(controls, title, buttons, Icons.Error, sizeToContent);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -856,11 +880,11 @@ namespace DistributedAlgorithms
         #region /// \name Building using MessageBoxElementData
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public static void Show(List<MessageBoxElementData> labels, string title = "", List<MessageBoxElementData> buttons = null, Icons imageIcon = Icons.Info)
+        /// \fn public static string Show(List<MessageBoxElementData> labels, string title = "", List<MessageBoxElementData> buttons = null, Icons imageIcon = Icons.Info, bool sizeToContent = false)
         ///
         /// \brief Shows.
         ///        A customizedMessageBox for using in the running phase (The algorithm implementation)
-        ///        Allows formating of the labels and buttons
+        ///        Allows formating of the labels and buttons.
         ///
         /// \par Description.
         ///
@@ -871,15 +895,19 @@ namespace DistributedAlgorithms
         /// \author Ilanh
         /// \date 16/04/2018
         ///
-        /// \param labels     (List&lt;MessageBoxElementData&gt;) - The labels.
-        /// \param title     (Optional)  (string) - The title.
-        /// \param buttons   (Optional)  (List&lt;MessageBoxElementData&gt;) - The buttons.
-        /// \param imageIcon (Optional)  (Icons) - The image icon.
+        /// \param labels        (List&lt;MessageBoxElementData&gt;) - The labels.
+        /// \param title         (Optional)  (string) - The title.
+        /// \param buttons       (Optional)  (List&lt;MessageBoxElementData&gt;) - The buttons.
+        /// \param imageIcon     (Optional)  (Icons) - The image icon.
+        /// \param sizeToContent (Optional)  (bool) - true to size to content.
+        ///
+        /// \return A string.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static void Show(List<MessageBoxElementData> labels, 
+        public static string Show(List<MessageBoxElementData> labels, 
             string title = "", List<MessageBoxElementData> buttons = null,
-            Icons imageIcon = Icons.Info)
+            Icons imageIcon = Icons.Info,
+            bool sizeToContent = false)
         {
             List<Control> messageBoxLabels = new List<Control>();
             List<Button> messageBoxButtons = new List<Button>();
@@ -901,7 +929,7 @@ namespace DistributedAlgorithms
                     messageBoxButtons.Add(SetButton(data.label, data.font));
                 }
             }
-            Show(messageBoxLabels, title, messageBoxButtons, imageIcon);
+            return Show(messageBoxLabels, title, messageBoxButtons, imageIcon, sizeToContent);
         }
         #endregion
         #region /// \name Utility methods
@@ -1011,7 +1039,6 @@ namespace DistributedAlgorithms
         {
             TextBox textBox = new TextBox();
             textBox.Text = text;
-            textBox.TextWrapping = TextWrapping.Wrap;
             textBox.Margin = new Thickness(1);
             textBox.Padding = new Thickness(2);
             textBox.BorderThickness = new Thickness(1);
@@ -1019,7 +1046,7 @@ namespace DistributedAlgorithms
             textBox.Effect = null;
             if (font == null)
             {
-                font = new Font("Calibbri", 16, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, Brushes.Black, Brushes.White);
+                font = new Font("Calibbri", 16, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, Brushes.Black, Brushes.White, TextWrapping.Wrap);
             }
 
             textBox.Effect = null;
@@ -1058,7 +1085,7 @@ namespace DistributedAlgorithms
             button.Content = text;
             if (font == null)
             {
-                font = new Font("Calibbri", 16, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, Brushes.Black, Brushes.White);
+                font = new Font("Calibbri", 16, FontStyles.Normal, FontWeights.Normal, new Thickness(0), HorizontalAlignment.Left, Brushes.Black, Brushes.White, TextWrapping.NoWrap);
             }
             button.HorizontalAlignment = HorizontalAlignment.Stretch;
             if (width != 0) button.Width = width;

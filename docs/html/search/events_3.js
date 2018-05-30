@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['messageboxevent',['MessageBoxEvent',['../class_distributed_algorithms_1_1_message_router.html#ac28b1ae5796eabd063a9ecc984a82351',1,'DistributedAlgorithms::MessageRouter']]]
+  ['newitemcreated',['NewItemCreated',['../class_distributed_algorithms_1_1_select_control.html#a1f41496364d92f61ec8d2289761243bc',1,'DistributedAlgorithms::SelectControl']]]
 ];

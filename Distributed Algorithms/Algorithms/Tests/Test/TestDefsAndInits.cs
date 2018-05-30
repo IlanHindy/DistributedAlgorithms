@@ -9,6 +9,16 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 	public class m
 	{
  
+		public enum baseMessage
+		{
+	
+		}
+ 
+		public enum algorithmMessage
+		{
+	
+		}
+ 
 		public enum message1
 		{
 			PrevAttr, S1
@@ -16,7 +26,7 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
  
 		public enum MessageTypes
 		{
-			Message1
+			BaseMessage, AlgorithmMessage, Message1
 		}
 	}
 	#endregion
@@ -24,6 +34,44 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 	#region /// \name partial class for TestProcess
 	public partial class TestProcess: BaseProcess
 	{
+ 
+		public AttributeDictionary MessageDataFor_BaseMessage( bm.PrmSource prmSource = bm.PrmSource.Default,
+			AttributeDictionary dictionary = null)
+		{
+ 
+			if ( prmSource == bm.PrmSource.MainPrm)
+			{
+				return dictionary;
+			}
+			dictionary = new AttributeDictionary();
+			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Tests.Test.m+ork_baseMessage";
+ 
+			if ( prmSource == bm.PrmSource.Default)
+			{
+				return dictionary;
+			} 
+
+			return dictionary;
+		}
+ 
+		public AttributeDictionary MessageDataFor_AlgorithmMessage( bm.PrmSource prmSource = bm.PrmSource.Default,
+			AttributeDictionary dictionary = null)
+		{
+ 
+			if ( prmSource == bm.PrmSource.MainPrm)
+			{
+				return dictionary;
+			}
+			dictionary = new AttributeDictionary();
+			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Tests.Test.m+ork_algorithmMessage";
+ 
+			if ( prmSource == bm.PrmSource.Default)
+			{
+				return dictionary;
+			} 
+
+			return dictionary;
+		}
  
 		public AttributeDictionary MessageDataFor_Message1( bm.PrmSource prmSource = bm.PrmSource.Default,
 			AttributeDictionary dictionary = null,
@@ -50,15 +98,43 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 			return dictionary;
 		}
  
+		public void SendBaseMessage(AttributeDictionary  fields = null, 
+			SelectingMethod selectingMethod = SelectingMethod.All,
+			List<int> ids = null,
+			int round = -1,
+			int clock = -1)
+		{
+			if(fields is null)
+			{
+				MessageDataFor_BaseMessage();
+			}
+			Send(m.MessageTypes.BaseMessage, fields, selectingMethod, ids, round, clock);
+		}
+ 
+		public void SendAlgorithmMessage(AttributeDictionary  fields = null, 
+			SelectingMethod selectingMethod = SelectingMethod.All,
+			List<int> ids = null,
+			int round = -1,
+			int clock = -1)
+		{
+			if(fields is null)
+			{
+				MessageDataFor_AlgorithmMessage();
+			}
+			Send(m.MessageTypes.AlgorithmMessage, fields, selectingMethod, ids, round, clock);
+		}
+ 
 		public void SendMessage1(AttributeDictionary  fields = null, 
 			SelectingMethod selectingMethod = SelectingMethod.All,
-			List<int> ids = null)
+			List<int> ids = null,
+			int round = -1,
+			int clock = -1)
 		{
 			if(fields is null)
 			{
 				MessageDataFor_Message1();
 			}
-			Send(m.MessageTypes.Message1, fields, selectingMethod, ids, 0, 0);
+			Send(m.MessageTypes.Message1, fields, selectingMethod, ids, round, clock);
 		}
 	}
 	#endregion
@@ -84,6 +160,8 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 	{
 		const string prevAttr = "PrevAttr";
 		const string s1 = "S1";
+		const m.MessageTypes BaseMessage = m.MessageTypes.BaseMessage;
+		const m.MessageTypes AlgorithmMessage = m.MessageTypes.AlgorithmMessage;
 		const m.MessageTypes Message1 = m.MessageTypes.Message1;
 		const string type = "Type";
 		const string edited = "Edited";
@@ -95,6 +173,8 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		const string singleStepStatus = "SingleStepStatus";
 		const string name = "Name";
 		const string initiator = "Initiator";
+		const string maxRound = "MaxRound";
+		const string runGetSetTest = "RunGetSetTest";
 		const string testList = "TestList";
 		const string testDictionary = "TestDictionary";
 		const string testNetworkElement = "TestNetworkElement";
@@ -165,7 +245,7 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		{
 			AttributeDictionary dictionary = pa;
 			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Tests.Test.n+pak";
-			dictionary.Add(n.pak.Version, new Attribute { Value = 6 ,Editable = false ,Changed = false } );
+			dictionary.Add(n.pak.Version, new Attribute { Value = 13 ,Editable = false ,Changed = false } );
 			base.InitPrivateAttributes();
 		}
  
@@ -184,7 +264,7 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
  
 		public enum pak
 		{
-	
+			MaxRound, RunGetSetTest
 		}
  
 		public enum ork_testDictionary
@@ -209,6 +289,8 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 	{
 		const string prevAttr = "PrevAttr";
 		const string s1 = "S1";
+		const m.MessageTypes BaseMessage = m.MessageTypes.BaseMessage;
+		const m.MessageTypes AlgorithmMessage = m.MessageTypes.AlgorithmMessage;
 		const m.MessageTypes Message1 = m.MessageTypes.Message1;
 		const string type = "Type";
 		const string edited = "Edited";
@@ -220,6 +302,8 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		const string singleStepStatus = "SingleStepStatus";
 		const string name = "Name";
 		const string initiator = "Initiator";
+		const string maxRound = "MaxRound";
+		const string runGetSetTest = "RunGetSetTest";
 		const string testList = "TestList";
 		const string testDictionary = "TestDictionary";
 		const string testNetworkElement = "TestNetworkElement";
@@ -257,6 +341,18 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		const string messagesFrameWidth = "MessagesFrameWidth";
 		const string messagesBackground = "MessagesBackground";
 		const string messagesForeground = "MessagesForeground";
+ 
+		public System.Int32 MaxRound
+		{
+			 get { return pa[p.pak.MaxRound]; }
+			 set { pa[p.pak.MaxRound] = value; }
+		}
+ 
+		public System.Boolean RunGetSetTest
+		{
+			 get { return pa[p.pak.RunGetSetTest]; }
+			 set { pa[p.pak.RunGetSetTest] = value; }
+		}
  
 		public System.String S1
 		{
@@ -304,6 +400,8 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		{
 			AttributeDictionary dictionary = pa;
 			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Tests.Test.p+pak";
+			dictionary.Add(p.pak.MaxRound, new Attribute { Value = 5 ,Changed = false } );
+			dictionary.Add(p.pak.RunGetSetTest, new Attribute { Value = false ,Changed = false } );
 			base.InitPrivateAttributes();
 		}
 		protected AttributeList Init_ork_TestList()
@@ -372,6 +470,8 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 	{
 		const string prevAttr = "PrevAttr";
 		const string s1 = "S1";
+		const m.MessageTypes BaseMessage = m.MessageTypes.BaseMessage;
+		const m.MessageTypes AlgorithmMessage = m.MessageTypes.AlgorithmMessage;
 		const m.MessageTypes Message1 = m.MessageTypes.Message1;
 		const string type = "Type";
 		const string edited = "Edited";
@@ -383,6 +483,8 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 		const string singleStepStatus = "SingleStepStatus";
 		const string name = "Name";
 		const string initiator = "Initiator";
+		const string maxRound = "MaxRound";
+		const string runGetSetTest = "RunGetSetTest";
 		const string testList = "TestList";
 		const string testDictionary = "TestDictionary";
 		const string testNetworkElement = "TestNetworkElement";

@@ -333,20 +333,20 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
         #region /// \name algorithm utility methods
         public string InChannelStatus()
         {
-            string s = "Channel From " + pa[bc.eak.SourceProcess].ToString() + " : ";
+            string s = "Channel From " + ea[bc.eak.SourceProcess].ToString() + " : ";
             s += "Arrived - " + or[c.ork.Arrived].ToString() + "; ";
             s += "Expected - " + or[c.ork.Expected].ToString() + "; ";
             s += "State - ";
             foreach (BaseMessage message in or[c.ork.State])
             {
-                s += message.GetHeaderField(bm.ork.MessageName);
+                s += message.GetHeaderField(bm.ork.Name);
             }
             return s;
         }
 
         public string OutChannelStatus()
         {
-            string s = "Channel To " + pa[bc.eak.DestProcess].ToString() + " : ";
+            string s = "Channel To " + ea[bc.eak.DestProcess].ToString() + " : ";
             s += "Sent - " + or[c.ork.Sent].ToString();
             return s;
         }

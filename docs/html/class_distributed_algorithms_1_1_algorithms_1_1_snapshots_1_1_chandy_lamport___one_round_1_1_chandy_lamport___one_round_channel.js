@@ -36,7 +36,7 @@ var class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport
     [ "algorithm", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1_chandy_lamport___one_round_channel.html#aa9e88f279fbb9f9124fc3d517c37ffea", null ],
     [ "centrilized", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1_chandy_lamport___one_round_channel.html#a4d5db0a5c779b3e1b2625339411f471b", null ],
     [ "directedNetwork", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1_chandy_lamport___one_round_channel.html#adbd6e730294322867f36bccb13b01d60", null ],
-    [ "version", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1_chandy_lamport___one_round_channel.html#a5815988cae6f2db54831ec57c0b5098d", null ],
+    [ "version", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1_chandy_lamport___one_round_channel.html#ad29fc3ec57bd607ad64aecd888ec3035", null ],
     [ "singleStepStatus", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1_chandy_lamport___one_round_channel.html#a14db75f32acebda0ac45b6dc8e22be29", null ],
     [ "name", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1_chandy_lamport___one_round_channel.html#ae5930598a941b74ad795ec347d9ae5f8", null ],
     [ "initiator", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1_chandy_lamport___one_round_channel.html#a388f0e1929def090e2fff6f06b1ec0e3", null ],

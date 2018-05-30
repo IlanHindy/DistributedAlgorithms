@@ -10,6 +10,7 @@ var searchData=
   ['chandylamportmessage_2ecs',['ChandyLamportMessage.cs',['../_chandy_lamport_2_chandy_lamport_message_8cs.html',1,'(Global Namespace)'],['../_chandy_lamport_01-_01_backup_2_chandy_lamport_message_8cs.html',1,'(Global Namespace)'],['../old_2_chandy_lamport_2_chandy_lamport_message_8cs.html',1,'(Global Namespace)']]],
   ['chandylamportnetwork_2ecs',['ChandyLamportNetwork.cs',['../_chandy_lamport_2_chandy_lamport_network_8cs.html',1,'(Global Namespace)'],['../_chandy_lamport_01-_01_backup_2_chandy_lamport_network_8cs.html',1,'(Global Namespace)'],['../old_2_chandy_lamport_2_chandy_lamport_network_8cs.html',1,'(Global Namespace)']]],
   ['chandylamportprocess_2ecs',['ChandyLamportProcess.cs',['../_chandy_lamport_2_chandy_lamport_process_8cs.html',1,'(Global Namespace)'],['../_chandy_lamport_01-_01_backup_2_chandy_lamport_process_8cs.html',1,'(Global Namespace)'],['../old_2_chandy_lamport_2_chandy_lamport_process_8cs.html',1,'(Global Namespace)']]],
+  ['changemessageorder_2ecs',['ChangeMessageOrder.cs',['../_change_message_order_8cs.html',1,'']]],
   ['channelpresentation_2ecs',['ChannelPresentation.cs',['../_channel_presentation_8cs.html',1,'']]],
   ['checks_2edox',['Checks.dox',['../_checks_8dox.html',1,'']]],
   ['classfactory_2ecs',['ClassFactory.cs',['../_class_factory_8cs.html',1,'']]],

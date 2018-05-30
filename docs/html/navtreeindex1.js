@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"_socket_state_object_8cs.html":[13,0,1,2,3],
+"_socket_state_object_8cs_source.html":[13,0,1,2,3],
 "_source_target_algorithms_select_8xaml_8cs.html":[13,0,6,2,4],
 "_source_target_algorithms_select_8xaml_8cs_source.html":[13,0,6,2,4],
 "_syntax_highlight_8xaml_8cs.html":[13,0,6,3,6],
@@ -242,12 +244,10 @@ var NAVTREEINDEX1 =
 "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#ab76affa8e6c0a1429c3d16a3b7099a61":[12,0,1,0,0,0,1,4],
 "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#ac00345660f0389fdb1484d4f9f12f9f3":[12,0,1,0,0,0,1,22],
 "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#ac2603d35e73fb62442e4630af14f6e86":[12,0,1,0,0,0,1,21],
+"class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#ac91dd741cbc6d97d73c3e16daa110b0d":[12,0,1,0,0,0,1,29],
 "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#accbedb1c658ca93d6b2f892d0642cfe9":[12,0,1,0,0,0,1,20],
 "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#ad5aed10265db731b1798127bb339548f":[12,0,1,0,0,0,1,24],
 "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#adb3e6785bf696dfb946ba6a2ddd894b3":[12,0,1,0,0,0,1,23],
-"class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#ae24ec2e27d5a1c0e81dc26e81493ecd0":[12,0,1,0,0,0,1,29],
 "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#ae2a1a900022afb06b9fc157467922fd3":[12,0,1,0,0,0,1,18],
-"class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#aed69d793e8a37b51d0e038ba5e60b5ee":[12,0,1,0,0,0,1,3],
-"class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#aeeefcedbfde0bef65bf6fb1e07c67a30":[12,0,1,0,0,0,1,5],
-"class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#aff3647e5df1f8ec04a1b11ce72de7cfc":[12,0,1,0,0,0,1,15]
+"class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#aed69d793e8a37b51d0e038ba5e60b5ee":[12,0,1,0,0,0,1,3]
 };

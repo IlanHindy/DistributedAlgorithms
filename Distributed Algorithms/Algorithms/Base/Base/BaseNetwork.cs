@@ -964,7 +964,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             {
                 BuildCorrectionParameters buildCorrectionParameter = new BuildCorrectionParameters();
                 buildCorrectionParameter.CorrectionMethod = CorrectCentrilizedParameters;
-                buildCorrectionParameter.ErrorMessage = "The Centrilized structure of the network is wrong ";
+                buildCorrectionParameter.ErrorMessage = "The Centralized structure of the network is wrong ";
 
                 buildCorrectionsParameters.Add(buildCorrectionParameter);
             }
@@ -973,7 +973,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \fn private void CorrectCentrilizedParameters(object parameters)
         ///
-        /// \brief Correct centrilized parameters.
+        /// \brief Correct centralized parameters.
         ///
         /// \par Description.
         ///        Correct the centralized parameter using dialogs.
@@ -1236,6 +1236,13 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
                 BaseProcess destProcess = Processes.First(p => p.ea[ne.eak.Id] == destProcessId);
                 Channels[idx].AddOrReplaceOperationResult(bc.ork.DestPort, destProcess.or[bp.ork.ReceivePort], false);
                 destProcess.IncommingChannels.Add(Channels[idx]);
+
+                // Handle MessageQ events
+                GridView channelGridView = (GridView)Channels[idx].Presentation.presentationElements[Channels[idx]].controls[PresentationElement.ControlKeys.MessagesGridView];
+                channelGridView.ChangeFinishedEvent = null;
+                channelGridView.ChangeFinishedEvent += ((ChangeMessageOrder)destProcess.op[bp.opk.ChangeOrderEvents]).RecordOrderChange;
+                channelGridView.ChangeFinishedEvent += ((MessageQ)destProcess.or[bp.ork.MessageQ]).ChangeOrder;
+
             }
         }
 

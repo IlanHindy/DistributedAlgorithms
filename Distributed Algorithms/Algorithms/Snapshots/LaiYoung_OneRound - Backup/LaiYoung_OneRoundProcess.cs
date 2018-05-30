@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DistributedAlgorithms.Algorithms.Base.Base;
 using System.Drawing;
+using System.Windows.Controls;
+using System.Windows;
 
 namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 {
@@ -347,7 +349,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
         /// \par Description.
         /// -#  This method is activated when a new message arrived to the process
         /// -#  The method processing is done according to their arrival order
-        /// -#  If you want to change the order of processing use the ArrangeMessageQueue
+        /// -#  If you want to change the order of processing use the ArrangeMessageQ
         ///
         /// \par Algorithm.
         ///
@@ -388,6 +390,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
                     break;
                 case m.MessageTypes.Presnp:
                     channel.or[c.ork.Expected] = message.GetField(m.presnp.NumMsg);
+                    TakeSnapshot();
                     if (Finished())
                     {
                         PrintResults();
@@ -397,7 +400,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn protected override void ArrangeMessageQueue(ref AttributeList messageQueue)
+        /// \fn public override void ArrangeMessageQ(MessageQ messageQueue)
         ///
         /// \brief Arrange the order of processing of the messages
         ///
@@ -417,13 +420,13 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
         /// \param messageQueue       The message queue.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected override void ArrangeMessageQueue(ref AttributeList messageQueue)
+        public override void ArrangeMessageQ(MessageQ messageQueue)
         {
-            base.ArrangeMessageQueue(ref messageQueue);
+            base.ArrangeMessageQ(messageQueue);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn protected override bool MessageProcessingCondition(BaseMessage message)
+        /// \fn public override bool MessageProcessingCondition(BaseMessage message)
         ///
         /// \brief Decide whether to process the first message in the message queue
         ///
@@ -442,7 +445,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
         /// \param message       The message.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected override bool MessageProcessingCondition(BaseMessage message)
+        public override bool MessageProcessingCondition(BaseMessage message)
         {
             return base.MessageProcessingCondition(message);
         }
@@ -518,7 +521,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
         /// \param dummy (Optional)  (DummyForInternalEvent) - The dummy.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public void DefaultInternalEventHandler(InternalEvent.DummyForInternalEvent dummy = null)
+        public void DefaultInternalEventHandler(InternalEvents.DummyForInternalEvent dummy = null)
         { }
         #endregion
         #region /// \name Base Algorithm Events
@@ -571,7 +574,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
         /// \date 20/12/2017
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected override void InitBaseAlgorithmEvents()
+        protected override void InitBaseAlgorithm()
         {
         }
 
@@ -634,7 +637,17 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 
         protected override void BeforeSendOperation(BaseMessage message)
         {
-
+            LaiYoung_OneRoundChannel channel = (LaiYoung_OneRoundChannel)ChannelTo(message);
+            channel.or[c.ork.Sent]++;
+            switch (message.GetHeaderField(bm.pak.MessageType))
+            {
+                case m.MessageTypes.BaseMessage:
+                    message.AddField(m.baseMessage.Flag, or[p.ork.Recordered]);
+                    break;
+                case m.MessageTypes.Presnp:
+                    message.AddField(m.presnp.NumMsg, channel.or[c.ork.Sent]);
+                    break;
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -737,30 +750,86 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
             }
             return true;
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public void TakeSnapshot()
+        ///
+        /// \brief Take snapshot.
+        ///
+        /// \par Description.
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 15/04/2018
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void TakeSnapshot()
         {
             if (!or[p.ork.Recordered])
             {
                 or[p.ork.Recordered] = true;
-                or[p.ork.Snapshot] = RecordSnapshot("Snapshot time");
                 foreach (LaiYoung_OneRoundChannel channel in OutChannels)
                 {
-                    SendPresnp(MessageDataFor_Presnp(bm.PrmSource.Prms, null, channel.or[c.ork.Sent]), channel.ea[bc.eak.DestProcess]);
+                    SendPresnp(MessageDataFor_Presnp(bm.PrmSource.Prms, null, 0), 
+                        SelectingMethod.Include, new List<int> { channel.ea[bc.eak.DestProcess] });
                 }
+                or[p.ork.Snapshot] = RecordSnapshot();
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public void PrintResults()
+        ///
+        /// \brief Print results.
+        ///
+        /// \par Description.
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 15/04/2018
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void PrintResults()
         {
-            string s = "Processor " + or[ne.eak.Id].ToString() + " Finished";
-            s += "\n" + or[p.ork.Snapshot];
-            s += "\n" + RecordSnapshot("End time");
-            MessageRouter.MessageBox(new List<string> { s }, "LaiYoung message");
+            List<MessageBoxElementData> labels = new List<MessageBoxElementData>();
+            string s = "Processor " + ea[ne.eak.Id].ToString() + " Finished";
+            labels.Add(new MessageBoxElementData (s, new Font { fontWeight = FontWeights.Bold, fontSize = 20 } ));
+            labels.Add(new MessageBoxElementData("Snapshot Time :", new Font { fontWeight = FontWeights.Bold, fontSize = 16 }));
+            labels.Add(new MessageBoxElementData(or[p.ork.Snapshot]));
+            labels.Add(new MessageBoxElementData(""));
+            labels.Add(new MessageBoxElementData("End Time :", new Font { fontWeight = FontWeights.Bold, fontSize = 16 }));
+            labels.Add(new MessageBoxElementData( RecordSnapshot()));
+            MessageRouter.CustomizedMessageBox(labels, "LaiYoung message");
         }
 
-        public string RecordSnapshot(string header)
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public string RecordSnapshot(string header)
+        ///
+        /// \brief Record snapshot.
+        ///
+        /// \par Description.
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 15/04/2018
+        ///
+        /// \param header  (string) - The header.
+        ///
+        /// \return A string.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public string RecordSnapshot()
         {
-            string s = header + "\n In Channels status :";
+            string s = "In Channels status :";
             foreach (LaiYoung_OneRoundChannel channel in InChannels)
             {
                 s += "\n" + channel.InChannelStatus();

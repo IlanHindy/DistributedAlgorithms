@@ -109,6 +109,7 @@ var hierarchy =
       [ "DistributedAlgorithms.AttributeList", "class_distributed_algorithms_1_1_attribute_list.html", [
         [ "DistributedAlgorithms.BaseAlgorithmHandler", "class_distributed_algorithms_1_1_base_algorithm_handler.html", null ],
         [ "DistributedAlgorithms.BaseAlgorithmMessages", "class_distributed_algorithms_1_1_base_algorithm_messages.html", null ],
+        [ "DistributedAlgorithms.ChangeMessageOrder", "class_distributed_algorithms_1_1_change_message_order.html", null ],
         [ "DistributedAlgorithms.InternalEvents", "class_distributed_algorithms_1_1_internal_events.html", null ],
         [ "DistributedAlgorithms.InternalEventsHandler", "class_distributed_algorithms_1_1_internal_events_handler.html", null ],
         [ "DistributedAlgorithms.MessageQ", "class_distributed_algorithms_1_1_message_q.html", null ]
@@ -200,8 +201,8 @@ var hierarchy =
     ] ],
     [ "DistributedAlgorithms.ListExtensions", "class_distributed_algorithms_1_1_list_extensions.html", null ],
     [ "DistributedAlgorithms.Logger", "class_distributed_algorithms_1_1_logger.html", null ],
-    [ "DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound.m", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1m.html", null ],
     [ "DistributedAlgorithms.Algorithms.Waves.EchoImproved.m", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_improved_1_1m.html", null ],
+    [ "DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound.m", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1m.html", null ],
     [ "DistributedAlgorithms.Algorithms.Templates.Template.m", "class_distributed_algorithms_1_1_algorithms_1_1_templates_1_1_template_1_1m.html", null ],
     [ "DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport.m", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1m.html", null ],
     [ "DistributedAlgorithms.Algorithms.Tests.Test.m", "class_distributed_algorithms_1_1_algorithms_1_1_tests_1_1_test_1_1m.html", null ],
@@ -210,20 +211,20 @@ var hierarchy =
     [ "DistributedAlgorithms.MessageBoxElementData", "class_distributed_algorithms_1_1_message_box_element_data.html", null ],
     [ "DistributedAlgorithms.MessageRouter", "class_distributed_algorithms_1_1_message_router.html", null ],
     [ "DistributedAlgorithms.MethodsLists", "class_distributed_algorithms_1_1_methods_lists.html", null ],
-    [ "DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound.n", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1n.html", null ],
-    [ "DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport.n", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1n.html", null ],
-    [ "DistributedAlgorithms.Algorithms.Templates.Template.n", "class_distributed_algorithms_1_1_algorithms_1_1_templates_1_1_template_1_1n.html", null ],
     [ "DistributedAlgorithms.Algorithms.Waves.EchoImproved.n", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_improved_1_1n.html", null ],
+    [ "DistributedAlgorithms.Algorithms.Templates.Template.n", "class_distributed_algorithms_1_1_algorithms_1_1_templates_1_1_template_1_1n.html", null ],
+    [ "DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound.n", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1n.html", null ],
     [ "DistributedAlgorithms.Algorithms.Tests.Test.n", "class_distributed_algorithms_1_1_algorithms_1_1_tests_1_1_test_1_1n.html", null ],
+    [ "DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport.n", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1n.html", null ],
     [ "DistributedAlgorithms.Algorithms.Waves.Echo.n", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1n.html", null ],
     [ "DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound.n", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lai_young___one_round_1_1n.html", null ],
     [ "DistributedAlgorithms.ne", "class_distributed_algorithms_1_1ne.html", null ],
     [ "DistributedAlgorithms.NewValueControlPrms", "class_distributed_algorithms_1_1_new_value_control_prms.html", null ],
-    [ "DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound.p", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lai_young___one_round_1_1p.html", null ],
     [ "DistributedAlgorithms.Algorithms.Waves.EchoImproved.p", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_improved_1_1p.html", null ],
     [ "DistributedAlgorithms.Algorithms.Templates.Template.p", "class_distributed_algorithms_1_1_algorithms_1_1_templates_1_1_template_1_1p.html", null ],
-    [ "DistributedAlgorithms.Algorithms.Waves.Echo.p", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1p.html", null ],
     [ "DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound.p", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport___one_round_1_1p.html", null ],
+    [ "DistributedAlgorithms.Algorithms.Waves.Echo.p", "class_distributed_algorithms_1_1_algorithms_1_1_waves_1_1_echo_1_1p.html", null ],
+    [ "DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound.p", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_lai_young___one_round_1_1p.html", null ],
     [ "DistributedAlgorithms.Algorithms.Tests.Test.p", "class_distributed_algorithms_1_1_algorithms_1_1_tests_1_1_test_1_1p.html", null ],
     [ "DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport.p", "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1p.html", null ],
     [ "DistributedAlgorithms.Breakpoint.Parameters", "class_distributed_algorithms_1_1_breakpoint_1_1_parameters.html", null ],
@@ -253,6 +254,11 @@ var hierarchy =
     ] ],
     [ "DistributedAlgorithms.ValueHolder", "class_distributed_algorithms_1_1_value_holder.html", null ],
     [ "Window", null, [
+      [ "DistributedAlgorithms.DocumentHandler", "class_distributed_algorithms_1_1_document_handler.html", null ],
+      [ "DistributedAlgorithms.ListInput", "class_distributed_algorithms_1_1_list_input.html", null ],
+      [ "DistributedAlgorithms.Test", "class_distributed_algorithms_1_1_test.html", null ]
+    ] ],
+    [ "Window", null, [
       [ "Distributed_Algorithms.MainWindow", "class_distributed___algorithms_1_1_main_window.html", null ],
       [ "DistributedAlgorithms.CreateAttributeDialog", "class_distributed_algorithms_1_1_create_attribute_dialog.html", null ],
       [ "DistributedAlgorithms.CustomizedMessageBox", "class_distributed_algorithms_1_1_customized_message_box.html", null ],
@@ -268,11 +274,6 @@ var hierarchy =
       [ "DistributedAlgorithms.SelectDialog", "class_distributed_algorithms_1_1_select_dialog.html", null ],
       [ "DistributedAlgorithms.SourceTargetAlgorithmsSelect", "class_distributed_algorithms_1_1_source_target_algorithms_select.html", null ],
       [ "DistributedAlgorithms.WordDocumentsPresenter", "class_distributed_algorithms_1_1_word_documents_presenter.html", null ]
-    ] ],
-    [ "Window", null, [
-      [ "DistributedAlgorithms.DocumentHandler", "class_distributed_algorithms_1_1_document_handler.html", null ],
-      [ "DistributedAlgorithms.ListInput", "class_distributed_algorithms_1_1_list_input.html", null ],
-      [ "DistributedAlgorithms.Test", "class_distributed_algorithms_1_1_test.html", null ]
     ] ],
     [ "DistributedAlgorithms.WordDocumentHolder", "class_distributed_algorithms_1_1_word_document_holder.html", null ]
 ];

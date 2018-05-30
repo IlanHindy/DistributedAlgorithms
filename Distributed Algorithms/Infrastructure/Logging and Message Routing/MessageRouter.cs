@@ -42,8 +42,11 @@ namespace DistributedAlgorithms
         /** Event queue for all listeners interested in addEditOperation events. */
         public static event EventHandler<object[]> AddEditOperationEvent;
         public static event EventHandler<object[]> AddEditOperationResultEvent;
-        public static event EventHandler<object[]> MessageBoxEvent;
-        public static event EventHandler<object[]> CustomizedMessageBoxEvent;
+        //public static event EventHandler<object[]> MessageBoxEvent;
+        public delegate string MessageBoxDelegate(object sender, object[] prms);
+        public static event MessageBoxDelegate MessageBoxEvent;
+        public static event MessageBoxDelegate CustomizedMessageBoxEvent;
+        //public static event EventHandler<object[]> CustomizedMessageBoxEvent;
 
         /**********************************************************************************************//**
          * Reports finish running.
@@ -185,14 +188,14 @@ namespace DistributedAlgorithms
             AddEditOperationResultEvent(null, new object[] { result, font });
         }
 
-        public static void MessageBox(List<string> labelsStrings, string title = "", List<string> buttonsStrings = null, Icons imageIcon = Icons.Info)
+        public static string MessageBox(List<string> labelsStrings, string title = "", List<string> buttonsStrings = null, Icons imageIcon = Icons.Info, bool sizeToContent = false)
         {
-            MessageBoxEvent(null, new object[] { labelsStrings, title, buttonsStrings, imageIcon });            
+            return MessageBoxEvent(null, new object[] { labelsStrings, title, buttonsStrings, imageIcon, sizeToContent });            
         }
 
-        public static void CustomizedMessageBox(List<MessageBoxElementData> labels, string title = null, List<MessageBoxElementData> buttons = null, Icons imageIcon = Icons.Info)
+        public static string CustomizedMessageBox(List<MessageBoxElementData> labels, string title = null, List<MessageBoxElementData> buttons = null, Icons imageIcon = Icons.Info, bool sizeToContent = false)
         {
-            CustomizedMessageBoxEvent(null, new object[] { labels, title, buttons, imageIcon });
+            return CustomizedMessageBoxEvent(null, new object[] { labels, title, buttons, imageIcon, sizeToContent });
         }
     }
 }

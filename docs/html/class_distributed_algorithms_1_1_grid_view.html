@@ -80,17 +80,13 @@ $(document).ready(function(){initNavTree('class_distributed_algorithms_1_1_grid_
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#events">Events</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_distributed_algorithms_1_1_grid_view-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">DistributedAlgorithms.GridView Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Interaction logic for GridView.xaml  
+<p>Interaction logic for GridView.xaml.  
  <a href="class_distributed_algorithms_1_1_grid_view.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for DistributedAlgorithms.GridView:</div>
@@ -103,63 +99,113 @@ Inheritance diagram for DistributedAlgorithms.GridView:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7b5612beeaacf9c5b3ca08d9217c5031"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a7b5612beeaacf9c5b3ca08d9217c5031">DrageFinished</a> (List&lt; int &gt; <a class="el" href="class_distributed_algorithms_1_1_grid_view.html#abcb7cdeec0815d8da8a47b39d706fa22">permutations</a>)</td></tr>
-<tr class="separator:a7b5612beeaacf9c5b3ca08d9217c5031"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17a49f8523dee0c2739dba09a003b586"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a17a49f8523dee0c2739dba09a003b586">GridView</a> (Canvas <a class="el" href="class_distributed_algorithms_1_1_grid_view.html#ae6bf912d23b4f9031327625a79fb421c">canvas</a>, List&lt; string &gt; content)</td></tr>
-<tr class="separator:a17a49f8523dee0c2739dba09a003b586"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5d84908d5f99d2447ad2e40f2181880"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#ac5d84908d5f99d2447ad2e40f2181880">ReplaceContent</a> (List&lt; string &gt; content)</td></tr>
-<tr class="separator:ac5d84908d5f99d2447ad2e40f2181880"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa28fa36bdcef0362dcd4c574b52a1ce4"><td class="memItemLeft" align="right" valign="top">Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#aa28fa36bdcef0362dcd4c574b52a1ce4">GetDimentions</a> ()</td></tr>
-<tr class="separator:aa28fa36bdcef0362dcd4c574b52a1ce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7af63c08733eaf1309c4ba4eeec92048"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a7af63c08733eaf1309c4ba4eeec92048">MoveToFront</a> ()</td></tr>
-<tr class="separator:a7af63c08733eaf1309c4ba4eeec92048"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42ebdb481107fa5a996ea41770ff7ee6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a42ebdb481107fa5a996ea41770ff7ee6">Move</a> (int fromIdx, int toIdx)</td></tr>
-<tr class="separator:a42ebdb481107fa5a996ea41770ff7ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="events"></a>
-Events</h2></td></tr>
-<tr class="memitem:a08f46917bb877f41b0a0490138f9654a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a7b5612beeaacf9c5b3ca08d9217c5031">DrageFinished</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a08f46917bb877f41b0a0490138f9654a">DragFinishedEvent</a></td></tr>
-<tr class="separator:a08f46917bb877f41b0a0490138f9654a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Constructor and change content</div></td></tr>
+<tr class="memitem:a4c3e6939d33b4b859427bdf3d9a6074a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a4c3e6939d33b4b859427bdf3d9a6074a">GridView</a> (Canvas <a class="el" href="class_distributed_algorithms_1_1_grid_view.html#ae6bf912d23b4f9031327625a79fb421c">canvas</a>, List&lt; string &gt; content, int <a class="el" href="class_distributed_algorithms_1_1_grid_view.html#ac79b892e7897ceaf7aafac7c051686d7">presentedItemId</a>, <a class="el" href="class_distributed_algorithms_1_1_grid_view.html#accae6e613bd1e1752a441b91798778ba">PresentPermutation</a> presentPermutationFunc)</td></tr>
+<tr class="memdesc:a4c3e6939d33b4b859427bdf3d9a6074a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a4c3e6939d33b4b859427bdf3d9a6074a">More...</a><br /></td></tr>
+<tr class="separator:a4c3e6939d33b4b859427bdf3d9a6074a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5670fd582786ca42bef465b87cb1065e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a5670fd582786ca42bef465b87cb1065e">ReplaceContent</a> (List&lt; string &gt; content)</td></tr>
+<tr class="memdesc:a5670fd582786ca42bef465b87cb1065e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace content.  <a href="#a5670fd582786ca42bef465b87cb1065e">More...</a><br /></td></tr>
+<tr class="separator:a5670fd582786ca42bef465b87cb1065e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedb8ff9505e2cd82500913919e8be9f2"><td class="memItemLeft" align="right" valign="top">Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#aedb8ff9505e2cd82500913919e8be9f2">GetDimentions</a> ()</td></tr>
+<tr class="memdesc:aedb8ff9505e2cd82500913919e8be9f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the dimensions.  <a href="#aedb8ff9505e2cd82500913919e8be9f2">More...</a><br /></td></tr>
+<tr class="separator:aedb8ff9505e2cd82500913919e8be9f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a53ed6c3d55ebf6e3bb32e9a2f20f0dcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a53ed6c3d55ebf6e3bb32e9a2f20f0dcf">Label_MouseLeftButtonUp</a> (object sender, MouseEventArgs e)</td></tr>
-<tr class="separator:a53ed6c3d55ebf6e3bb32e9a2f20f0dcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05b24689d62c82cf43337ff870b053cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a05b24689d62c82cf43337ff870b053cc">Label_MouseMove</a> (object sender, MouseEventArgs e)</td></tr>
-<tr class="separator:a05b24689d62c82cf43337ff870b053cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30cf688c6713bc468b48687217d955a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a30cf688c6713bc468b48687217d955a0">Label_DragEnter</a> (object sender, DragEventArgs e)</td></tr>
-<tr class="separator:a30cf688c6713bc468b48687217d955a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e8483fa728f52068ac8551d993a17c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a9e8483fa728f52068ac8551d993a17c3">Label_DragOver</a> (object sender, DragEventArgs e)</td></tr>
-<tr class="separator:a9e8483fa728f52068ac8551d993a17c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5f19cd04470fcc077bc48c0b68fc8f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#ad5f19cd04470fcc077bc48c0b68fc8f9">ReOrder</a> (Label targetLabel)</td></tr>
-<tr class="separator:ad5f19cd04470fcc077bc48c0b68fc8f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20d2f0a7411015a4119d28484fdd6bd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a20d2f0a7411015a4119d28484fdd6bd9">Label_DragLeave</a> (object sender, DragEventArgs e)</td></tr>
-<tr class="separator:a20d2f0a7411015a4119d28484fdd6bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb22725154613a0b37af81d02c0a4067"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#abb22725154613a0b37af81d02c0a4067">Label_Drop</a> (object sender, DragEventArgs e)</td></tr>
-<tr class="separator:abb22725154613a0b37af81d02c0a4067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Drag and Drop process</div></td></tr>
+<tr class="memitem:a956a16057fada83fd845dcafb0ed29e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a956a16057fada83fd845dcafb0ed29e9">Label_MouseMove</a> (object sender, MouseEventArgs e)</td></tr>
+<tr class="memdesc:a956a16057fada83fd845dcafb0ed29e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enabling the object to be drag source.  <a href="#a956a16057fada83fd845dcafb0ed29e9">More...</a><br /></td></tr>
+<tr class="separator:a956a16057fada83fd845dcafb0ed29e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26d2671d00df1f79b53424ddb29d930e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a26d2671d00df1f79b53424ddb29d930e">Label_DragEnter</a> (object sender, DragEventArgs e)</td></tr>
+<tr class="memdesc:a26d2671d00df1f79b53424ddb29d930e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enabling the object to be a drag target.  <a href="#a26d2671d00df1f79b53424ddb29d930e">More...</a><br /></td></tr>
+<tr class="separator:a26d2671d00df1f79b53424ddb29d930e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a424f1fa698383e78b4b7a3a073314898"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a424f1fa698383e78b4b7a3a073314898">Label_DragOver</a> (object sender, DragEventArgs e)</td></tr>
+<tr class="separator:a424f1fa698383e78b4b7a3a073314898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bc47b95a059676c79b4180290239f8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a3bc47b95a059676c79b4180290239f8e">ReOrder</a> (Label targetLabel)</td></tr>
+<tr class="memdesc:a3bc47b95a059676c79b4180290239f8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Re order.  <a href="#a3bc47b95a059676c79b4180290239f8e">More...</a><br /></td></tr>
+<tr class="separator:a3bc47b95a059676c79b4180290239f8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab290060a74fa993bce5ff654e3bbe1c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#ab290060a74fa993bce5ff654e3bbe1c0">SetContents</a> ()</td></tr>
+<tr class="memdesc:ab290060a74fa993bce5ff654e3bbe1c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the contents.  <a href="#ab290060a74fa993bce5ff654e3bbe1c0">More...</a><br /></td></tr>
+<tr class="separator:ab290060a74fa993bce5ff654e3bbe1c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a877f8723a40d6aedc1eb831c3b71474f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a877f8723a40d6aedc1eb831c3b71474f">Label_DragLeave</a> (object sender, DragEventArgs e)</td></tr>
+<tr class="separator:a877f8723a40d6aedc1eb831c3b71474f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Drag operation finished</div></td></tr>
+<tr class="memitem:a231c3e03dbe9a62975716cffccacdec7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a231c3e03dbe9a62975716cffccacdec7">Label_Drop</a> (object sender, DragEventArgs e)</td></tr>
+<tr class="separator:a231c3e03dbe9a62975716cffccacdec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a900f5b01dbc281fd83bab9845be99324"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a900f5b01dbc281fd83bab9845be99324">EndDragQuestion</a> ()</td></tr>
+<tr class="memdesc:a900f5b01dbc281fd83bab9845be99324"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends drag question.  <a href="#a900f5b01dbc281fd83bab9845be99324">More...</a><br /></td></tr>
+<tr class="separator:a900f5b01dbc281fd83bab9845be99324"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Members</div></td></tr>
 <tr class="memitem:abcb7cdeec0815d8da8a47b39d706fa22"><td class="memItemLeft" align="right" valign="top">List&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#abcb7cdeec0815d8da8a47b39d706fa22">permutations</a></td></tr>
+<tr class="memdesc:abcb7cdeec0815d8da8a47b39d706fa22"><td class="mdescLeft">&#160;</td><td class="mdescRight">(List&lt;int&gt;) - The permutations. This list holds the permutations. If x is in index y that means that the string that was in index y in the original list was moved to index x.  <a href="#abcb7cdeec0815d8da8a47b39d706fa22">More...</a><br /></td></tr>
 <tr class="separator:abcb7cdeec0815d8da8a47b39d706fa22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeebdeaa231e688a40ff803e9fae7b2fd"><td class="memItemLeft" align="right" valign="top">Label&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#aeebdeaa231e688a40ff803e9fae7b2fd">sourceLabel</a></td></tr>
+<tr class="memdesc:aeebdeaa231e688a40ff803e9fae7b2fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Label) - Source label.  <a href="#aeebdeaa231e688a40ff803e9fae7b2fd">More...</a><br /></td></tr>
 <tr class="separator:aeebdeaa231e688a40ff803e9fae7b2fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6bf912d23b4f9031327625a79fb421c"><td class="memItemLeft" align="right" valign="top">Canvas&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#ae6bf912d23b4f9031327625a79fb421c">canvas</a></td></tr>
+<tr class="memdesc:ae6bf912d23b4f9031327625a79fb421c"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Canvas) - The canvas. The canvas that the grid is presented on.  <a href="#ae6bf912d23b4f9031327625a79fb421c">More...</a><br /></td></tr>
 <tr class="separator:ae6bf912d23b4f9031327625a79fb421c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac79b892e7897ceaf7aafac7c051686d7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#ac79b892e7897ceaf7aafac7c051686d7">presentedItemId</a></td></tr>
+<tr class="memdesc:ac79b892e7897ceaf7aafac7c051686d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">(int) - Identifier for the presented item.  <a href="#ac79b892e7897ceaf7aafac7c051686d7">More...</a><br /></td></tr>
+<tr class="separator:ac79b892e7897ceaf7aafac7c051686d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc62993acfd3778e59cc3d001feffb8e"><td class="memItemLeft" align="right" valign="top">List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#acc62993acfd3778e59cc3d001feffb8e">originalContent</a></td></tr>
+<tr class="memdesc:acc62993acfd3778e59cc3d001feffb8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">(List&lt;string&gt;) - The original content. Holds the list before the transformation.  <a href="#acc62993acfd3778e59cc3d001feffb8e">More...</a><br /></td></tr>
+<tr class="separator:acc62993acfd3778e59cc3d001feffb8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
+Delegates and events</h2></td></tr>
+<tr class="memitem:aa39002c6679ee62ea3a029afae2cefac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#ab58fde6914a310749ac4881856b88131">ChangeFinished</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#aa39002c6679ee62ea3a029afae2cefac">ChangeFinishedEvent</a></td></tr>
+<tr class="memdesc:aa39002c6679ee62ea3a029afae2cefac"><td class="mdescLeft">&#160;</td><td class="mdescRight">(ChangeFinished) - The change finished event.  <a href="#aa39002c6679ee62ea3a029afae2cefac">More...</a><br /></td></tr>
+<tr class="separator:aa39002c6679ee62ea3a029afae2cefac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70e143b790bc3aa5a73eea4a2f96597e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#accae6e613bd1e1752a441b91798778ba">PresentPermutation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a70e143b790bc3aa5a73eea4a2f96597e">PresentPermutationEvent</a></td></tr>
+<tr class="memdesc:a70e143b790bc3aa5a73eea4a2f96597e"><td class="mdescLeft">&#160;</td><td class="mdescRight">(PresentPermutation) - The present permutation event.  <a href="#a70e143b790bc3aa5a73eea4a2f96597e">More...</a><br /></td></tr>
+<tr class="separator:a70e143b790bc3aa5a73eea4a2f96597e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab58fde6914a310749ac4881856b88131"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#ab58fde6914a310749ac4881856b88131">ChangeFinished</a> (List&lt; int &gt; <a class="el" href="class_distributed_algorithms_1_1_grid_view.html#abcb7cdeec0815d8da8a47b39d706fa22">permutations</a>, int <a class="el" href="class_distributed_algorithms_1_1_grid_view.html#ac79b892e7897ceaf7aafac7c051686d7">presentedItemId</a>)</td></tr>
+<tr class="memdesc:ab58fde6914a310749ac4881856b88131"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change finished.  <a href="#ab58fde6914a310749ac4881856b88131">More...</a><br /></td></tr>
+<tr class="separator:ab58fde6914a310749ac4881856b88131"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accae6e613bd1e1752a441b91798778ba"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#accae6e613bd1e1752a441b91798778ba">PresentPermutation</a> (List&lt; int &gt; <a class="el" href="class_distributed_algorithms_1_1_grid_view.html#abcb7cdeec0815d8da8a47b39d706fa22">permutations</a>, List&lt; string &gt; originalContentout, out string originalString, out string transforedString, List&lt; int &gt; idxs=null)</td></tr>
+<tr class="memdesc:accae6e613bd1e1752a441b91798778ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Present permutation.  <a href="#accae6e613bd1e1752a441b91798778ba">More...</a><br /></td></tr>
+<tr class="separator:accae6e613bd1e1752a441b91798778ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
+Move the Grid to front</h2></td></tr>
+<tr class="memitem:a78793eb06daa1ef75881d333aec7c121"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a78793eb06daa1ef75881d333aec7c121">MoveToFront</a> ()</td></tr>
+<tr class="memdesc:a78793eb06daa1ef75881d333aec7c121"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move to front.  <a href="#a78793eb06daa1ef75881d333aec7c121">More...</a><br /></td></tr>
+<tr class="separator:a78793eb06daa1ef75881d333aec7c121"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af95794b138fc0e20962ee5369b546894"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#af95794b138fc0e20962ee5369b546894">Label_MouseLeftButtonUp</a> (object sender, MouseEventArgs e)</td></tr>
+<tr class="memdesc:af95794b138fc0e20962ee5369b546894"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event handler. Called by Label for mouse left button up events.  <a href="#af95794b138fc0e20962ee5369b546894">More...</a><br /></td></tr>
+<tr class="separator:af95794b138fc0e20962ee5369b546894"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Interaction logic for GridView.xaml </p>
+<div class="textblock"><p>Interaction logic for GridView.xaml. </p>
+<dl class="section user"><dt>Description.</dt><dd><ul>
+<li>The <a class="el" href="class_distributed_algorithms_1_1_grid_view.html" title="Interaction logic for GridView.xaml. ">GridView</a> control is a control that presents a list of strings and allows Changing the order of the strings in the list</li>
+</ul>
+</dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd>To use the control:<ol type="1">
+<li>In the object that the <a class="el" href="class_distributed_algorithms_1_1_grid_view.html" title="Interaction logic for GridView.xaml. ">GridView</a> present create a method with the signature of the <a class="el" href="class_distributed_algorithms_1_1_grid_view.html#ab58fde6914a310749ac4881856b88131" title="Change finished. ">ChangeFinished()</a> delegate. This method should implement the order change. This method is called when the user finished the changes.</li>
+<li>Assign the method to the <a class="el" href="class_distributed_algorithms_1_1_grid_view.html#aa39002c6679ee62ea3a029afae2cefac" title="(ChangeFinished) - The change finished event. ">ChangeFinishedEvent()</a> of this class</li>
+<li>Create a method with the signature of <a class="el" href="class_distributed_algorithms_1_1_grid_view.html#accae6e613bd1e1752a441b91798778ba" title="Present permutation. ">PresentPermutation()</a> delegate. This method should create 2 strings one for the original list and one for the list after the transformation. This method is used to present the results of the order change for the end change dialog</li>
+<li>Pass this method is as a parameter to the constructor</li>
+<li>The <a class="el" href="class_distributed_algorithms_1_1_grid_view.html" title="Interaction logic for GridView.xaml. ">GridView</a> is created once and each time a modification is needed call <a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a5670fd582786ca42bef465b87cb1065e" title="Replace content. ">ReplaceContent()</a></li>
+</ol>
+</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00022">22</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00051">51</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a17a49f8523dee0c2739dba09a003b586"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17a49f8523dee0c2739dba09a003b586">&#9670;&nbsp;</a></span>GridView()</h2>
+<a id="a4c3e6939d33b4b859427bdf3d9a6074a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c3e6939d33b4b859427bdf3d9a6074a">&#9670;&nbsp;</a></span>GridView()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">DistributedAlgorithms.GridView.GridView </td>
+          <td class="memname">public DistributedAlgorithms.GridView.GridView </td>
           <td>(</td>
           <td class="paramtype">Canvas&#160;</td>
           <td class="paramname"><em>canvas</em>, </td>
@@ -168,7 +214,19 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">List&lt; string &gt;&#160;</td>
-          <td class="paramname"><em>content</em>&#160;</td>
+          <td class="paramname"><em>content</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>presentedItemId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#accae6e613bd1e1752a441b91798778ba">PresentPermutation</a>&#160;</td>
+          <td class="paramname"><em>presentPermutationFunc</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -178,37 +236,134 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00029">29</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p>Constructor. </p>
+<dl class="section user"><dt>Description.</dt><dd></dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd></dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">canvas</td><td>(Canvas) - The canvas. </td></tr>
+    <tr><td class="paramname">content</td><td>(List&lt;string&gt;) - The content. </td></tr>
+    <tr><td class="paramname">presentedItemId</td><td>(int) - Identifier for the presented item. </td></tr>
+    <tr><td class="paramname">presentPermutationFunc</td><td>(PresentPermutation) - The present permutation function. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00165">165</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a7b5612beeaacf9c5b3ca08d9217c5031"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b5612beeaacf9c5b3ca08d9217c5031">&#9670;&nbsp;</a></span>DrageFinished()</h2>
+<a id="ab58fde6914a310749ac4881856b88131"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab58fde6914a310749ac4881856b88131">&#9670;&nbsp;</a></span>ChangeFinished()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">delegate void DistributedAlgorithms.GridView.DrageFinished </td>
+          <td class="memname">public delegate void DistributedAlgorithms.GridView.ChangeFinished </td>
           <td>(</td>
           <td class="paramtype">List&lt; int &gt;&#160;</td>
-          <td class="paramname"><em>permutations</em></td><td>)</td>
+          <td class="paramname"><em>permutations</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>presentedItemId</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Change finished. </p>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">permutations</td><td>(List&lt;int&gt;) - The permutations. </td></tr>
+    <tr><td class="paramname">presentedItemId</td><td>(int) - Identifier for the presented item. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="ac5d84908d5f99d2447ad2e40f2181880"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5d84908d5f99d2447ad2e40f2181880">&#9670;&nbsp;</a></span>ReplaceContent()</h2>
+<a id="accae6e613bd1e1752a441b91798778ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accae6e613bd1e1752a441b91798778ba">&#9670;&nbsp;</a></span>PresentPermutation()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void DistributedAlgorithms.GridView.ReplaceContent </td>
+          <td class="memname">public delegate void DistributedAlgorithms.GridView.PresentPermutation </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>permutations</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">List&lt; string &gt;&#160;</td>
+          <td class="paramname"><em>originalContentout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out string&#160;</td>
+          <td class="paramname"><em>originalString</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out string&#160;</td>
+          <td class="paramname"><em>transforedString</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">List&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>idxs</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Present permutation. </p>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">permutations</td><td>(List&lt;int&gt;) - The permutations. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">originalContentout</td><td>(List&lt;string&gt;) - The original contentout. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">originalString</td><td>(out string) - The original string. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">transforedString</td><td>(out string) - The transfored string. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">idxs</td><td>(Optional) (List&lt;int&gt;) - The idxs. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5670fd582786ca42bef465b87cb1065e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5670fd582786ca42bef465b87cb1065e">&#9670;&nbsp;</a></span>ReplaceContent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">public void DistributedAlgorithms.GridView.ReplaceContent </td>
           <td>(</td>
           <td class="paramtype">List&lt; string &gt;&#160;</td>
           <td class="paramname"><em>content</em></td><td>)</td>
@@ -217,18 +372,31 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00037">37</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p>Replace content. </p>
+<dl class="section user"><dt>Description.</dt><dd>This method should be used when the content is changed outside the <a class="el" href="class_distributed_algorithms_1_1_grid_view.html" title="Interaction logic for GridView.xaml. ">GridView</a> (in the object that this <a class="el" href="class_distributed_algorithms_1_1_grid_view.html" title="Interaction logic for GridView.xaml. ">GridView</a> presents)</dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd></dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">content</td><td>(List&lt;string&gt;) - The content. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00195">195</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
-<a id="aa28fa36bdcef0362dcd4c574b52a1ce4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa28fa36bdcef0362dcd4c574b52a1ce4">&#9670;&nbsp;</a></span>GetDimentions()</h2>
+<a id="aedb8ff9505e2cd82500913919e8be9f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedb8ff9505e2cd82500913919e8be9f2">&#9670;&nbsp;</a></span>GetDimentions()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Rect DistributedAlgorithms.GridView.GetDimentions </td>
+          <td class="memname">public Rect DistributedAlgorithms.GridView.GetDimentions </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -236,12 +404,20 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00060">60</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p>Gets the dimensions. </p>
+<dl class="section user"><dt>Description.</dt><dd>Calculate the dimensions of the <a class="el" href="class_distributed_algorithms_1_1_grid_view.html" title="Interaction logic for GridView.xaml. ">GridView</a></dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd></dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The dimentions. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00241">241</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
-<a id="a53ed6c3d55ebf6e3bb32e9a2f20f0dcf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53ed6c3d55ebf6e3bb32e9a2f20f0dcf">&#9670;&nbsp;</a></span>Label_MouseLeftButtonUp()</h2>
+<a id="af95794b138fc0e20962ee5369b546894"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af95794b138fc0e20962ee5369b546894">&#9670;&nbsp;</a></span>Label_MouseLeftButtonUp()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -250,7 +426,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void DistributedAlgorithms.GridView.Label_MouseLeftButtonUp </td>
+          <td class="memname">private void DistributedAlgorithms.GridView.Label_MouseLeftButtonUp </td>
           <td>(</td>
           <td class="paramtype">object&#160;</td>
           <td class="paramname"><em>sender</em>, </td>
@@ -274,18 +450,32 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00079">79</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p>Event handler. Called by Label for mouse left button up events. </p>
+<dl class="section user"><dt>Description.</dt><dd>This method is used to bring the <a class="el" href="class_distributed_algorithms_1_1_grid_view.html" title="Interaction logic for GridView.xaml. ">GridView</a> in front of other controls in the canvas</dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd></dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sender</td><td>(object) - Source of the event. </td></tr>
+    <tr><td class="paramname">e</td><td>(MouseEventArgs) - Mouse event information. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00281">281</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
-<a id="a7af63c08733eaf1309c4ba4eeec92048"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7af63c08733eaf1309c4ba4eeec92048">&#9670;&nbsp;</a></span>MoveToFront()</h2>
+<a id="a78793eb06daa1ef75881d333aec7c121"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78793eb06daa1ef75881d333aec7c121">&#9670;&nbsp;</a></span>MoveToFront()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void DistributedAlgorithms.GridView.MoveToFront </td>
+          <td class="memname">public void DistributedAlgorithms.GridView.MoveToFront </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -293,12 +483,19 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00084">84</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p>Move to front. </p>
+<dl class="section user"><dt>Description.</dt><dd>This method is used to bring the GridVive in front of other controls in the canvas</dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd></dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00302">302</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
-<a id="a05b24689d62c82cf43337ff870b053cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05b24689d62c82cf43337ff870b053cc">&#9670;&nbsp;</a></span>Label_MouseMove()</h2>
+<a id="a956a16057fada83fd845dcafb0ed29e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a956a16057fada83fd845dcafb0ed29e9">&#9670;&nbsp;</a></span>Label_MouseMove()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -307,7 +504,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void DistributedAlgorithms.GridView.Label_MouseMove </td>
+          <td class="memname">private void DistributedAlgorithms.GridView.Label_MouseMove </td>
           <td>(</td>
           <td class="paramtype">object&#160;</td>
           <td class="paramname"><em>sender</em>, </td>
@@ -331,12 +528,31 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00095">95</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p>Enabling the object to be drag source. </p>
+<dl class="section user"><dt>Description.</dt><dd>This method starts the dragging operation</dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd><ol type="1">
+<li>Set the source label</li>
+<li>Change the color of the source label</li>
+<li>Start DragDrop operation</li>
+</ol>
+</dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sender</td><td>(object) - Source of the event. </td></tr>
+    <tr><td class="paramname">e</td><td>(MouseEventArgs) - Mouse event information. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00331">331</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
-<a id="a30cf688c6713bc468b48687217d955a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30cf688c6713bc468b48687217d955a0">&#9670;&nbsp;</a></span>Label_DragEnter()</h2>
+<a id="a26d2671d00df1f79b53424ddb29d930e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26d2671d00df1f79b53424ddb29d930e">&#9670;&nbsp;</a></span>Label_DragEnter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -345,7 +561,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void DistributedAlgorithms.GridView.Label_DragEnter </td>
+          <td class="memname">private void DistributedAlgorithms.GridView.Label_DragEnter </td>
           <td>(</td>
           <td class="paramtype">object&#160;</td>
           <td class="paramname"><em>sender</em>, </td>
@@ -369,12 +585,33 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00121">121</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p>Enabling the object to be a drag target. </p>
+<dl class="section user"><dt>Description.</dt><dd><ul>
+<li>The DragEnter event specifies how the target object will behave when the source object will pass on it.</li>
+</ul>
+</dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd><ul>
+<li>The method of the "drag" is to change the texts in the labels and the colors</li>
+<li>The labels themselves are not replacing places</li>
+</ul>
+</dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sender</td><td>(object) - Source of the event. </td></tr>
+    <tr><td class="paramname">e</td><td>(DragEventArgs) - Drag event information. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00369">369</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
-<a id="a9e8483fa728f52068ac8551d993a17c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e8483fa728f52068ac8551d993a17c3">&#9670;&nbsp;</a></span>Label_DragOver()</h2>
+<a id="a424f1fa698383e78b4b7a3a073314898"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a424f1fa698383e78b4b7a3a073314898">&#9670;&nbsp;</a></span>Label_DragOver()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -383,7 +620,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void DistributedAlgorithms.GridView.Label_DragOver </td>
+          <td class="memname">private void DistributedAlgorithms.GridView.Label_DragOver </td>
           <td>(</td>
           <td class="paramtype">object&#160;</td>
           <td class="paramname"><em>sender</em>, </td>
@@ -406,13 +643,25 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section user"><dt>Description.</dt><dd>The DragOver event occurs in the target object continuously while the source object is passes on it.</dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd>Does nothing</dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sender</td><td>(object) - Source of the event. </td></tr>
+    <tr><td class="paramname">e</td><td>(DragEventArgs) - Drag event information. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00138">138</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00405">405</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
-<a id="ad5f19cd04470fcc077bc48c0b68fc8f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5f19cd04470fcc077bc48c0b68fc8f9">&#9670;&nbsp;</a></span>ReOrder()</h2>
+<a id="a3bc47b95a059676c79b4180290239f8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bc47b95a059676c79b4180290239f8e">&#9670;&nbsp;</a></span>ReOrder()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -421,7 +670,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void DistributedAlgorithms.GridView.ReOrder </td>
+          <td class="memname">private void DistributedAlgorithms.GridView.ReOrder </td>
           <td>(</td>
           <td class="paramtype">Label&#160;</td>
           <td class="paramname"><em>targetLabel</em></td><td>)</td>
@@ -435,42 +684,29 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00143">143</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p>Re order. </p>
+<dl class="section user"><dt>Description.</dt><dd><ul>
+<li>This method change the order of the list</li>
+<li>The labels are not changed only their text</li>
+</ul>
+</dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd></dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">targetLabel</td><td>(Label) - Target label. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00430">430</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
-<a id="a42ebdb481107fa5a996ea41770ff7ee6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42ebdb481107fa5a996ea41770ff7ee6">&#9670;&nbsp;</a></span>Move()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void DistributedAlgorithms.GridView.Move </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>fromIdx</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>toIdx</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00170">170</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
-
-</div>
-</div>
-<a id="a20d2f0a7411015a4119d28484fdd6bd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20d2f0a7411015a4119d28484fdd6bd9">&#9670;&nbsp;</a></span>Label_DragLeave()</h2>
+<a id="ab290060a74fa993bce5ff654e3bbe1c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab290060a74fa993bce5ff654e3bbe1c0">&#9670;&nbsp;</a></span>SetContents()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -479,7 +715,45 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void DistributedAlgorithms.GridView.Label_DragLeave </td>
+          <td class="memname">private void DistributedAlgorithms.GridView.SetContents </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the contents. </p>
+<dl class="section user"><dt>Description.</dt><dd><ul>
+<li>Change the content of the labels according to the permutation</li>
+<li>If index x holds value y that means that the string that was in label y is now in label x</li>
+</ul>
+</dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd></dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00518">518</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+
+</div>
+</div>
+<a id="a877f8723a40d6aedc1eb831c3b71474f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a877f8723a40d6aedc1eb831c3b71474f">&#9670;&nbsp;</a></span>Label_DragLeave()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">private void DistributedAlgorithms.GridView.Label_DragLeave </td>
           <td>(</td>
           <td class="paramtype">object&#160;</td>
           <td class="paramname"><em>sender</em>, </td>
@@ -502,13 +776,29 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section user"><dt>Description.</dt><dd><ul>
+<li>The DragLeave event occurs in the target object when the source object leaves it.</li>
+<li>The method changes the colors of the leaved label to not selected colors</li>
+</ul>
+</dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd></dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sender</td><td>(object) - Source of the event. </td></tr>
+    <tr><td class="paramname">e</td><td>(DragEventArgs) - Drag event information. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00182">182</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00548">548</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
-<a id="abb22725154613a0b37af81d02c0a4067"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb22725154613a0b37af81d02c0a4067">&#9670;&nbsp;</a></span>Label_Drop()</h2>
+<a id="a231c3e03dbe9a62975716cffccacdec7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a231c3e03dbe9a62975716cffccacdec7">&#9670;&nbsp;</a></span>Label_Drop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -517,7 +807,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void DistributedAlgorithms.GridView.Label_Drop </td>
+          <td class="memname">private void DistributedAlgorithms.GridView.Label_Drop </td>
           <td>(</td>
           <td class="paramtype">object&#160;</td>
           <td class="paramname"><em>sender</em>, </td>
@@ -540,12 +830,125 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section user"><dt>Description.</dt><dd><ul>
+<li>The Drop event occurs in the target when the mouse is released.</li>
+<li>There are 3 options :<ol type="1">
+<li><b>Continue</b> the change (In this case the permutation and the labels are not changed)</li>
+<li><b>Apply</b> (In this case the methods of the event are called)</li>
+<li><b>Quit</b> Change (In this case the permutations list and the label strings are restored)</li>
+</ol>
+</li>
+</ul>
+</dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd></dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sender</td><td>(object) - Source of the event. </td></tr>
+    <tr><td class="paramname">e</td><td>(DragEventArgs) - Drag event information. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00199">199</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00586">586</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+
+</div>
+</div>
+<a id="a900f5b01dbc281fd83bab9845be99324"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a900f5b01dbc281fd83bab9845be99324">&#9670;&nbsp;</a></span>EndDragQuestion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">private string DistributedAlgorithms.GridView.EndDragQuestion </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ends drag question. </p>
+<dl class="section user"><dt>Description.</dt><dd>Ask the user what he wants to do with the change</dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd></dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/05/2018</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00632">632</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa39002c6679ee62ea3a029afae2cefac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa39002c6679ee62ea3a029afae2cefac">&#9670;&nbsp;</a></span>ChangeFinishedEvent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#ab58fde6914a310749ac4881856b88131">ChangeFinished</a> DistributedAlgorithms.GridView.ChangeFinishedEvent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>(ChangeFinished) - The change finished event. </p>
+<ul>
+<li>This event is activated if the user decides to apply the change</li>
+<li>In the methods assigned to this event there is an implementation of the order change in the object that this <a class="el" href="class_distributed_algorithms_1_1_grid_view.html" title="Interaction logic for GridView.xaml. ">GridView</a> presents. </li>
+</ul>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00076">76</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+
+</div>
+</div>
+<a id="a70e143b790bc3aa5a73eea4a2f96597e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70e143b790bc3aa5a73eea4a2f96597e">&#9670;&nbsp;</a></span>PresentPermutationEvent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#accae6e613bd1e1752a441b91798778ba">PresentPermutation</a> DistributedAlgorithms.GridView.PresentPermutationEvent</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>(PresentPermutation) - The present permutation event. </p>
+<ul>
+<li>This event is activated in order to present to the user the results of the order change</li>
+<li>The calling class should create a method that generates 2 strings:<ol type="1">
+<li>The original list</li>
+<li>The list after the change</li>
+</ol>
+</li>
+<li>This event is assigned in the constructor. </li>
+</ul>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00105">105</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+
+</div>
+</div>
 <a id="abcb7cdeec0815d8da8a47b39d706fa22"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abcb7cdeec0815d8da8a47b39d706fa22">&#9670;&nbsp;</a></span>permutations</h2>
 
@@ -566,7 +969,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00026">26</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p>(List&lt;int&gt;) - The permutations. This list holds the permutations. If x is in index y that means that the string that was in index y in the original list was moved to index x. </p>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00115">115</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
@@ -590,7 +995,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00027">27</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p>(Label) - Source label. </p>
+<ul>
+<li>This member holds the source label (The label that is moved.</li>
+<li>This member is needed because the events thrown are from the label that the cursor is on (the target labels) </li>
+</ul>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00124">124</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
@@ -614,24 +1025,61 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00028">28</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p>(Canvas) - The canvas. The canvas that the grid is presented on. </p>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00131">131</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Event Documentation</h2>
-<a id="a08f46917bb877f41b0a0490138f9654a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08f46917bb877f41b0a0490138f9654a">&#9670;&nbsp;</a></span>DragFinishedEvent</h2>
+<a id="ac79b892e7897ceaf7aafac7c051686d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac79b892e7897ceaf7aafac7c051686d7">&#9670;&nbsp;</a></span>presentedItemId</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_distributed_algorithms_1_1_grid_view.html#a7b5612beeaacf9c5b3ca08d9217c5031">DrageFinished</a> DistributedAlgorithms.GridView.DragFinishedEvent</td>
+          <td class="memname">int DistributedAlgorithms.GridView.presentedItemId</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00025">25</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+<p>(int) - Identifier for the presented item. </p>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00134">134</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
+
+</div>
+</div>
+<a id="acc62993acfd3778e59cc3d001feffb8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc62993acfd3778e59cc3d001feffb8e">&#9670;&nbsp;</a></span>originalContent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;string&gt; DistributedAlgorithms.GridView.originalContent</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>(List&lt;string&gt;) - The original content. Holds the list before the transformation. </p>
+
+<p class="definition">Definition at line <a class="el" href="_grid_view_8xaml_8cs_source.html#l00141">141</a> of file <a class="el" href="_grid_view_8xaml_8cs_source.html">GridView.xaml.cs</a>.</p>
 
 </div>
 </div>

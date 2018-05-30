@@ -742,7 +742,7 @@ namespace DistributedAlgorithms
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool checkNotSameObject = false)
+        /// \fn public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool print = false, bool checkNotSameObject = false)
         ///
         /// \brief Equals to.
         ///
@@ -762,12 +762,13 @@ namespace DistributedAlgorithms
         /// \param          nestingLevel       (int) - The nesting level.
         /// \param [in,out] error              (ref string) - The error.
         /// \param          other              (IValueHolder) - The attribute.
+        /// \param          print              (Optional)  (bool) - true to print.
         /// \param          checkNotSameObject (Optional)  (bool) - true to check not same object.
         ///
         /// \return True if equals to, false if not.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool checkNotSameObject = false)
+        public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool print = false, bool checkNotSameObject = false)
         {
             AttributeList otherList = (AttributeList)other;
 
@@ -779,7 +780,7 @@ namespace DistributedAlgorithms
 
             for (int idx = 0; idx < otherList.Count; idx++)
             {
-                if (!GetAttribute(idx).EqualsTo(nestingLevel + 1, idx.ToString(), otherList.GetAttribute(idx), checkNotSameObject))
+                if (!GetAttribute(idx).CheckEqual(nestingLevel + 1, idx.ToString(), otherList.GetAttribute(idx), print, checkNotSameObject))
                 {
                     return false;
                 }
@@ -1182,15 +1183,19 @@ namespace DistributedAlgorithms
             if (Count == 0)
             {
                 MessageRouter.MessageBox(new List<string> { "There is no way to convert empty AttributeList to List when the AttributeList is empty" }, "AttributeList", null, Icons.Error);
-                return null;
+                return this;
             }
             Type genericType = this[0].GetType();
             foreach (Attribute attribute in this)
             {
                 if (!attribute.Value.GetType().Equals(genericType))
                 {
-                    MessageRouter.MessageBox(new List<string> { "In Order to convert from AttributeList to List att the attribute value types has to be the same" }, "AttributeList", null, Icons.Error);
-                    return null;
+                    MessageRouter.MessageBox(new List<string>
+                    {
+                        "In Order to convert from AttributeList to List the attribute value types has to be the same",
+                        "Returning the AttributeList"
+                    }, "AttributeList", null, Icons.Error);
+                    return this;
                 }
             }
             IList list = (IList)TypesUtility.CreateListFromArgumentTypeString(genericType.ToString());

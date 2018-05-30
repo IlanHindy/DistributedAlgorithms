@@ -12,7 +12,8 @@ var class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1bp =
     [ "opk", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1bp.html#ac49440e31e36a3bcb65a6ada07d3cf01", [
       [ "Breakpoints", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1bp.html#ac49440e31e36a3bcb65a6ada07d3cf01ad19dc64c372f09800d8117286c3d0aff", null ],
       [ "InternalEvents", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1bp.html#ac49440e31e36a3bcb65a6ada07d3cf01a70151ca439c7992ccd31a885b7cb022e", null ],
-      [ "BaseAlgorithm", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1bp.html#ac49440e31e36a3bcb65a6ada07d3cf01a6eb47619b0119c1618a57d1391f2e62b", null ]
+      [ "BaseAlgorithm", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1bp.html#ac49440e31e36a3bcb65a6ada07d3cf01a6eb47619b0119c1618a57d1391f2e62b", null ],
+      [ "ChangeOrderEvents", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1bp.html#ac49440e31e36a3bcb65a6ada07d3cf01a5305dab734618e6fe3d2a93e93d38aa3", null ]
     ] ],
     [ "ork", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1bp.html#a30c24ce7f64903a47addbdb9bba4d942", [
       [ "ReceivePort", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1bp.html#a30c24ce7f64903a47addbdb9bba4d942a9f00eafec80c2359b8ccd58a92e7c085", null ],

@@ -123,10 +123,13 @@ namespace DistributedAlgorithms
         private LastInitiationAction lastInitiationAction;
 
         /// \brief (bool) - true to show, false to hide the breakpoints in running mode.
-        public bool showBreakpointsInRunningMode = true;
+        public bool showBreakpoints = true;
 
         /// \brief (bool) - true to show, false to hide the short description in running mode.
-        public bool showFloatingSummaryInRunningMode = true;
+        public bool showFloatingSummary = true;
+
+        /// \brief (bool) - true to show, false to hide the messages in running mode.
+        public bool showMessages = true;
 
         #endregion
         #region
@@ -247,12 +250,12 @@ namespace DistributedAlgorithms
 
             MessageRouter.MessageBoxEvent += (s, e) =>
             {
-                Dispatcher.Invoke((Action)delegate () { CustomizedMessageBox.Show((List<string>)e[0], (string)e[1], (List<string>)e[2], (Icons)e[3]); });
+               return  Dispatcher.Invoke(delegate () { return CustomizedMessageBox.Show((List<string>)e[0], (string)e[1], (List<string>)e[2], (Icons)e[3], (bool)e[4]); });
             };
 
             MessageRouter.CustomizedMessageBoxEvent += (s, e) =>
             {
-                Dispatcher.Invoke((Action)delegate () { CustomizedMessageBox.Show((List<MessageBoxElementData>)e[0], (string)e[1], (List<MessageBoxElementData>)e[2], (Icons)e[3]); });
+                return Dispatcher.Invoke(delegate () { return CustomizedMessageBox.Show((List<MessageBoxElementData>)e[0], (string)e[1], (List<MessageBoxElementData>)e[2], (Icons)e[3], (bool)e[4]); });
             };
 
 
@@ -857,14 +860,19 @@ namespace DistributedAlgorithms
 
         private void Window_Close(object sender, EventArgs e)
         {
-            if (networkWasChanged)
+            // If the program is in running phase and exits we don't save in order not
+            // to save the running status which will cause destruction of the network definition
+            if (activationPhase != ActivationPhases.Running)
             {
-                if (CustomizedMessageBox.Show("The network was changed do you want to save it?",
-                    "MainWindow Message",
-                    MessageBoxButton.YesNo,
-                    Icons.Question) == MessageBoxResult.Yes)
+                if (networkWasChanged)
                 {
-                    SaveNetwork();
+                    if (CustomizedMessageBox.Show("The network was changed do you want to save it?",
+                        "MainWindow Message",
+                        MessageBoxButton.YesNo,
+                        Icons.Question) == MessageBoxResult.Yes)
+                    {
+                        SaveNetwork();
+                    }
                 }
             }
             wordDocumentHolder.QuitApplication();
@@ -1509,6 +1517,11 @@ namespace DistributedAlgorithms
 
         private void InitRunning()
         {
+            // Save the status of the network and the config 
+            // This is done in order that if the program terminates with error
+            // the next operation will start from the current network and config status
+            SaveNetwork();
+            Config.Instance.SaveConfig();
 
             // Backup the OperationResults and the Presentation dictionary for recovery after running
             activationPhase = ActivationPhases.BeforeRunning;
@@ -1702,10 +1715,10 @@ namespace DistributedAlgorithms
 
         private void Command_ShowBreakpoints(object sender, ExecutedRoutedEventArgs e)
         {
-            showBreakpointsInRunningMode = !showBreakpointsInRunningMode;
+            showBreakpoints = !showBreakpoints;
             foreach (BaseProcess process in net.Processes)
             {
-                ((ProcessPresentation)process.Presentation).SetShowBreakpoints(showBreakpointsInRunningMode);
+                ((ProcessPresentation)process.Presentation).SetBreakpoinsVisibility(process, (showBreakpoints) ? Visibility.Visible : Visibility.Hidden);
             }
         }
 
@@ -1729,23 +1742,15 @@ namespace DistributedAlgorithms
 
         private void Command_ShowFloatingSummary(object sender, ExecutedRoutedEventArgs e)
         {
-            showFloatingSummaryInRunningMode = !showFloatingSummaryInRunningMode;
-            if (showFloatingSummaryInRunningMode)
-            {
-                Button_ShowChannelPresentation.Foreground = Brushes.Black;
-            }
-            else
-            {
-                Button_ShowChannelPresentation.Foreground = Brushes.Red;
-            }
-            foreach (BaseProcess process in net.Processes)
-            {
-                ((ProcessPresentation)process.Presentation).SetShowFloatingSummary(showFloatingSummaryInRunningMode);
-            }
+            showFloatingSummary = !showFloatingSummary;
+        }
 
+        private void Command_ShowMessages(object sender, ExecutedRoutedEventArgs e)
+        {
+            showMessages = !showMessages;
             foreach (BaseChannel channel in net.Channels)
             {
-                ((ChannelPresentation)channel.Presentation).SetShowFloatingSummary(showFloatingSummaryInRunningMode);
+                ((ChannelPresentation)channel.Presentation).SetMessagesVisibility(channel, (showMessages) ? Visibility.Visible : Visibility.Hidden);
             }
         }
 
@@ -1990,7 +1995,7 @@ namespace DistributedAlgorithms
             activationPhase = ActivationPhases.Temp;
             BaseNetwork baseNetwork = new BaseNetwork();
             baseNetwork.DeepCopy(net);
-            if (baseNetwork.EqualsTo(0, "BaseNetwork", net, true))
+            if (baseNetwork.CheckEqual(0, "BaseNetwork", net, true))
             {
                 CustomizedMessageBox.Show("DeepCopy EqualsTo succeeded", "MainWindow Message", null, Icons.Success);
             }
@@ -2025,7 +2030,7 @@ namespace DistributedAlgorithms
             ActivationPhases tempactivationPhase = activationPhase;
             activationPhase = ActivationPhases.Temp;
             net.Processes[0].orb.DeepCopy(net.Processes[0].or);
-            if (net.Processes[0].orb.EqualsTo(0, "BaseNetwork", net.Processes[0].or, true))
+            if (net.Processes[0].orb.CheckEqual(0, "BaseNetwork", net.Processes[0].or, true))
             {
                 CustomizedMessageBox.Show("DeepCopy EqualsTo succeeded", "MainWindow Message", null, Icons.Success);
             }

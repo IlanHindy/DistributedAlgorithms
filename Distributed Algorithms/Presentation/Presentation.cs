@@ -542,7 +542,7 @@ namespace DistributedAlgorithms
 
         protected void ShowFloatingSummary()
         {
-            if (showFloatingSummary)
+            if (mainWindow.showFloatingSummary)
             {
                 if (MainWindow.ActivationPhase == MainWindow.ActivationPhases.Running)
                 {

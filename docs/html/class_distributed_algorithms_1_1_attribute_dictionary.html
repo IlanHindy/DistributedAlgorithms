@@ -109,9 +109,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a969569632a0822963f5647199bb83007"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_attribute_dictionary.html#a969569632a0822963f5647199bb83007">ScanAndReport</a> (<a class="el" href="interface_distributed_algorithms_1_1_i_scan_consumer.html">IScanConsumer</a> scanConsumer, <a class="el" href="class_distributed_algorithms_1_1_network_element.html#a7aba15563467e2ce3b2dc339cfb04c07">NetworkElement.ElementDictionaries</a> mainDictionary, <a class="el" href="class_distributed_algorithms_1_1_network_element.html#a7aba15563467e2ce3b2dc339cfb04c07">NetworkElement.ElementDictionaries</a> dictionary, dynamic key=null)</td></tr>
 <tr class="memdesc:a969569632a0822963f5647199bb83007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scans and report.  <a href="#a969569632a0822963f5647199bb83007">More...</a><br /></td></tr>
 <tr class="separator:a969569632a0822963f5647199bb83007"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad60905fa273928bedb9243ea699b78c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_attribute_dictionary.html#ad60905fa273928bedb9243ea699b78c7">EqualsTo</a> (int nestingLevel, ref string error, <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html">IValueHolder</a> other, bool checkNotSameObject=false)</td></tr>
-<tr class="memdesc:ad60905fa273928bedb9243ea699b78c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equals to.  <a href="#ad60905fa273928bedb9243ea699b78c7">More...</a><br /></td></tr>
-<tr class="separator:ad60905fa273928bedb9243ea699b78c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2f3dbd5ee9e8b60df42cdcdec499dd4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_attribute_dictionary.html#aa2f3dbd5ee9e8b60df42cdcdec499dd4">EqualsTo</a> (int nestingLevel, ref string error, <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html">IValueHolder</a> other, bool print=false, bool checkNotSameObject=false)</td></tr>
+<tr class="memdesc:aa2f3dbd5ee9e8b60df42cdcdec499dd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equals to.  <a href="#aa2f3dbd5ee9e8b60df42cdcdec499dd4">More...</a><br /></td></tr>
+<tr class="separator:aa2f3dbd5ee9e8b60df42cdcdec499dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3fceffafb8d0603fb5765836029e1be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_attribute_dictionary.html#af3fceffafb8d0603fb5765836029e1be">DeepCopy</a> (<a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html">IValueHolder</a> source, bool isInitiator=true)</td></tr>
 <tr class="memdesc:af3fceffafb8d0603fb5765836029e1be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deep copy.  <a href="#af3fceffafb8d0603fb5765836029e1be">More...</a><br /></td></tr>
 <tr class="separator:af3fceffafb8d0603fb5765836029e1be"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -948,8 +948,8 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 
 </div>
 </div>
-<a id="ad60905fa273928bedb9243ea699b78c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad60905fa273928bedb9243ea699b78c7">&#9670;&nbsp;</a></span>EqualsTo()</h2>
+<a id="aa2f3dbd5ee9e8b60df42cdcdec499dd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2f3dbd5ee9e8b60df42cdcdec499dd4">&#9670;&nbsp;</a></span>EqualsTo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -976,6 +976,12 @@ Add algorithm window support (creating c# code)</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>print</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>checkNotSameObject</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
@@ -990,7 +996,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 <dl class="section user"><dt>Description.</dt><dd>This method is part of a recursive scanning of an <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html" title="Interface for value holder. This interface contains all the methods for classes that holds values of ...">IValueHolder</a> to check whether all the values of 2 IValueHolders are equal.</dd></dl>
 <dl class="section user"><dt>Algorithm.</dt><dd></dd></dl>
 <dl class="section user"><dt>Usage Notes.</dt><dd><ul>
-<li>If you want to start a compare you should call : <code><a class="el" href="class_distributed_algorithms_1_1_value_holder.html#af1b9abe8fc1c7d47551c1d5150717fef" title="Equals to. ">ValueHolder.EqualsTo()</a></code></li>
+<li>If you want to start a compare you should call : <code>ValueHolder.EqualsTo()</code></li>
 <li>The method does the common checks and call this method to propagate the compare to the children.</li>
 </ul>
 </dd></dl>
@@ -1007,7 +1013,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if equals to, false if not. </dd></dl>
 
-<p>Implements <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html#ac47a8261ea0a9cc4cc4e2c24dc712a4f">DistributedAlgorithms.IValueHolder</a>.</p>
+<p>Implements <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html#a1fa6e72f03e44dabbc4c1ba1f3aa0f3e">DistributedAlgorithms.IValueHolder</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00677">677</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
@@ -1055,7 +1061,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html#a99f5608458a990117dac2a0d0fdeb6ca">DistributedAlgorithms.IValueHolder</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00722">722</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00725">725</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1106,7 +1112,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html#a29fbad4b194590ae31c0a6f95fd9115a">DistributedAlgorithms.IValueHolder</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00764">764</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00767">767</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1181,7 +1187,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html#a1e74868a9a3f290dab4b48c32deca084">DistributedAlgorithms.IValueHolder</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00796">796</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00799">799</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1242,7 +1248,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html#a3b6ea1ee933f90d7afe1c01411ecc6f8">DistributedAlgorithms.IValueHolder</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00836">836</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00839">839</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1278,7 +1284,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html#ac6fa7f87435f967b88755de186f1e141">DistributedAlgorithms.IValueHolder</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00866">866</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00869">869</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1322,7 +1328,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00891">891</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00894">894</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1349,7 +1355,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>25/04/2017</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00919">919</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00922">922</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1440,7 +1446,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html#ad08819f97cc56387fd2e8332256f92d5">DistributedAlgorithms.IValueHolder</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00970">970</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l00973">973</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1514,7 +1520,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html#a97bc16ef3ddbf72248bfb25944f529f9">DistributedAlgorithms.IValueHolder</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01027">1027</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01030">1030</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1581,7 +1587,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html#aec5a1cebc4b816e6b898376e7fc0625c">DistributedAlgorithms.IValueHolder</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01065">1065</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01068">1068</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1641,7 +1647,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if it succeeds, false if it fails. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01095">1095</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01098">1098</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1708,7 +1714,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html#ac33647aa58c3aeed5d855c5b99de1ad8">DistributedAlgorithms.IValueHolder</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01150">1150</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01153">1153</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1737,7 +1743,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html#ad5c0e7ae53b1392ca522072250dd98e6">DistributedAlgorithms.IValueHolder</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01178">1178</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01181">1181</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1763,7 +1769,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>25/04/2017 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01200">1200</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01203">1203</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1797,7 +1803,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The found attribute. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01229">1229</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01232">1232</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1863,7 +1869,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01268">1268</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01271">1271</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1893,7 +1899,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01299">1299</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01302">1302</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1959,7 +1965,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01345">1345</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01348">1348</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -1990,7 +1996,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>22/10/2017</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01422">1422</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01425">1425</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -2048,7 +2054,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01470">1470</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01473">1473</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -2114,7 +2120,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01513">1513</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01518">1518</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -2174,7 +2180,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01559">1559</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01564">1564</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -2233,7 +2239,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The new getters setters. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01604">1604</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01609">1609</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -2293,7 +2299,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01647">1647</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01652">1652</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>
@@ -2357,7 +2363,7 @@ Add algorithm window support (creating c# code)</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if it succeeds, false if it fails. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01695">1695</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_attribute_dictionary_8cs_source.html#l01700">1700</a> of file <a class="el" href="_attribute_dictionary_8cs_source.html">AttributeDictionary.cs</a>.</p>
 
 </div>
 </div>

@@ -121,6 +121,13 @@ namespace DistributedAlgorithms
         public bool IncludedInShortDescription = true;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \brief (bool) - true to include, false to exclude the in equals to.
+        ///        Whether to include the Attribute when comparing 2 IValueHolders.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public bool IncludeInEqualsTo = true;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \brief (EndInputOperationDelegate) - The end input operation in element input window.
         ///        Actions to be done (like checking) after the attribute was changed was made
         ///        in the input field for the attribute in ElementWindow.
@@ -603,7 +610,8 @@ namespace DistributedAlgorithms
                 case AttributeCategory.Null:
                     return true;
                 default:
-                    if (value.GetType() == this.value.GetType())
+                    if (((Type)this.value.GetType()).IsAssignableFrom(value.GetType()) ||
+                        ((Type)value.GetType()).IsAssignableFrom(this.value.GetType()))
                     {
                         return true;
                     }
@@ -956,6 +964,9 @@ namespace DistributedAlgorithms
                     case "IncludedInShortDescription":
                         IncludedInShortDescription = bool.Parse(xmlAttribute.Value);
                         break;
+                    case "IncludeInEqualsTo":
+                        IncludeInEqualsTo = bool.Parse(xmlAttribute.Value);
+                        break;
                 }
             }
             return true;
@@ -1043,6 +1054,9 @@ namespace DistributedAlgorithms
             XmlAttribute xmlIncludedInShortDescriptionAttribute = xmlDoc.CreateAttribute("IncludedInShortDescription");
             xmlIncludedInShortDescriptionAttribute.Value = IncludedInShortDescription.ToString();
             xmlNode.Attributes.Append(xmlIncludedInShortDescriptionAttribute);
+            XmlAttribute xmlIncludeInEqualsToAttribute = xmlDoc.CreateAttribute("IncludeInEqualsTo");
+            xmlIncludeInEqualsToAttribute.Value = IncludeInEqualsTo.ToString();
+            xmlNode.Attributes.Append(xmlIncludeInEqualsToAttribute);
             XmlAttribute xmlEndInputOperationAttribute = xmlDoc.CreateAttribute("EndInputOperation");
             xmlEndInputOperationAttribute.Value = TypesUtility.GetEndInputOperationName(this);
             xmlNode.Attributes.Append(xmlEndInputOperationAttribute);
@@ -1137,7 +1151,7 @@ namespace DistributedAlgorithms
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool checkNotSameObject = false)
+        /// \fn public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool print, bool checkNotSameObject = false)
         ///
         /// \brief Equals to.
         ///
@@ -1157,13 +1171,18 @@ namespace DistributedAlgorithms
         /// \param          nestingLevel       (int) - The nesting level.
         /// \param [in,out] error              (ref string) - The error.
         /// \param          other              (IValueHolder) - The attribute.
+        /// \param          print               (bool) - true to print.
         /// \param          checkNotSameObject (Optional)  (bool) - true to check not same object.
         ///
         /// \return True if equals to, false if not.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool checkNotSameObject = false)
+        public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool print = false, bool checkNotSameObject = false)
         {
+            if (!IncludeInEqualsTo)
+            {
+                return true;
+            }
             dynamic otherValue = ((Attribute)other).Value;
             Type type = value.GetType();
             if (!type.Equals(otherValue.GetType()))
@@ -1183,7 +1202,7 @@ namespace DistributedAlgorithms
             else
             {
                 // IValueHolder
-                if (!Value.EqualsTo(nestingLevel + 1, "Value", otherValue, checkNotSameObject))
+                if (!((IValueHolder)Value).EqualsTo(nestingLevel + 1, ref error, otherValue, print, checkNotSameObject))
                 {
                     return false;
                 }
@@ -1254,6 +1273,7 @@ namespace DistributedAlgorithms
             IdInList = source.IdInList;
             IncludedInShortDescription = source.IncludedInShortDescription;
             EndInputOperation = source.EndInputOperation;
+            IncludeInEqualsTo = source.IncludeInEqualsTo;
             ElementWindowPrmsMethod = source.ElementWindowPrmsMethod;
         }
 

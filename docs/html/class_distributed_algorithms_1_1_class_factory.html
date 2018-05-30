@@ -150,6 +150,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a1f8f6055a38266c55d7a905ba1613282"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_channel.html">BaseChannel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_class_factory.html#a1f8f6055a38266c55d7a905ba1613282">GenerateChannel</a> (<a class="el" href="class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_network.html">BaseNetwork</a> network, int id, int sourceProcessId, int destProcessId, string subject=null, string algorithm=null)</td></tr>
 <tr class="memdesc:a1f8f6055a38266c55d7a905ba1613282"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a channel.  <a href="#a1f8f6055a38266c55d7a905ba1613282">More...</a><br /></td></tr>
 <tr class="separator:a1f8f6055a38266c55d7a905ba1613282"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5193200e907ba43eaca7068acf8b888c"><td class="memItemLeft" align="right" valign="top">static Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_class_factory.html#a5193200e907ba43eaca7068acf8b888c">GenerateMessageType</a> ()</td></tr>
+<tr class="memdesc:a5193200e907ba43eaca7068acf8b888c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a message type.  <a href="#a5193200e907ba43eaca7068acf8b888c">More...</a><br /></td></tr>
+<tr class="separator:a5193200e907ba43eaca7068acf8b888c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d42b5e139e1cd1aeaa0d555d09a8b92"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html">BaseMessage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_class_factory.html#a3d42b5e139e1cd1aeaa0d555d09a8b92">GenerateMessage</a> (<a class="el" href="class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_network.html">BaseNetwork</a> network, dynamic messageType, <a class="el" href="class_distributed_algorithms_1_1_attribute_dictionary.html">AttributeDictionary</a> fields, <a class="el" href="class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_channel.html">BaseChannel</a> channel, string messageName=&quot;&quot;, string subject=null, string algorithm=null, int round=0, int logicalClock=0)</td></tr>
 <tr class="memdesc:a3d42b5e139e1cd1aeaa0d555d09a8b92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a message.  <a href="#a3d42b5e139e1cd1aeaa0d555d09a8b92">More...</a><br /></td></tr>
 <tr class="separator:a3d42b5e139e1cd1aeaa0d555d09a8b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -763,6 +766,41 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a5193200e907ba43eaca7068acf8b888c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5193200e907ba43eaca7068acf8b888c">&#9670;&nbsp;</a></span>GenerateMessageType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">public static Type DistributedAlgorithms.ClassFactory.GenerateMessageType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generates a message type. </p>
+<dl class="section user"><dt>Description.</dt><dd>Generate the type of the message of the current parameter</dd></dl>
+<dl class="section user"><dt>Algorithm.</dt><dd></dd></dl>
+<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>14/05/2018</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The message type. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00377">377</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+
+</div>
+</div>
 <a id="a3d42b5e139e1cd1aeaa0d555d09a8b92"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3d42b5e139e1cd1aeaa0d555d09a8b92">&#9670;&nbsp;</a></span>GenerateMessage() <span class="overload">[1/9]</span></h2>
 
@@ -861,7 +899,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The message. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00386">386</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00410">410</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -906,7 +944,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The message. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00425">425</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00449">449</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -972,7 +1010,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The message. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00458">458</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00482">482</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1031,7 +1069,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The message. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00495">495</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00519">519</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1097,7 +1135,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The message. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00532">532</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00556">556</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1170,7 +1208,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The message. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00571">571</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00595">595</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1229,7 +1267,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The message. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00609">609</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00633">633</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1330,7 +1368,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The message. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00648">648</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00672">672</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1410,7 +1448,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The message. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00695">695</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00719">719</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1463,7 +1501,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The message type enum. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00734">734</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00758">758</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1523,7 +1561,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The message enum. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00775">775</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00799">799</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1590,7 +1628,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The message enum. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00803">803</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00827">827</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1643,7 +1681,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The algorithm path. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00828">828</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00852">852</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1685,7 +1723,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The subject path. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00852">852</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00876">876</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1738,7 +1776,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The algorithm backup path. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00877">877</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00901">901</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1798,7 +1836,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="class_distributed_algorithms_1_1_attribute_dictionary.html" title="Dictionary of attributes. ">AttributeDictionary</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00907">907</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00931">931</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -1833,7 +1871,7 @@ Static Public Member Functions</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>19/11/2017</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00950">950</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_class_factory_8cs_source.html#l00974">974</a> of file <a class="el" href="_class_factory_8cs_source.html">ClassFactory.cs</a>.</p>
 
 </div>
 </div>

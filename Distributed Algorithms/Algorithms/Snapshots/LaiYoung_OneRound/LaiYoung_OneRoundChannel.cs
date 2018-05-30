@@ -339,7 +339,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
             s += "State - ";
             foreach (BaseMessage message in or[c.ork.State])
             {
-                s += message.GetHeaderField(bm.ork.MessageName);
+                s += message.GetHeaderField(bm.ork.Name);
             }
             return s;
         }

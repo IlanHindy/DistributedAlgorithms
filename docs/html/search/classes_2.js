@@ -9,6 +9,7 @@ var searchData=
   ['chandylamportmessage',['ChandyLamportMessage',['../class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_message.html',1,'DistributedAlgorithms::Algorithms::Snapshots::ChandyLamport']]],
   ['chandylamportnetwork',['ChandyLamportNetwork',['../class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_network.html',1,'DistributedAlgorithms::Algorithms::Snapshots::ChandyLamport']]],
   ['chandylamportprocess',['ChandyLamportProcess',['../class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html',1,'DistributedAlgorithms::Algorithms::Snapshots::ChandyLamport']]],
+  ['changemessageorder',['ChangeMessageOrder',['../class_distributed_algorithms_1_1_change_message_order.html',1,'DistributedAlgorithms']]],
   ['channelpresentation',['ChannelPresentation',['../class_distributed_algorithms_1_1_channel_presentation.html',1,'DistributedAlgorithms']]],
   ['classfactory',['ClassFactory',['../class_distributed_algorithms_1_1_class_factory.html',1,'DistributedAlgorithms']]],
   ['config',['Config',['../class_distributed_algorithms_1_1_config.html',1,'DistributedAlgorithms']]],

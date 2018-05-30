@@ -398,9 +398,10 @@ namespace DistributedAlgorithms
         {
             ElementWindowPrms prms = new ElementWindowPrms();
             prms.newValueControlPrms.inputFieldType = InputFieldsType.ComboBox;
-            List<string> messagesTypes = TypesUtility.GetEnumKeysToStrings(attribute.Value.GetType().ToString());
-            List<string> baseMessagesTypes = TypesUtility.GetEnumKeysToStrings(typeof(bm.MessageTypes).ToString());
-            prms.newValueControlPrms.options = messagesTypes.Concat(baseMessagesTypes).ToArray();
+            prms.newValueControlPrms.options = TypesUtility.GetEnumKeysToStrings(attribute.Value.GetType().ToString()).ToArray();
+            prms.newValueControlPrms.enable = true;
+            // List<string> baseMessagesTypes = TypesUtility.GetEnumKeysToStrings(typeof(bm.MessageTypes).ToString());
+            // prms.newValueControlPrms.options = messagesTypes.Concat(baseMessagesTypes).ToArray();
             prms.newValueControlPrms.Value = TypesUtility.GetKeyToString(attribute.Value);
             return prms;
         }

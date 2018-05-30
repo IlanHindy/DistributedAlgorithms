@@ -84,14 +84,17 @@ namespace DistributedAlgorithms
 
             foreach (BaseProcess existingProcess in existingNetwork.Processes)
             {
-                BaseProcess newProcess = ClassFactory.GenerateProcess();
+                BaseProcess newProcess = ClassFactory.GenerateProcess(newNetwork);
                 Update(existingProcess, newProcess);
                 newNetwork.Processes.Add(newProcess);
             }
 
             foreach (BaseChannel existingChannel in existingNetwork.Channels)
             {
-                BaseChannel newChannel = ClassFactory.GenerateChannel();
+                BaseChannel newChannel = ClassFactory.GenerateChannel(newNetwork, 
+                    existingChannel.ea[ne.eak.Id],
+                    existingChannel.ea[bc.eak.SourceProcess],
+                    existingChannel.ea[bc.eak.DestProcess]);
                 Update(existingChannel, newChannel);
                 newNetwork.Channels.Add(newChannel);
             }
@@ -472,6 +475,15 @@ namespace DistributedAlgorithms
                             newAttr.Value = existEntry.Value.Value;
                         }
                     }
+                }
+            }
+            foreach (var newEntry in newAttribute.Value)
+            {
+                if (!existAttribute.Value.ContainsKey(newEntry.Key))
+                {
+                    Attribute attr = new Attribute();
+                    attr.DeepCopy(newEntry.Value);
+                    existAttribute.Value.Add(newEntry.Key, attr);
                 }
             }
         }

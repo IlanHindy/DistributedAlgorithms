@@ -49,6 +49,7 @@
         <RoutedUICommand x:Key="Terminate" Text="Terminate" />
         <RoutedUICommand x:Key="ShowBreakpoints" Text="ShowBreakpoints" />
         <RoutedUICommand x:Key="ShowFloatingSummary" Text="ShowFloatingSummary" />
+        <RoutedUICommand x:Key="ShowMessages" Text="ShowMessages" />
 
         <!-- Documentation menu items-->
         <RoutedUICommand x:Key="OpenAlgorithmDocumentation" Text="OpenAlgorithmDocumentation" />
@@ -151,6 +152,7 @@
         <CommandBinding Command="{StaticResource Terminate}" CanExecute="Command_CanExecute_IfRunning" Executed="Command_Terminate" />
         <CommandBinding Command="{StaticResource ShowBreakpoints}" CanExecute="Command_CanExecute_IfRunning" Executed="Command_ShowBreakpoints" />
         <CommandBinding Command="{StaticResource ShowFloatingSummary}" CanExecute="Command_CanExecute_IfRunning" Executed="Command_ShowFloatingSummary" />
+        <CommandBinding Command="{StaticResource ShowMessages}" CanExecute="Command_CanExecute_IfRunning" Executed="Command_ShowMessages" />
         
         <!-- Program Data -->
         <CommandBinding Command="{StaticResource BaseAlgorithm}" CanExecute="Command_CanExecute_IfNotRunning" Executed="Command_BaseAlgorithm" />
@@ -601,6 +603,7 @@
                         </Button>
                         <Button x:Name="Button_ShowBreakpoints" Content="Show Breakpoints" ToolTip="Show Breakpoints" Command="{StaticResource ShowBreakpoints}"/>
                         <Button x:Name="Button_ShowFloatingSummary" Content="Show Floating Summary" ToolTip="Show Floating Summary" Command="{StaticResource ShowFloatingSummary}"/>
+                        <Button x:Name="Button_ShowMessages" Content="Show messages" ToolTip="Show Messages" Command="{StaticResource ShowMessages}"/>
                     </ToolBar>
                 </ToolBarTray>                
             </DockPanel>
@@ -614,7 +617,7 @@
             <DockPanel  LastChildFill="False" DockPanel.Dock="Left" VerticalAlignment="Center">
                 <Label  Content="Process List" FontWeight="Bold" Margin="5,0, 10,0"  Width="200" DockPanel.Dock="Top" />
                 <ListBox x:Name="ListBox_Processes" Width="200" Height="200" DockPanel.Dock="Top" Margin="5"   SelectionChanged="ListBox_Processes_SelectionChanged"/>
-                <Label Content="Chanels List" FontWeight="Bold" Margin="5, 0, 5, 0"  Width="200" DockPanel.Dock="Top" />
+                <Label Content="Channels List" FontWeight="Bold" Margin="5, 0, 5, 0"  Width="200" DockPanel.Dock="Top" />
                 <ListBox x:Name="ListBox_Channels" Width="200" Height="200" DockPanel.Dock="Top" Margin="5" SelectionChanged="ListBox_Channels_SelectionChanged"/>
                 <Button x:Name="Button_ShowChannelPresentation" Content="Show Channels Presentation" Width="200" Height="30" Margin="5" Command="{StaticResource ShowChannelPresentation}" />
             </DockPanel>

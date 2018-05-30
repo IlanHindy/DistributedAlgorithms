@@ -1,5 +1,9 @@
 var NAVTREEINDEX3 =
 {
+"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_channel.html#a0f9272126e626a49872748d0fa0489b9":[12,0,1,0,1,0,1,3],
+"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_channel.html#a1c9744ab9c597c174c4d710413b7bf71":[12,0,1,0,1,0,1,40],
+"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_channel.html#a231ab1df1ac4a3eb586ea2207317a0f1":[12,0,1,0,1,0,1,32],
+"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_channel.html#a24126dacea1a7bef1febcf8c6fa02cd3":[12,0,1,0,1,0,1,7],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_channel.html#a29d11d699fe7a4c5baf312d39ff11860":[12,0,1,0,1,0,1,14],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_channel.html#a39baf2b4fced8c55c52e0e9a7fb5b862":[12,0,1,0,1,0,1,25],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_channel.html#a39baf2b4fced8c55c52e0e9a7fb5b862":[12,0,1,0,1,0,1,37],
@@ -136,8 +140,8 @@ var NAVTREEINDEX3 =
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#a8dab9ff701ff3c45582c3f76c80056a9":[12,0,1,0,1,0,4,77],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#a8e374a6bddfe636184288cc44e5f05ce":[12,0,1,0,1,0,4,10],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#a8e374a6bddfe636184288cc44e5f05ce":[12,0,1,0,1,0,4,40],
-"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#a8e8a28c6b96f4e6219922d0f277fcfac":[12,0,1,0,1,0,4,23],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#a8e8a28c6b96f4e6219922d0f277fcfac":[12,0,1,0,1,0,4,76],
+"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#a8e8a28c6b96f4e6219922d0f277fcfac":[12,0,1,0,1,0,4,23],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#a8f9942900a3896b170bf443d018aebc0":[12,0,1,0,1,0,4,0],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#a8f9942900a3896b170bf443d018aebc0ac8e474a502ca4b590ce8f8be4eb69ae2":[12,0,1,0,1,0,4,0,0],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#a9226d0bdfbb014fc5d02c43632817246":[12,0,1,0,1,0,4,79],
@@ -161,8 +165,8 @@ var NAVTREEINDEX3 =
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#ab0e5c96cef0097cb8cb9f75543466334":[12,0,1,0,1,0,4,66],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#ab0e5c96cef0097cb8cb9f75543466334":[12,0,1,0,1,0,4,86],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#ab5cd9620000e0161932c2c8d4ce86f36":[12,0,1,0,1,0,4,69],
-"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#abba5ec43bad47a39e3fcd446356a14b3":[12,0,1,0,1,0,4,46],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#abba5ec43bad47a39e3fcd446356a14b3":[12,0,1,0,1,0,4,16],
+"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#abba5ec43bad47a39e3fcd446356a14b3":[12,0,1,0,1,0,4,46],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#abc0453aace968f2e712450a890d435c0":[12,0,1,0,1,0,4,1],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#abc0453aace968f2e712450a890d435c0a1330d0a87e02421e6aa36ed33ad3e1de":[12,0,1,0,1,0,4,1,5],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1_chandy_lamport_process.html#abc0453aace968f2e712450a890d435c0a5b6352d4af330defb41d0bba3929b885":[12,0,1,0,1,0,4,1,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX3 =
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1m.html#a9af99b8ecc496ac14d4e408933fd01b3ad4e2713d1b1725a1592f9268589f990d":[12,0,1,0,1,0,5,4,4],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1n.html":[12,0,1,0,1,0,6],
 "class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1n.html#a9368bd66a16d508ff4f5671562e6858e":[12,0,1,0,1,0,6,1],
-"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1n.html#a9368bd66a16d508ff4f5671562e6858e":[12,0,1,0,1,0,6,3],
-"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1n.html#af76d7992802eab221bfb3b8ada010479":[12,0,1,0,1,0,6,0],
-"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1n.html#af76d7992802eab221bfb3b8ada010479":[12,0,1,0,1,0,6,2],
-"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1n.html#af76d7992802eab221bfb3b8ada010479a34b6cd75171affba6957e308dcbd92be":[12,0,1,0,1,0,6,0,0],
-"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1n.html#af76d7992802eab221bfb3b8ada010479a34b6cd75171affba6957e308dcbd92be":[12,0,1,0,1,0,6,0,1]
+"class_distributed_algorithms_1_1_algorithms_1_1_snapshots_1_1_chandy_lamport_1_1n.html#a9368bd66a16d508ff4f5671562e6858e":[12,0,1,0,1,0,6,3]
 };

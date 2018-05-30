@@ -14,6 +14,7 @@ var namespace_distributed_algorithms =
     [ "Breakpoint", "class_distributed_algorithms_1_1_breakpoint.html", "class_distributed_algorithms_1_1_breakpoint" ],
     [ "brp", "class_distributed_algorithms_1_1brp.html", "class_distributed_algorithms_1_1brp" ],
     [ "BuildCorrectionParameters", "class_distributed_algorithms_1_1_build_correction_parameters.html", "class_distributed_algorithms_1_1_build_correction_parameters" ],
+    [ "ChangeMessageOrder", "class_distributed_algorithms_1_1_change_message_order.html", "class_distributed_algorithms_1_1_change_message_order" ],
     [ "ChannelPresentation", "class_distributed_algorithms_1_1_channel_presentation.html", "class_distributed_algorithms_1_1_channel_presentation" ],
     [ "ClassFactory", "class_distributed_algorithms_1_1_class_factory.html", "class_distributed_algorithms_1_1_class_factory" ],
     [ "Config", "class_distributed_algorithms_1_1_config.html", "class_distributed_algorithms_1_1_config" ],

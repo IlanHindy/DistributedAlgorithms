@@ -326,7 +326,7 @@ namespace DistributedAlgorithms
             {
                 network.UpdateRunningStatus(new object[] { processesInStep });
                 Logger.Log(Logger.LogMode.MainLogAndMessageTrace, "RunningHandler TerminationAlgorithmStatus", "TerminationAlgorithmStatus", " TerminationAlgorithmStatus ", finishDetector.ReportStatus(), "RunningHandler TerminationAlgorithmStatus");
-                Logger.Log(Logger.LogMode.MainLogAndMessageTrace, "RunningHandler End Step", "", " -----------------------End Step " + step.ToString() + " -------------", "", "RunningHandler");
+                Logger.Log(Logger.LogMode.MainLogAndMessageTrace, "RunningHandler", "", "-----------------------End Step " + step.ToString() + " -------------", "", "RunningHandler");
                 MessageRouter.UpdateInitRunningPresentation();
                 step++;
             }
@@ -380,7 +380,7 @@ namespace DistributedAlgorithms
             {
                 network.UpdateRunningStatus(new object[] { processesInStep });
                 Logger.Log(Logger.LogMode.MainLogAndMessageTrace, "RunningHandler TerminationAlgorithmStatus", "TerminationAlgorithmStatus", " TerminationAlgorithmStatus ", finishDetector.ReportStatus(), "RunningHandler TerminationAlgorithmStatus");
-                Logger.Log(Logger.LogMode.MainLogAndMessageTrace, "RunningHandler End Step", "", " -----------------------End Step " + step.ToString() + " -------------", "", "RunningHandler");
+                Logger.Log(Logger.LogMode.MainLogAndMessageTrace, "RunningHandler" , "", " -----------------------End Step " + step.ToString() + " -------------", "", "RunningHandler");
                 step++;
                 MessageRouter.UpdateRunningPresentation();
             }

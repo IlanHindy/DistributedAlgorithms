@@ -140,7 +140,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 		const string recordered = "Recordered";
 		const string round = "Round";
 		const string terminationStatus = "TerminationStatus";
-		const string messageQueue = "MessageQueue";
+		const string messageQueue = "MessageQ";
 		const string receivePort = "ReceivePort";
 		const string baseAlgorithmData = "BaseAlgorithmData";
 		const string internalEvents = "InternalEvents";
@@ -205,7 +205,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 		{
 			AttributeDictionary dictionary = pa;
 			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound.n+pak";
-			dictionary.Add(n.pak.Version, new Attribute { Value = 6 ,Editable = false ,Changed = false } );
+			dictionary.Add(n.pak.Version, new Attribute { Value = 7 ,Editable = false ,Changed = false } );
 			base.InitPrivateAttributes();
 		}
  
@@ -257,7 +257,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 		const string recordered = "Recordered";
 		const string round = "Round";
 		const string terminationStatus = "TerminationStatus";
-		const string messageQueue = "MessageQueue";
+		const string messageQueue = "MessageQ";
 		const string receivePort = "ReceivePort";
 		const string baseAlgorithmData = "BaseAlgorithmData";
 		const string internalEvents = "InternalEvents";
@@ -359,7 +359,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 		const string recordered = "Recordered";
 		const string round = "Round";
 		const string terminationStatus = "TerminationStatus";
-		const string messageQueue = "MessageQueue";
+		const string messageQueue = "MessageQ";
 		const string receivePort = "ReceivePort";
 		const string baseAlgorithmData = "BaseAlgorithmData";
 		const string internalEvents = "InternalEvents";
@@ -436,7 +436,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
 			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound.c+ork";
 			dictionary.Add(c.ork.Sent, new Attribute { Value = 0 ,Changed = false } );
 			dictionary.Add(c.ork.State, new Attribute { Value = Init_ork_State() ,Changed = false } );
-			dictionary.Add(c.ork.Expected, new Attribute { Value = 0 ,Changed = false } );
+			dictionary.Add(c.ork.Expected, new Attribute { Value = -1 ,Changed = false } );
 			dictionary.Add(c.ork.Arrived, new Attribute { Value = 0 ,Changed = false } );
 			base.InitOperationResults();
 		}

@@ -347,7 +347,7 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 
             try
             {
-                s += "Value set is : " + getMethod().ToString() +"\n";
+                s += "Value set is : " + getMethod().ToString() + "\n";
                 s += "Get succeeded\n";
             }
             catch (Exception e)
@@ -359,26 +359,30 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 
         protected override void RunAlgorithm()
         {
-            base.RunAlgorithm();
             // For this test fully functioning
             // 1. Declare S1 in the process (Operating results)
             // 2. Declare Type in the channel (Operating results) (must be inserted manually  to the defs because 
             //      The program does not allow duplications
             // 3. Declare Cs1 in the channel (Private Attributes)
             // 4. Declare Cs2 in the channel (Private Attributes)
-            // 5. Declare Cs3 in the channel (Operation results) 
-            TestChannel channel = (TestChannel)InChannels[0];
-            TestMessage message = new TestMessage(network, m.MessageTypes.Message1, MessageDataFor_Message1(bm.PrmSource.Prms, null, false), channel, "MessageName");
-            Check("No string key exist", () => { return channel[s1]; }, () => { channel[s1] = "Test"; });
-            Check("Duplicate string key exist", () => { return channel[type]; }, () => { channel[type] = "Test"; });
-            Check("Single string key exist", () => { return channel[cs3]; }, () => { channel[cs3] = "Test"; });
-            Check("No key exist", () => { return channel[p.ork.S1]; }, () => { channel[p.ork.S1] = "Test"; });
-            Check("Duplicate key exist", () => { return channel[c.pak.Cs2]; }, () => { channel[c.pak.Cs2] = "Test"; });
-            Check("Single key exist", () => { return channel[c.ork.Cs3]; }, () => { channel[c.ork.Cs3] = "Test"; });
-            Check("Access to by index", () => { return channel.Cs3; }, () => { channel.Cs3 = "Test"; });
-            Check("Base message attribute access", () => { return message.SourcePort; }, () => { message.SourcePort = 123; });
-            Check("Base message index access", () => { return message[sourcePort]; }, () => { message[sourcePort] = 456; });
-            Check("Base message index access", () => { return message[prevAttr]; }, () => { message[prevAttr] = true; });
+            // 5. Declare Cs3 in the channel (Operation results)
+            if (pa[p.pak.RunGetSetTest])
+            {
+                TestChannel channel = (TestChannel)InChannels[0];
+                TestMessage message = new TestMessage(network, m.MessageTypes.Message1, MessageDataFor_Message1(bm.PrmSource.Prms, null, false), channel, "MessageName");
+                Check("No string key exist", () => { return channel[s1]; }, () => { channel[s1] = "Test"; });
+                Check("Duplicate string key exist", () => { return channel[type]; }, () => { channel[type] = "Test"; });
+                Check("Single string key exist", () => { return channel[cs3]; }, () => { channel[cs3] = "Test"; });
+                Check("No key exist", () => { return channel[p.ork.S1]; }, () => { channel[p.ork.S1] = "Test"; });
+                Check("Duplicate key exist", () => { return channel[c.pak.Cs2]; }, () => { channel[c.pak.Cs2] = "Test"; });
+                Check("Single key exist", () => { return channel[c.ork.Cs3]; }, () => { channel[c.ork.Cs3] = "Test"; });
+                Check("Access to by index", () => { return channel.Cs3; }, () => { channel.Cs3 = "Test"; });
+                Check("Base message attribute access", () => { return message.SourcePort; }, () => { message.SourcePort = 123; });
+                Check("Base message index access", () => { return message[sourcePort]; }, () => { message[sourcePort] = 456; });
+                Check("Base message index access", () => { return message[prevAttr]; }, () => { message[prevAttr] = true; });
+            }
+            or[bp.ork.Round] = 1;
+            SendAlgorithmMessage(null, SelectingMethod.All, null, or[bp.ork.Round]);
         }
 
 
@@ -573,10 +577,32 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
 
         public override void ReceiveHandling(BaseMessage message)
         {
-
-            // Note - Remove the following list because your algorithm does not need to operate
-            //        The base process algorithm
-            base.ReceiveHandling(message);
+            if (message.GetHeaderField(bm.pak.MessageType) == m.MessageTypes.AlgorithmMessage)
+            {
+                if (ea[bp.eak.Initiator])
+                {
+                    if (message.GetHeaderField(bm.pak.Round) < or[bp.ork.Round])
+                    {
+                        return;
+                    }
+                    or[bp.ork.Round]++;
+                    if (ea[bp.eak.Initiator] && or[bp.ork.Round] == pa[p.pak.MaxRound])
+                    {
+                        Terminate();
+                        return;
+                    }
+                }
+                else
+                {
+                    if (message.GetHeaderField(bm.pak.Round) <= or[bp.ork.Round])
+                    {
+                        return;
+                    }
+                    or[bp.ork.Round]++;
+                }
+                pp[bp.ppk.Text] = "Id = " + ea[ne.eak.Id].ToString() + "\n Round = " + or[bp.ork.Round].ToString();
+                SendAlgorithmMessage(null, SelectingMethod.Exclude, null, or[bp.ork.Round], 0);
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -683,7 +709,7 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
                 0,
                 EventTriggerType.BeforeSendMessage,
                 2,
-                bm.MessageTypes.Forewared,
+                m.MessageTypes.AlgorithmMessage,
                 1,
                 new List<InternalEvents.InternalEventDelegate> { InCodeInternalEventHandler });
         }
@@ -782,14 +808,14 @@ namespace DistributedAlgorithms.Algorithms.Tests.Test
         protected override void InitBaseAlgorithm()
         {
             BaseAlgorithmMessages messages = new BaseAlgorithmMessages();
-            messages.AddMessage(bm.MessageTypes.NullMessageType,
+            messages.AddMessage(m.MessageTypes.BaseMessage,
                 "BaseMessages",
                 new AttributeDictionary(),
                 new AttributeList { 1 });
             InsertBaseAlgorithmEvent(0,
                 EventTriggerType.BeforeSendMessage,
                 3,
-                bm.MessageTypes.Forewared,
+                m.MessageTypes.AlgorithmMessage,
                 1,
                 messages);
         }

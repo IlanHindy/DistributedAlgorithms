@@ -198,9 +198,9 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             pa.Add(bm.pak.Round, new Attribute { Value = sourceMessage.pa[bm.pak.Round] });
             pa.Add(bm.pak.LogicalClock, new Attribute { Value = sourceMessage.pa[bm.pak.LogicalClock] });
             pa.Add(bm.pak.SourceProcess, new Attribute { Value = sendingChannel.ea[bc.eak.SourceProcess] });
-            pa.Add(bm.pak.SourcePort, new Attribute { Value = sendingChannel.or[bc.ork.SourcePort] });
+            pa.Add(bm.pak.SourcePort, new Attribute { Value = sendingChannel.or[bc.ork.SourcePort], IncludedInShortDescription=false, IncludeInEqualsTo = false });
             pa.Add(bm.pak.DestProcess, new Attribute { Value = sendingChannel.ea[bc.eak.DestProcess] });
-            pa.Add(bm.pak.DestPort, new Attribute { Value = sendingChannel.or[bc.ork.DestPort] });
+            pa.Add(bm.pak.DestPort, new Attribute { Value = sendingChannel.or[bc.ork.DestPort], IncludedInShortDescription = false, IncludeInEqualsTo = false });
             op.DeepCopy(sourceMessage.op);
             or.DeepCopy(sourceMessage.or);
         }
@@ -247,16 +247,16 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             try
             {
                 pa.Add(bm.pak.SourceProcess, new Attribute { Value = channel.ea[bc.eak.SourceProcess] });
-                pa.Add(bm.pak.SourcePort, new Attribute { Value = channel.or[bc.ork.SourcePort], IncludedInShortDescription = false });
+                pa.Add(bm.pak.SourcePort, new Attribute { Value = channel.or[bc.ork.SourcePort], IncludedInShortDescription = false, IncludeInEqualsTo=false });
                 pa.Add(bm.pak.DestProcess, new Attribute { Value = channel.ea[bc.eak.DestProcess] });
-                pa.Add(bm.pak.DestPort, new Attribute { Value = channel.or[bc.ork.DestPort], IncludedInShortDescription = false });
+                pa.Add(bm.pak.DestPort, new Attribute { Value = channel.or[bc.ork.DestPort], IncludedInShortDescription = false, IncludeInEqualsTo=false });
             }
             catch
             {
                 pa.Add(bm.pak.SourceProcess, new Attribute { Value = 0 });
-                pa.Add(bm.pak.SourcePort, new Attribute { Value = 0, IncludedInShortDescription = false });
+                pa.Add(bm.pak.SourcePort, new Attribute { Value = 0, IncludedInShortDescription = false, IncludeInEqualsTo=false });
                 pa.Add(bm.pak.DestProcess, new Attribute { Value = 0 });
-                pa.Add(bm.pak.DestPort, new Attribute { Value = 0, IncludedInShortDescription = false });
+                pa.Add(bm.pak.DestPort, new Attribute { Value = 0, IncludedInShortDescription = false, IncludeInEqualsTo=false });
             }
             pa.Add(bm.pak.Round, new Attribute { Value = round });
             pa.Add(bm.pak.LogicalClock, new Attribute { Value = logicalClock });
@@ -345,9 +345,9 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             this.network = network;
             pa.Add(bm.pak.MessageType, new Attribute { Value = messageType });
             pa.Add(bm.pak.SourceProcess, new Attribute { Value = sourceProcess });
-            pa.Add(bm.pak.SourcePort, new Attribute { Value = sourcePort, IncludedInShortDescription = false });
+            pa.Add(bm.pak.SourcePort, new Attribute { Value = sourcePort, IncludedInShortDescription = false, IncludeInEqualsTo=false });
             pa.Add(bm.pak.DestProcess, new Attribute { Value = destProcess });
-            pa.Add(bm.pak.DestPort, new Attribute { Value = destPort, IncludedInShortDescription = false });
+            pa.Add(bm.pak.DestPort, new Attribute { Value = destPort, IncludedInShortDescription = false, IncludeInEqualsTo=false });
             pa.Add(bm.pak.Round, new Attribute { Value = round });
             pa.Add(bm.pak.LogicalClock, new Attribute { Value = logicalClock });
             op.Add(bm.opk.Breakpoints, new Attribute { Value = new Breakpoint(Breakpoint.HostingElementTypes.Message), Editable = false, IncludedInShortDescription = false });
@@ -387,9 +387,9 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             this.network = network;
             pa.Add(bm.pak.MessageType, new Attribute { Value = messageType });
             pa.Add(bm.pak.SourceProcess, new Attribute { Value = channel.ea[bc.eak.SourceProcess] });
-            pa.Add(bm.pak.SourcePort, new Attribute { Value = channel.or[bc.ork.SourcePort], IncludedInShortDescription = false });
+            pa.Add(bm.pak.SourcePort, new Attribute { Value = channel.or[bc.ork.SourcePort], IncludedInShortDescription = false, IncludeInEqualsTo=false });
             pa.Add(bm.pak.DestProcess, new Attribute { Value = channel.ea[bc.eak.DestProcess] });
-            pa.Add(bm.pak.DestPort, new Attribute { Value = channel.or[bc.ork.DestPort], IncludedInShortDescription = false });
+            pa.Add(bm.pak.DestPort, new Attribute { Value = channel.or[bc.ork.DestPort], IncludedInShortDescription = false, IncludeInEqualsTo=false });
             pa.Add(bm.pak.Round, new Attribute { Value = round });
             pa.Add(bm.pak.LogicalClock, new Attribute { Value = logicalClock });
             if (messageName == "")
@@ -423,9 +423,9 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         {
             pa.Add(bm.pak.MessageType, new Attribute { Value = bm.MessageTypes.NullMessageType });
             pa.Add(bm.pak.SourceProcess, new Attribute { Value = 0 });
-            pa.Add(bm.pak.SourcePort, new Attribute { Value = 0 });
+            pa.Add(bm.pak.SourcePort, new Attribute { Value = 0, IncludedInShortDescription=false, IncludeInEqualsTo=false });
             pa.Add(bm.pak.DestProcess, new Attribute { Value = 0 });
-            pa.Add(bm.pak.DestPort, new Attribute { Value = 0});
+            pa.Add(bm.pak.DestPort, new Attribute { Value = 0, IncludedInShortDescription=false, IncludeInEqualsTo=false});
             pa.Add(bm.pak.Round, new Attribute { Value = 0});
             pa.Add(bm.pak.LogicalClock, new Attribute { Value = 0});
         }
@@ -804,7 +804,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
             if (!IsEmpty())
             {
                 result += "[" + GetField(bm.ork.PositionInProcessQ).ToString() + "]";
-                result += ";Round=" + GetHeaderField(bm.pak.Round).ToString();
+                result += " Round=" + GetHeaderField(bm.pak.Round).ToString();
                 result += ";" + pa[bm.pak.SourceProcess].ToString() + "->" + pa[bm.pak.DestProcess].ToString();
                 result += ";" + TypesUtility.GetKeyToString(GetHeaderField(bm.pak.MessageType));
                 result += " : " + or.ShortDescription();

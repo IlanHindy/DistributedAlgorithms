@@ -674,7 +674,7 @@ namespace DistributedAlgorithms
         /// \return True if equals to, false if not.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool checkNotSameObject = false)
+        public bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool print = false, bool checkNotSameObject = false)
         {
             AttributeDictionary otherDictionary = (AttributeDictionary)other;
 
@@ -691,11 +691,14 @@ namespace DistributedAlgorithms
                     error = "one does not contain key " + TypesUtility.GetKeyToString(entry.Key);
                     return false;
                 }
+                Attribute thisAttribute = GetAttribute(entry.Key);
+                Attribute otherAttribute = otherDictionary.GetAttribute(entry.Key);
+                string keyString = TypesUtility.GetKeyToString(entry.Key);
 
-                if (!GetAttribute(entry.Key).EqualsTo(nestingLevel + 1, entry.Key, entry.Value, checkNotSameObject))
+                if (!thisAttribute.CheckEqual(nestingLevel + 1, keyString, otherAttribute, print, checkNotSameObject))
                 {
                     return false;
-                }               
+                }              
             }
             return true;
         }
@@ -977,12 +980,12 @@ namespace DistributedAlgorithms
         {
             bool editable = attributeEditable;
 
-           
+
             if (inputWindow == InputWindows.AddAlgorithmWindow)
             {
-                if (inputWindow == InputWindows.AddAlgorithmWindow)
+                if (!this.AddAlgorithmWindowAttributeEditable(mainNetworkElement, mainDictionary))
                 {
-                    editable = this.AddAlgorithmWindowAttributeEditable(mainNetworkElement, mainDictionary);
+                    editable = false;
                 }
             }
 
@@ -1474,13 +1477,15 @@ namespace DistributedAlgorithms
             string s = eol + " " + eol + "\t\tpublic void " + this.SendMethodName(key) + "(";
             s += "AttributeDictionary " + " fields = null, ";
             s += eol + "\t\t\tSelectingMethod selectingMethod = SelectingMethod.All,";
-            s += eol + "\t\t\tList<int> ids = null)";
+            s += eol + "\t\t\tList<int> ids = null,";
+            s += eol + "\t\t\tint round = -1,";
+            s += eol + "\t\t\tint clock = -1)";
             s += eol + "\t\t{";
             s += eol + "\t\t\tif(fields is null)";
             s += eol + "\t\t\t{";
             s += eol + "\t\t\t\t" + this.MessageMainDictionaryMethodName(key) + "();";
             s += eol + "\t\t\t}";
-            s += eol + "\t\t\tSend(m.MessageTypes." + messageName + ", fields, selectingMethod, ids, 0, 0);";
+            s += eol + "\t\t\tSend(m.MessageTypes." + messageName + ", fields, selectingMethod, ids, round, clock);";
             s += eol + "\t\t}";
             return s;
         }

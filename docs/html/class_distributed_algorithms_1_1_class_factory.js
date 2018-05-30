@@ -10,6 +10,7 @@ var class_distributed_algorithms_1_1_class_factory =
     [ "GenerateChannel", "class_distributed_algorithms_1_1_class_factory.html#a4df01d666904370534311b06cff62726", null ],
     [ "GenerateChannel", "class_distributed_algorithms_1_1_class_factory.html#a72bfe2861aaa2eee222ce3f06e639542", null ],
     [ "GenerateChannel", "class_distributed_algorithms_1_1_class_factory.html#a1f8f6055a38266c55d7a905ba1613282", null ],
+    [ "GenerateMessageType", "class_distributed_algorithms_1_1_class_factory.html#a5193200e907ba43eaca7068acf8b888c", null ],
     [ "GenerateMessage", "class_distributed_algorithms_1_1_class_factory.html#a3d42b5e139e1cd1aeaa0d555d09a8b92", null ],
     [ "GenerateMessage", "class_distributed_algorithms_1_1_class_factory.html#a2d571d200ea37635485921b3e29591e9", null ],
     [ "GenerateMessage", "class_distributed_algorithms_1_1_class_factory.html#aa9d9d00535ae8e9c4734b832ccffa242", null ],

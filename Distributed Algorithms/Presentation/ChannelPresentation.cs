@@ -125,7 +125,7 @@ namespace DistributedAlgorithms
             presentationElement.status = MainWindow.SelectedStatus.NotSelected;            
             presentationElement.controls.Add(PresentationElement.ControlKeys.ArrowHead, CreatePolygon());
             //presentationElement.controls.Add(PresentationElement.ControlKeys.MessageQ, CreateInvisibleLabel());
-            presentationElement.controls.Add(PresentationElement.ControlKeys.MessagesGridView, CreateMessagesGridView());
+            presentationElement.controls.Add(PresentationElement.ControlKeys.MessagesGridView, CreateMessagesGridView(channel.ea[bc.eak.SourceProcess]));
             presentationElement.controls.Add(PresentationElement.ControlKeys.Label, CreatePresentationLabel(channel));
             ((StackPanel)additionalControls[AdditionalControlKeys.LabelsPanel]).Children.Add(presentationElement.controls[PresentationElement.ControlKeys.Label]);
             presentationElements.Add(channel, presentationElement);
@@ -210,9 +210,9 @@ namespace DistributedAlgorithms
             return label;
         }
 
-        private GridView CreateMessagesGridView()
+        private GridView CreateMessagesGridView(int sourceProcessId)
         {
-            GridView gridView = new GridView(canvas, new List<string>());
+            GridView gridView = new GridView(canvas, new List<string>(), sourceProcessId, ChangeMessageOrder.PermutationString);
             canvas.Children.Add(gridView);
             return gridView;
         }
@@ -923,25 +923,19 @@ namespace DistributedAlgorithms
          * \param   channel         The channel.
          * \param   messagesString  The messages string.
          **************************************************************************************************/
-
-        private void UpdateMessagesLabel(BaseChannel channel, string messagesString)
-        {
-            Label messagesLabel = ((Label)(presentationElements[channel].controls[PresentationElement.ControlKeys.MessageQ]));
-            messagesLabel.Content = messagesString;
-            SetLabelDimentions(messagesLabel);
-            PositionLabel(messagesLabel, GetRelativeLinePositionForLabel(channel));
-            messagesLabel.Background = new SolidColorBrush(CreateColorFromEnum(channel.pp[bc.ppk.MessagesBackground]));
-            messagesLabel.Foreground = new SolidColorBrush(CreateColorFromEnum(channel.pp[bc.ppk.MessagesForeground]));
-            messagesLabel.BorderThickness = new Thickness(channel.pp[bc.ppk.MessagesFrameWidth]);
-            messagesLabel.BorderBrush = new SolidColorBrush(CreateColorFromEnum(channel.pp[bc.ppk.MessagesFrameColor]));
-        }
-
         private void UpdateMessagesGrid(BaseChannel channel, List<string> messagesStrings)
         {
+            if (!mainWindow.showMessages) return;
             GridView gridView = ((GridView)(presentationElements[channel].controls[PresentationElement.ControlKeys.MessagesGridView]));
             gridView.ReplaceContent(messagesStrings);
             PositionMessagesGrid(gridView, GetRelativeLinePositionForLabel(channel));
             gridView.MoveToFront();
+        }
+
+        public void SetMessagesVisibility(BaseChannel channel, Visibility visibility)
+        {
+            GridView gridView = ((GridView)(presentationElements[channel].controls[PresentationElement.ControlKeys.MessagesGridView]));
+            gridView.Visibility = visibility;
         }
 
         /**********************************************************************************************//**

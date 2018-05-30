@@ -29,6 +29,6 @@ var class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_messa
     [ "Round", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#a5bcc0c431555c704079d2c467050b652", null ],
     [ "LogicalClock", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#a9298c217c5d7df38e0bc8713b5df66b9", null ],
     [ "Breakpoints", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#a39902c0352f929590b6add44e4741b94", null ],
-    [ "MessageName", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#ae24ec2e27d5a1c0e81dc26e81493ecd0", null ],
+    [ "Name", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#ac91dd741cbc6d97d73c3e16daa110b0d", null ],
     [ "PositionInProcessQ", "class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_message.html#a7d18f645c31c416fbb5494529a124553", null ]
 ];

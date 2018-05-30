@@ -182,7 +182,7 @@ namespace DistributedAlgorithms
                 if (evnt[Comps.Trigger].True(triggerType, message))
                 {
 
-                    evnt[Comps.Messages].Send(round);
+                    evnt[Comps.Messages].Send(((BaseProcess)Element).or[bp.ork.Round]);
                 }
             }
         }

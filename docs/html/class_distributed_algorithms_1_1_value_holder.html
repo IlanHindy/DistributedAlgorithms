@@ -95,9 +95,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a100b84ec440f07539ed1bfb8ecb9be38"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_value_holder.html#a100b84ec440f07539ed1bfb8ecb9be38">CheckMembers</a> (this <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html">IValueHolder</a> checkedValueHolder, <a class="el" href="class_distributed_algorithms_1_1_algorithms_1_1_base_1_1_base_1_1_base_network.html">BaseNetwork</a> network, <a class="el" href="class_distributed_algorithms_1_1_network_element.html">NetworkElement</a> element, <a class="el" href="class_distributed_algorithms_1_1_permissions.html">Permissions</a> permissions, <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html">IValueHolder</a> parent, int nestingLevel, string key, bool checkPermissions=true)</td></tr>
 <tr class="memdesc:a100b84ec440f07539ed1bfb8ecb9be38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check members.  <a href="#a100b84ec440f07539ed1bfb8ecb9be38">More...</a><br /></td></tr>
 <tr class="separator:a100b84ec440f07539ed1bfb8ecb9be38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1b9abe8fc1c7d47551c1d5150717fef"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_value_holder.html#af1b9abe8fc1c7d47551c1d5150717fef">EqualsTo</a> (this <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html">IValueHolder</a> valueHolder, int nestingLevel, object key, <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html">IValueHolder</a> other, bool checkNotSameObject=false)</td></tr>
-<tr class="memdesc:af1b9abe8fc1c7d47551c1d5150717fef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equals to.  <a href="#af1b9abe8fc1c7d47551c1d5150717fef">More...</a><br /></td></tr>
-<tr class="separator:af1b9abe8fc1c7d47551c1d5150717fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c45d848e255aec49ca9d69cc36ed26a"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_value_holder.html#a9c45d848e255aec49ca9d69cc36ed26a">CheckEqual</a> (this <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html">IValueHolder</a> valueHolder, int nestingLevel, object key, <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html">IValueHolder</a> other, bool print=false, bool checkNotSameObject=false)</td></tr>
+<tr class="separator:a9c45d848e255aec49ca9d69cc36ed26a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac05776f16f17b541dd1cfd89d92de1e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_distributed_algorithms_1_1_value_holder.html#aac05776f16f17b541dd1cfd89d92de1e">GenerateCheckMessage</a> (this <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html">IValueHolder</a> valueHolder, int nestingLevel, string key, string message)</td></tr>
 <tr class="memdesc:aac05776f16f17b541dd1cfd89d92de1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a check message.  <a href="#aac05776f16f17b541dd1cfd89d92de1e">More...</a><br /></td></tr>
 <tr class="separator:aac05776f16f17b541dd1cfd89d92de1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -280,8 +279,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af1b9abe8fc1c7d47551c1d5150717fef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1b9abe8fc1c7d47551c1d5150717fef">&#9670;&nbsp;</a></span>EqualsTo()</h2>
+<a id="a9c45d848e255aec49ca9d69cc36ed26a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c45d848e255aec49ca9d69cc36ed26a">&#9670;&nbsp;</a></span>CheckEqual()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -290,7 +289,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">public static bool DistributedAlgorithms.ValueHolder.EqualsTo </td>
+          <td class="memname">static bool DistributedAlgorithms.ValueHolder.CheckEqual </td>
           <td>(</td>
           <td class="paramtype">this <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html">IValueHolder</a>&#160;</td>
           <td class="paramname"><em>valueHolder</em>, </td>
@@ -317,6 +316,12 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>print</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>checkNotSameObject</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
@@ -331,37 +336,6 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Equals to. </p>
-<dl class="section user"><dt>Description.</dt><dd><ul>
-<li>This method recursively checks if the first <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html" title="Interface for value holder. This interface contains all the methods for classes that holds values of ...">IValueHolder</a> is equal to the second</li>
-<li>The compare is for the values and not the pointers of the <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html" title="Interface for value holder. This interface contains all the methods for classes that holds values of ...">IValueHolder</a></li>
-<li>The parameter checkNotSameObject is for checking that there was a copy (means created new objects) and not assignments.</li>
-</ul>
-</dd></dl>
-<dl class="section user"><dt>Algorithm.</dt><dd><ol type="1">
-<li>Common checks for all the <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html" title="Interface for value holder. This interface contains all the methods for classes that holds values of ...">IValueHolder</a><ol type="a">
-<li>The type of the 2 <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html" title="Interface for value holder. This interface contains all the methods for classes that holds values of ...">IValueHolder</a> is the same</li>
-<li>If checkNotSameObject check that the objects are not the same objects</li>
-</ol>
-</li>
-<li>Activate the recursive compare by calling the <a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html" title="Interface for value holder. This interface contains all the methods for classes that holds values of ...">IValueHolder</a>'s EqualsTo method.</li>
-</ol>
-</dd></dl>
-<dl class="section user"><dt>Usage Notes.</dt><dd></dd></dl>
-<dl class="section author"><dt>Author</dt><dd>Ilanh </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>25/07/2017</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">valueHolder</td><td>The valueHolder to act on. </td></tr>
-    <tr><td class="paramname">nestingLevel</td><td>(int) - The nesting level. </td></tr>
-    <tr><td class="paramname">key</td><td>(object) - The key. </td></tr>
-    <tr><td class="paramname">other</td><td>(<a class="el" href="interface_distributed_algorithms_1_1_i_value_holder.html" title="Interface for value holder. This interface contains all the methods for classes that holds values of ...">IValueHolder</a>) - The other. </td></tr>
-    <tr><td class="paramname">checkNotSameObject</td><td>(Optional) (bool) - true to check not same object.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if equals to, false if not. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00174">174</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
@@ -429,7 +403,7 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00232">232</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00255">255</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -497,7 +471,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The key string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00266">266</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00289">289</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -543,7 +517,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00330">330</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00353">353</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -589,7 +563,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00359">359</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00382">382</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -635,7 +609,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00386">386</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00409">409</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -681,7 +655,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00412">412</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00435">435</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -738,7 +712,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00452">452</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00475">475</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -791,7 +765,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00478">478</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00501">501</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -858,7 +832,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00507">507</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00530">530</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -918,7 +892,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00536">536</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00559">559</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -971,7 +945,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00564">564</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00587">587</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -1024,7 +998,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00597">597</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00620">620</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -1085,7 +1059,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The enum name. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00632">632</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00655">655</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -1129,7 +1103,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00677">677</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00700">700</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>
@@ -1189,7 +1163,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if it succeeds, false if it fails. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00761">761</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_value_holder_8cs_source.html#l00784">784</a> of file <a class="el" href="_value_holder_8cs_source.html">ValueHolder.cs</a>.</p>
 
 </div>
 </div>

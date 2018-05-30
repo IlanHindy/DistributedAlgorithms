@@ -521,7 +521,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
         /// \param dummy (Optional)  (DummyForInternalEvent) - The dummy.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public void DefaultInternalEventHandler(InternalEvent.DummyForInternalEvent dummy = null)
+        public void DefaultInternalEventHandler(InternalEvents.DummyForInternalEvent dummy = null)
         { }
         #endregion
         #region /// \name Base Algorithm Events
@@ -574,7 +574,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.LaiYoung_OneRound
         /// \date 20/12/2017
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected override void InitBaseAlgorithmEvents()
+        protected override void InitBaseAlgorithm()
         {
         }
 

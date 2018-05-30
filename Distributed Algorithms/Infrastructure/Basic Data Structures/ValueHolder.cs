@@ -171,14 +171,23 @@ namespace DistributedAlgorithms
         /// \return True if equals to, false if not.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static bool EqualsTo(this IValueHolder valueHolder,
+        public static bool CheckEqual(this IValueHolder valueHolder,
             int nestingLevel,
             object key,
             IValueHolder other,
+            bool print = false,
             bool checkNotSameObject = false)
         {
             string keyString = TypesUtility.GetKeyToString(key);
-            valueHolder.GenerateCheckMessage(nestingLevel, keyString, " Start");
+            if (print)
+            {
+                if (nestingLevel == 0)
+                {
+                    MessageRouter.ReportMessage("----- Start EqualsTo -----", "", "");
+                }
+
+                valueHolder.GenerateCheckMessage(nestingLevel, keyString, " Start");
+            }
             if (!valueHolder.GetType().Equals(other.GetType()))
             {
                 valueHolder.GenerateCheckMessage(nestingLevel, keyString, "The type of one is : " + valueHolder.GetType() +
@@ -196,15 +205,29 @@ namespace DistributedAlgorithms
             }
 
             string error = "";
-            if (valueHolder.EqualsTo(nestingLevel, ref error, other, checkNotSameObject))
+            if (valueHolder.EqualsTo(nestingLevel, ref error, other, print, checkNotSameObject))
             {
-                valueHolder.GenerateCheckMessage(nestingLevel, keyString, " End - True");
+                if (print)
+                {
+                    if (nestingLevel == 0)
+                    {
+                        MessageRouter.ReportMessage("----- Start EqualsTo -----", "", "");
+                    }
+                    valueHolder.GenerateCheckMessage(nestingLevel, keyString, " End - True");
+                }
                 return true;
             }
             else
             {
-                valueHolder.GenerateCheckMessage(nestingLevel, keyString, " " + error);
-                valueHolder.GenerateCheckMessage(nestingLevel, keyString, " End - False");
+                if (print)
+                {
+                    valueHolder.GenerateCheckMessage(nestingLevel, keyString, " " + error);
+                    valueHolder.GenerateCheckMessage(nestingLevel, keyString, " End - False");
+                    if (nestingLevel == 0)
+                    {
+                        MessageRouter.ReportMessage("----- End EqualsTo -----", "", "");
+                    }
+                }
                 return false;
             }
         }
@@ -231,7 +254,7 @@ namespace DistributedAlgorithms
 
         public static void GenerateCheckMessage(this IValueHolder valueHolder, int nestingLevel, string key, string message)
         {
-            MessageRouter.ReportMessage(new string('\t', nestingLevel) + key + " (" + valueHolder.GetType().ToString().Replace("DistributedAlgorithms.", "") + ") ", "", message);
+            MessageRouter.ReportMessage(new string('\t', nestingLevel) + "[" + key + "] (" + valueHolder.GetType().ToString().Replace("DistributedAlgorithms.", "") + ") ", "", message);
         }
         #endregion
         #region /// \name Add algorithm window support (creating c# code)

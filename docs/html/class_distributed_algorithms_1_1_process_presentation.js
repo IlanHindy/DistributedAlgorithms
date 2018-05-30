@@ -29,6 +29,7 @@ var class_distributed_algorithms_1_1_process_presentation =
     [ "ElementObject", "class_distributed_algorithms_1_1_process_presentation.html#a0a674873d5d20037a840f06688159a71", null ],
     [ "UpdateEndRunning", "class_distributed_algorithms_1_1_process_presentation.html#afea39d0c5a4f2b428341109c5c0f8044", null ],
     [ "UpdateBreakpointLabel", "class_distributed_algorithms_1_1_process_presentation.html#afa111640235305b2b30241ab16281746", null ],
+    [ "SetBreakpoinsVisibility", "class_distributed_algorithms_1_1_process_presentation.html#a1417c74766347588592c6ba4baa72866", null ],
     [ "PositionBreakpointLabel", "class_distributed_algorithms_1_1_process_presentation.html#adc6170b2c4659eeaf2c84b907791dd85", null ],
     [ "AddBreakpointToLabel", "class_distributed_algorithms_1_1_process_presentation.html#a891ce64887450e75fe6644bb71d56b97", null ],
     [ "OpenComplexAttribute", "class_distributed_algorithms_1_1_process_presentation.html#ac2241675011fe1b7a5e7aa103416465a", null ],

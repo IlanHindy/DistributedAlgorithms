@@ -17,6 +17,7 @@ var searchData=
   ['wordfilename',['wordFileName',['../class_distributed_algorithms_1_1_test.html#ae3684213542e9bdf575c3a22f33da9b3',1,'DistributedAlgorithms::Test']]],
   ['wordfilepath',['wordFilePath',['../class_distributed_algorithms_1_1_test.html#aeb59ccafea8e2e12897a97518654d40f',1,'DistributedAlgorithms::Test']]],
   ['worksocket',['workSocket',['../class_distributed_algorithms_1_1_socket_state_object.html#a94569dfc9f9edee22fdd346a1a24e497',1,'DistributedAlgorithms::SocketStateObject']]],
+  ['wrap',['wrap',['../class_distributed_algorithms_1_1_font.html#a245637550d61ceb2f58b8c7e8e67bf26',1,'DistributedAlgorithms::Font']]],
   ['writelog',['WriteLog',['../class_distributed_algorithms_1_1_logger.html#a3474b561de42e0f6c3d248746ff938ed',1,'DistributedAlgorithms::Logger']]],
   ['writelogheader',['WriteLogHeader',['../class_distributed_algorithms_1_1_logger.html#a2f0822d4da58f5e1d521117fae8f7dec',1,'DistributedAlgorithms::Logger']]],
   ['writeloglockobject',['WriteLogLockObject',['../class_distributed_algorithms_1_1_logger.html#a40dbdfe75e8e399840fdae6605750c26',1,'DistributedAlgorithms::Logger']]],

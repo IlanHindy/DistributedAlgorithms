@@ -165,6 +165,12 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
 			 set { op[bp.opk.InternalEvents] = value; }
 		}
  
+		public DistributedAlgorithms.ChangeMessageOrder ChangeOrderEvents
+		{
+			 get { return op[bp.opk.ChangeOrderEvents]; }
+			 set { op[bp.opk.ChangeOrderEvents] = value; }
+		}
+ 
 		public System.Int32 Round
 		{
 			 get { return or[bp.ork.Round]; }

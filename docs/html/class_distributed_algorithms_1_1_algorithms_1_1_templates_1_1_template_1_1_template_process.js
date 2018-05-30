@@ -15,7 +15,7 @@ var class_distributed_algorithms_1_1_algorithms_1_1_templates_1_1_template_1_1_t
     [ "MessageProcessingCondition", "class_distributed_algorithms_1_1_algorithms_1_1_templates_1_1_template_1_1_template_process.html#a03e1990b328b0204cde7c1441d2d2062", null ],
     [ "InitInternalEvents", "class_distributed_algorithms_1_1_algorithms_1_1_templates_1_1_template_1_1_template_process.html#ab7a82ed5994afc03bb3bf5a5e3e58191", null ],
     [ "DefaultInternalEventHandler", "class_distributed_algorithms_1_1_algorithms_1_1_templates_1_1_template_1_1_template_process.html#a9c342f4690156a95e7d2709c71824936", null ],
-    [ "InitBaseAlgorithmEvents", "class_distributed_algorithms_1_1_algorithms_1_1_templates_1_1_template_1_1_template_process.html#a0270794647cf28acf59d0681501b4dc3", null ],
+    [ "InitBaseAlgorithm", "class_distributed_algorithms_1_1_algorithms_1_1_templates_1_1_template_1_1_template_process.html#a396a460d19e79922282da1e1c0f97cf2", null ],
     [ "BuildBaseAlgorithmMessage", "class_distributed_algorithms_1_1_algorithms_1_1_templates_1_1_template_1_1_template_process.html#ae9b4280ee1a65c13f3619c776cd32d5a", null ],
     [ "BeforeSendOperation", "class_distributed_algorithms_1_1_algorithms_1_1_templates_1_1_template_1_1_template_process.html#a71f2f746110c0bba3c2450e47e13788c", null ],
     [ "AfterSendOperation", "class_distributed_algorithms_1_1_algorithms_1_1_templates_1_1_template_1_1_template_process.html#ac95a1e7ba28b908542b6118ed9bfd56c", null ],

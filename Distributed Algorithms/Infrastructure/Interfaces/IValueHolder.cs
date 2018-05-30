@@ -102,7 +102,7 @@ namespace DistributedAlgorithms
         ///      - The method does the common checks and call this method to propagate the compare to the childrens.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool checkNotSameObject = false);
+        bool EqualsTo(int nestingLevel, ref string error, IValueHolder other, bool print, bool checkNotSameObject = false);
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \fn void DeepCopy(IValueHolder source, bool isInitiator = false);

@@ -1296,7 +1296,7 @@ namespace DistributedAlgorithms
         /// \param newItemLocation (Optional)  (int) - The new item location in the parent item.
         ///                        (Used when adding new attributes by the user)
         ///
-        /// \return The new new item.
+        /// \return The new item.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         protected ControlsAttributeLink CreateNewItem(Attribute attribute,
@@ -1651,7 +1651,7 @@ namespace DistributedAlgorithms
         /// \brief Creates a button.
         ///
         /// \par Description.
-        ///      Create a button for handeling attribute.
+        ///      Create a button for handling attribute.
         ///
         /// \par Algorithm.
         ///
@@ -2316,7 +2316,7 @@ namespace DistributedAlgorithms
         /// \brief Event handler. Called by Button_Remove for click events.
         ///
         /// \par Description.
-        ///      Handle the revove of an item from AttributeList and AttributeDictionary.
+        ///      Handle the remove of an item from AttributeList and AttributeDictionary.
         ///
         /// \par Algorithm.
         ///
@@ -2409,7 +2409,7 @@ namespace DistributedAlgorithms
 
         protected void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            // Get the grid of the pannel where the Add button is found
+            // Get the grid of the panel where the Add button is found
             Grid grid = (Grid)((Button)sender).Parent;
 
             //Get the index for the addition
@@ -2419,7 +2419,7 @@ namespace DistributedAlgorithms
             // Find the link of the grid
             var complexAttributeLinkEntry = controlsAttributeLinks.First(entry => entry.Value.newValueControl == grid);
 
-            // Set the current complex item to the item of the pannel of the add button
+            // Set the current complex item to the item of the panel of the add button
             // (The methods that adds the item use it)
             currentComplexItem = complexAttributeLinkEntry.Value;
             ControlsAttributeLink newLink;
@@ -2506,7 +2506,7 @@ namespace DistributedAlgorithms
                 return;
             }
 
-            // Get the link of the element the compo box is pointed at
+            // Get the link of the element the combo box is pointed at
             ControlsAttributeLink link = controlsAttributeLinks[(ItemsControl)listLinkEntry.Key.Items[index]];
 
             // Change the text on the remove button
@@ -2516,7 +2516,7 @@ namespace DistributedAlgorithms
 
             if (listLinkEntry.Value.updateStatus != UpdateStatuses.Removed)
             {
-                // Get the remove button of the pannl
+                // Get the remove button of the panel
                 Button removeButton = grid.Children.OfType<Button>().First(b => (string)b.Content != "Add");
 
                 // Set the content of the button
@@ -2561,7 +2561,7 @@ namespace DistributedAlgorithms
             // Show the dialog for creating new attribute and creating the link for the new attribute
             ControlsAttributeLink newLink = CreateAttribute(index);
 
-            // If the dialog was not quitted
+            // If the dialog was not quited
             if (newLink != null)
             {
 
