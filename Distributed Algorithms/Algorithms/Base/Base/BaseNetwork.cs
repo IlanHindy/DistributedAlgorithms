@@ -130,9 +130,9 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         #region /// \name Init (methods that are activated while in Init phase)
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn public override void Init(int idx, bool clearPresentation = true)
+        /// \fn public void InitNetwork(int processMaxLeft, int processMaxHeight)
         ///
-        /// \brief Init a new network
+        /// \brief Init network.
         ///
         /// \par Description.
         ///
@@ -140,19 +140,19 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         ///
         /// \par Usage Notes.
         ///
-        /// \author Ilan Hindy
-        /// \date 08/03/2017
+        /// \author Ilanh
+        /// \date 30/05/2018
         ///
-        /// \param idx               The index.
-        /// \param clearPresentation (Optional) True to clear presentation.
+        /// \param processMaxLeft    (int) - The process maximum left.
+        /// \param processMaxHeight  (int) - Height of the process maximum.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public void InitNetwork()
+        public void InitNetwork(int processMaxLeft, int processMaxHeight)
         {
             ClearNetwork();
             
             //Creat an initial network
-            CreateInitNetwork();
+            CreateInitNetwork(processMaxLeft, processMaxHeight);
             
             //Init single step breakpoints
             Breakpoint breakpoint = op[bn.opk.Breakpoints];
@@ -160,7 +160,7 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn protected virtual void CreateInitNetwork()
+        /// \fn protected virtual void CreateInitNetwork(int processMaxLeft, int processMaxHeight)
         ///
         /// \brief Creates init network.
         ///
@@ -170,12 +170,17 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
         ///
         /// \par Usage Notes.
         ///
-        /// \author Ilan Hindy
-        /// \date 08/03/2017
+        /// \author Ilanh
+        /// \date 30/05/2018
+        ///
+        /// \param processMaxLeft    (int) - The process maximum left.
+        /// \param processMaxHeight  (int) - Height of the process maximum.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected virtual void CreateInitNetwork()
+        protected virtual void CreateInitNetwork(int processMaxLeft, int processMaxHeight)
         {
+            Random random = new Random();
+
             //Init the network
             Init(0);
 
@@ -188,6 +193,9 @@ namespace DistributedAlgorithms.Algorithms.Base.Base
                 BaseProcess process = ClassFactory.GenerateProcess(this);
                 Processes.Add(process);
                 process.Init(idx);
+                process.pp[bp.ppk.FrameLeft] = random.Next(0, processMaxLeft - (int)process.pp[bp.ppk.FrameWidth]);
+                process.pp[bp.ppk.FrameTop] = random.Next(0, processMaxHeight - (int)process.pp[bp.ppk.FrameHeight]);
+                
 
                 //Create a Channel from the process to itself - used to terminate the sockets
                 //Used by the process

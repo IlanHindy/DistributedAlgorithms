@@ -173,42 +173,57 @@ namespace DistributedAlgorithms
 
         public bool OpenWordDocument(FileTypes fileType, string filePath, string fileName)
         {
+            // Try To open the file
+            // (This is done in order to open the file if it was closed outside of the application
+            if (filesByType[fileType] == fileName)
+            {
+                try
+                {
+                    openDocuments.Add(fileName, WordApplication.Documents.Open(Path.GetFullPath(filePath) + fileName));
+                    filesByType[fileType] = fileName;
+
+                }
+                // If the opening of the file failed that means that the file already open by 
+                // the application
+                catch { }
+                return true;
+            }
+
+            // Handle the case that the file to open is different from the file opened
+            // Case 1 : There is a (different file) opened for this file type
             if (filesByType[fileType] != "")
             {
                 CloseWordDocument(filesByType[fileType]);
             }
-            if (!openDocuments.ContainsKey(fileName))
+            // The algorithm of opening a file
+            // As long as the file is already opened (outside of the application)
+            //      Create a customized message box with the options
+            //      if the result of the message box is cancel - return false
+            //      if the result is retry to open
+
+            while (true)
             {
-                // The algorithm of opening a file
-                // As long as the file is already opened (outside of the application)
-                //      Create a customized message box with the options
-                //      if the result of the message box is cancel - return false
-                //      if the result is retry to open
-
-                while (true)
+                try
                 {
-                    try
-                    {
-                        openDocuments.Add(fileName, WordApplication.Documents.Open(Path.GetFullPath(filePath) + fileName));
-                        return true;
-                    }
-                    catch (Exception e)
-                    {
-                        string result = CustomizedMessageBox.FileMsgErr("Error while parsing source file",
-                            Path.GetFileName(fileName),
-                            Path.GetDirectoryName(fileName),
-                            e.Message,
-                            "Document Creator Message",
-                            new List<string> { "Retry", "Cancel" });
+                    openDocuments.Add(fileName, WordApplication.Documents.Open(Path.GetFullPath(filePath) + fileName));
+                    filesByType[fileType] = fileName;
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    string result = CustomizedMessageBox.FileMsgErr("Error while parsing source file",
+                        Path.GetFileName(fileName),
+                        Path.GetDirectoryName(fileName),
+                        e.Message,
+                        "Document Creator Message",
+                        new List<string> { "Retry", "Cancel" });
 
-                        if (result == "Cancel")
-                        {
-                            return false;
-                        }
+                    if (result == "Cancel")
+                    {
+                        return false;
                     }
                 }
             }
-            return true;
         }
                
 
@@ -357,25 +372,25 @@ namespace DistributedAlgorithms
     ///
     /// \brief A document creator.
     ///
-    /// \brief #### Description.
-    ///        This class handles the creation of program help documents
-    ///        The program help documents are created from word file
-    ///        The class make it possible to remove section from the original file
-    ///        So that only the documentation on the algorithm will appear in the algorithm documentation
-    ///        The program uses 4 files:
+    /// \par Description.
+    ///     -   This class handles the creation of program help documents
+    ///     -   The program help documents are created from word file
+    ///     -   The class make it possible to remove section from the original file
+    ///         So that only the documentation on the algorithm will appear in the algorithm documentation
+    ///     -   The program uses 4 files:
     ///        -#   The documentation source file
     ///        -#   A temporary file to view the results
     ///        -#   A destination file
     ///        -#   A pseudo-code file
     ///
-    ///        The editing process is composed from the following steps
+    ///     -   The editing process is composed from the following steps
     ///        -#   From the source file create a list of paragraphs
     ///        -#   Set all the paragraphs that are not in the destination file - invisible
     ///        -#   The interactive process set or reset the visibility attribute of paragraphs
     ///        -#   When finished create a word document from the visible paragraphs
     ///
     ///
-    /// \brief #### Usage Notes.
+    /// \par Usage Notes.
     ///
     /// \author Ilanh
     /// \date 14/03/2017
@@ -1359,13 +1374,14 @@ namespace DistributedAlgorithms
             if (result == MessageBoxResult.Yes)
             {
                 Mouse.OverrideCursor = Cursors.Wait;
+                selectedParagraphIndex++;
                 int idx = 0;
                 for (; idx < selectedParagraphIndex; idx++)
                 {
                     ((Grid)(DockPanel_Paragraphs.Children[idx])).Visibility = System.Windows.Visibility.Collapsed;
                 }
 
-                for (idx++; GetParagraphStyleId(idx) == "Default"; idx++) ;
+                for (idx++; GetParagraphStyleId(idx) == "Table"; idx++) ;
 
                 //remove all items with the same style
                 for (; idx < DockPanel_Paragraphs.Children.Count; idx++)

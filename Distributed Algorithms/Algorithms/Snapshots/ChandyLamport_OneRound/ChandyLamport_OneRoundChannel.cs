@@ -331,6 +331,25 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
 
         #endregion
         #region /// \name algorithm utility methods
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public string MessageList()
+        ///
+        /// \brief Message list.
+        ///
+        /// \par Description.
+        ///      Print the messages sent after the first marker and before the last marker
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 03/06/2018
+        ///
+        /// \return A string.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public string MessageList()
         {
             string s = "";

@@ -662,7 +662,7 @@ namespace DistributedAlgorithms
             activationPhase = ActivationPhases.Init;
             FileUtilities.CreateDirsForNeteork();
             Logger.Init();
-            net.InitNetwork();
+            net.InitNetwork((int)Canvas_Draw.ActualWidth, (int)Canvas_Draw.ActualHeight);
             activationPhase = ActivationPhases.Initiated;
             networkWasChanged = true;
             lastInitiationAction = LastInitiationAction.Init;
@@ -932,6 +932,9 @@ namespace DistributedAlgorithms
             BaseProcess newProcess = ClassFactory.GenerateProcess(net);
             int processId = net.Processes.Last().ea[ne.eak.Id] + 1;
             newProcess.Init(processId);
+            Random random = new Random();
+            newProcess.pp[bp.ppk.FrameTop] = random.Next(0, (int)(Canvas_Draw.ActualHeight - newProcess.pp[bp.ppk.FrameHeight]));
+            newProcess.pp[bp.ppk.FrameLeft] = random.Next(0, (int)(Canvas_Draw.ActualWidth - newProcess.pp[bp.ppk.FrameWidth]));
             newProcess.Presentation = new ProcessPresentation(Canvas_Draw, newProcess, this);
             net.Processes.Add(newProcess);
             SetSelectedProcess(newProcess);

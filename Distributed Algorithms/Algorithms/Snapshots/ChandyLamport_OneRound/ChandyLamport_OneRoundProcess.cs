@@ -351,11 +351,12 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
                 case m.MessageTypes.Marker:
                     TakeSnapshot();
                     sourceChannel.or[c.ork.Marked] = true;
-                    if (InChannels.All(channel => channel.or[c.ork.Marked]))
+                    if (Finished())
                     {
                         PrintResults();
                         pp[bp.ppk.FrameColor] = KnownColor.Blue;
                         pp[bp.ppk.FrameLineWidth] = 6;
+                        ((ChandyLamport_OneRoundNetwork)network).TerminateIfFinished();
                     }
                     break;
             }
@@ -412,11 +413,6 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
             return base.MessageProcessingCondition(message);
         }
 
-        public void StatusSetting(InternalEvents.DummyForInternalEvent dummy = null)
-        {
-            or[p.ork.Status] = ea[ne.eak.Id];
-            pp[bp.ppk.Background] = TypesUtility.GetKeyFromString(typeof(KnownColor), StatusColor[ea[ne.eak.Id] % StatusColor.Length]);
-        }
         #endregion
         #region /// \name Message handling
         #endregion
@@ -675,6 +671,23 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
         }
         #endregion
         #region /// \name algorithm utility methods
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn private void TakeSnapshot()
+        ///
+        /// \brief Take snapshot.
+        ///
+        /// \par Description.
+        ///      the algorithm's TakeSnapshot method
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 03/06/2018
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void TakeSnapshot()
         {
             if (!or[p.ork.Recordered])
@@ -686,6 +699,22 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn private void PrintResults()
+        ///
+        /// \brief Print results.
+        ///
+        /// \par Description.
+        ///      Show a message box if the process finished the algorithm
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 03/06/2018
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void PrintResults()
         {
             string s = ea[bp.eak.Name] + "\n";
@@ -695,6 +724,29 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
                 s += "\n" + channel.MessageList();
             }
             MessageRouter.MessageBox(new List<string> { s }, "Finished algorithm message");
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public bool Finished()
+        ///
+        /// \brief Finished this object.
+        ///
+        /// \par Description.
+        ///      Check if the algorithm finished (marker received from all incomming channels
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 03/06/2018
+        ///
+        /// \return True if it succeeds, false if it fails.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public bool Finished()
+        {
+            return InChannels.All(channel => channel.or[c.ork.Marked]);
         }
         #endregion
     }

@@ -169,7 +169,7 @@ namespace DistributedAlgorithms
             // Calculating the round
             // If the message is null we are in the Initialize trigger so the round is 0. 
             int round = 0;
-            if (!(message is null))
+            if (message is null)
             {
                 round = 0;
             }

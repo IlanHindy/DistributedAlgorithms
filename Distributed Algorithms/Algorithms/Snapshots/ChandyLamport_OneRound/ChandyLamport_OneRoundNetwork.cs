@@ -64,58 +64,60 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
         #region /// \name Init (methods that are activated while in Init phase)
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \fn protected override void CreateInitNetwork()
+        /// \fn protected override void CreateInitNetwork(int processMaxLeft, int processMaxHeight)
         ///
         /// \brief Creates init network.
         ///
         /// \par Description.
-        ///      This method creates the initial network use this method if you want that the init 
-        ///      operation (from the GUI) will create a network with some processes and channels
+        ///      This method creates the initial network use this method if you want that the init
+        ///      operation (from the GUI) will create a network with some processes and channels.
         ///
         /// \par Algorithm.
         ///
         /// \par Usage Notes.
         ///      The following is an example for how to create an init network (It is the method
         ///      of the BaseNetwork)
-        /// ~~~{.cs}
-        /// protected virtual void CreateInitNetwork()
-        /// {
-        ///     //Init the processes
-        ///     int numberOfProcesses = 2;
-        ///     int channelIdx = 0;
-        ///     for (int idx = 0; idx &lt numberOfProcesses; idx++)
-        ///     {
+        ///      ~~~{.cs}
+        ///      protected virtual void CreateInitNetwork()
+        ///      {
+        ///      //Init the processes
+        ///      int numberOfProcesses = 2;
+        ///      int channelIdx = 0;
+        ///      for (int idx = 0; idx &amp;lt numberOfProcesses; idx++)
+        ///      {
         ///         //Create and init a process
         ///         BaseProcess process = ClassFactory.GetProcess(this);
         ///         Processes.Add(process);
         ///         process.Init(idx);
-        ///
+        ///      
         ///         //Create a Channel from the process to itself - used to terminate the sockets
         ///         //Used by the process
         ///         BaseChannel channel = ClassFactory.GetChannel(channelIdx, idx, idx, this);
         ///         Channels.Add(channel);
         ///         channelIdx++;
         ///      }
-        ///
+        ///      
         ///      //Init the other channels
         ///      int numberOfChannels = 4;
-        ///      for (; channelIdx &lt numberOfChannels; channelIdx++)
+        ///      for (; channelIdx &amp;lt numberOfChannels; channelIdx++)
         ///      {
         ///         BaseChannel channel = ClassFactory.GetChannel(channelIdx, channelIdx % 2, (channelIdx + 1) % 2, this);
         ///         Channels.Add(channel);
         ///      }
-        /// }
-        /// ~~~
-        /// 
+        ///      }
+        ///      ~~~.
         ///
         /// \author Ilan Hindy
         /// \date 26/01/2017
+        ///
+        /// \param processMaxLeft    (int) - The process maximum left.
+        /// \param processMaxHeight  (int) - Height of the process maximum.
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected override void CreateInitNetwork()
+        protected override void CreateInitNetwork(int processMaxLeft, int processMaxHeight)
         {
             // Call the base class method - remove if you want to build another init network
-            base.CreateInitNetwork();
+            base.CreateInitNetwork(processMaxLeft, processMaxHeight);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -264,7 +266,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
         #endregion
         #region /// \name Create (methods that are activated while in create phase)
         #endregion
-        #region /// \name #region /// \name Presentation (Methods that are activated while in running phase)
+        #region /// \name Presentation (Methods that are activated while in running phase)
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \fn public override string PresentationText()
@@ -290,6 +292,43 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
 
         #endregion
         #region /// \name algorithm utility methods
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \fn public void TerminateIfFinished()
+        ///
+        /// \brief Terminate if finished.
+        ///
+        /// \par Description.
+        ///      -  This method is activated when a process finished  
+        ///      -  It checks if all the processes finished and if so show a message and terminate  
+        ///         the runing
+        ///
+        /// \par Algorithm.
+        ///
+        /// \par Usage Notes.
+        ///
+        /// \author Ilanh
+        /// \date 03/06/2018
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public void TerminateIfFinished()
+        {
+            foreach (ChandyLamport_OneRoundProcess process in Processes)
+            {
+                if (!process.Finished())
+                {
+                    return;
+                }
+            }
+
+            MessageRouter.MessageBox(new List<string> { "The algorithm Finished" },
+                "ChandyLamport_OneRoundNetwork Message");
+
+            // The following command will cause the termination algorithm to run until
+            // the end of the processing
+            or[bn.ork.SingleStepStatus] = false;
+            Processes[0].Terminate();
+        }
         #endregion 
     }
 }

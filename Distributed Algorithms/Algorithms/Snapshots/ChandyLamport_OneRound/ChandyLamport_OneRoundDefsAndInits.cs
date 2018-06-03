@@ -70,24 +70,28 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
  
 		public void SendMarker(AttributeDictionary  fields = null, 
 			SelectingMethod selectingMethod = SelectingMethod.All,
-			List<int> ids = null)
+			List<int> ids = null,
+			int round = -1,
+			int clock = -1)
 		{
 			if(fields is null)
 			{
 				MessageDataFor_Marker();
 			}
-			Send(m.MessageTypes.Marker, fields, selectingMethod, ids, 0, 0);
+			Send(m.MessageTypes.Marker, fields, selectingMethod, ids, round, clock);
 		}
  
 		public void SendBaseMessage(AttributeDictionary  fields = null, 
 			SelectingMethod selectingMethod = SelectingMethod.All,
-			List<int> ids = null)
+			List<int> ids = null,
+			int round = -1,
+			int clock = -1)
 		{
 			if(fields is null)
 			{
 				MessageDataFor_BaseMessage();
 			}
-			Send(m.MessageTypes.BaseMessage, fields, selectingMethod, ids, 0, 0);
+			Send(m.MessageTypes.BaseMessage, fields, selectingMethod, ids, round, clock);
 		}
 	}
 	#endregion
@@ -188,7 +192,7 @@ namespace DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound
 		{
 			AttributeDictionary dictionary = pa;
 			dictionary.selfEnumName = "DistributedAlgorithms.Algorithms.Snapshots.ChandyLamport_OneRound.n+pak";
-			dictionary.Add(n.pak.Version, new Attribute { Value = 2 ,Editable = false ,Changed = false } );
+			dictionary.Add(n.pak.Version, new Attribute { Value = 3 ,Editable = false ,Changed = false } );
 			base.InitPrivateAttributes();
 		}
  

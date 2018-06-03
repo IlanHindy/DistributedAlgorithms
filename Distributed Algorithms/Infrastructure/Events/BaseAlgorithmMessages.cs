@@ -165,7 +165,7 @@ namespace DistributedAlgorithms
                     messageData[Comps.Fields],
                     round,
                     messageData[Comps.Targets]);
-                process.SendToNeighbours(message, BaseProcess.SelectingMethod.Include, messageData[Comps.Targets].AsList());
+                process.SendWithNoEventsProcessing(message, BaseProcess.SelectingMethod.Include, messageData[Comps.Targets].AsList());
             }
         }
         #endregion
